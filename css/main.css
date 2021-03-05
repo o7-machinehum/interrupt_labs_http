@@ -57,11 +57,11 @@
  *
  * ------------------------------------------------------------------- */
 html {
-  font-size: 10px;
+  font-size: 8px;
 }
 @media only screen and (max-width: 400px) {
   html {
-    font-size: 9.411764705882353px;
+    font-size: 9px;
   }
 }
 
