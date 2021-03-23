@@ -169,12 +169,12 @@
                     <div class="process__text">
                         <h4>Design</h4>
                         <p>
-                        Based on the project definition this step varies
-                        greatly. Is product to be consumed by ten people? Or ten
-                        thousand? Or ten million? Who is going to consume it?
-                        Where do these people live? These are all question that
-                        greatly impact the system architecture and influence the
-                        design.
+                        This step varies greatly depending on the project
+                        definition. Is product to be consumed by ten people? Or
+                        ten thousand? Or ten million? Who is going to consume
+                        it?  Where do these people live? What technical capacity
+                        do they have? These are all question that greatly impact
+                        the system architecture and influence the design.
                         </p>
                     </div>
                 </div>
@@ -182,12 +182,11 @@
                     <div class="process__text">
                         <h4>Prototype</h4>
                         <p>
-                        Time to build and test the thing. Based on the
-                        complexity of the design the boards may be populated in
-                        house or farmed out to a local fabrication shop. Test,
-                        test, test, under all conditions. Temperature,
-                        vibration, humidity, power sources, EMC, EMI, etc. Do
-                        all this before proceeding to a larger build.
+                        Build, test, build, test. Test under different temperatures,
+                        vibrations, humidities, power sources, EMC, EMI, days of the
+                        week, device states, battery voltages, silicon corners, clock
+                        speeds, water ingress, component tolerance extremes and whatever
+                        else is relevant.
                         </p>
                     </div>
                 </div>
@@ -196,24 +195,29 @@
                         <h4>Scale</h4>
                         <p>
                         Once the design has been stress tested it's time to
-                        scale. It is recommended to stay with the same contract
-                        manufacture barring any issues. Working with CM's is a
-                        trust building exercise, and the trust cuts both ways.
-                        Past a certain build quantity you need to develop
-                        automated test equipment (ATE). This is used to find
-                        build errors of the line.  
+                        scale. The trick for hardware at scale is to not 
+                        change anything unless absolutely required. This
+                        prevents the requirement to redo all the costly and time
+                        consuming regression testing. Hardware design at scale
+                        is a totally new game, you have to organize
+                        manufactures, supply chains and automated test
+                        equipment.
                         </p>
                     </div>
                 </div>
                 <div class="col-block process__col" data-item="6" data-aos="fade-up">
                     <div class="process__text">
-                        <h4>Launch</h4>
+                        <h4>Launch and Maintain</h4>
                         <p>
-                        Products can launch through several outlets, depending
-                        on the outcome of market reserch you may choose to host
-                        a kickstarter, sell direct or otherwise. Following the
-                        deployment you way with to deploy over the air (OTA) 
-                        updated to your device.
+                        Following the deployment you will most likely need
+                        to provide firmware updates for the device. You need to
+                        setup a continuous integration system that runs build
+                        verification tests (BVT). Firmware drops may require a
+                        certain level of regression testing to ensure nothing
+                        has broken. You need a platform to get the firmware 
+                        to the end user, this may be an app, or a website. You
+                        need a bootloader so the user can easily flash the device.
+                        All these things need to be taken into account in step two.
                         </p>
                     </div>
                 </div>
