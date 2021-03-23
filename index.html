@@ -277,8 +277,8 @@
                     experience with Altium, however we prefer to use Kicad if
                     the design permits. With KiCad it becomes possible to the
                     client to modify the design without having to purchase
-                    expensive software licenses. We have developed lots of
-                    Python framework around KiCad to augment it's capabilities.
+                    expensive software licenses. We have developed several
+                    Python frameworks around KiCad to augment it's capabilities.
                     </p>
                 </div>
             </div>
@@ -290,10 +290,13 @@
                 <div class="service-text">
                     <h3 class="h4">Embedded Linux</h3>
                     <p>
-                    Embedded Linux is just getting more prolific. Leveraging
+                    Embedded Linux is extremely powerful. Once you have a
+                    working image up an running tasks that require networking,
+                    dynamic memory, security, filesystems, databases, language
+                    support, video or LCD screen become trivial.  Leveraging
                     tools like Buildroot and Yocto we can design extremely
                     powerful systems for use in IOT, machine learning, machine
-                    vision or whatever task you need.
+                    vision or whatever your product needs may be.
                     </p>
                 </div>
             </div>
@@ -308,8 +311,10 @@
                     We have experience in designing and building robots.
                     Software like Robot Operating System (ROS) are extremely
                     powerful tools for implementing algorithms for control of
-                    robots. We have implement several SLAM algorithms, such as
-                    LSD SLAM and ORB SLAM for localizing robots.
+                    robots. We have implemented several SLAM algorithms, such as
+                    LSD SLAM and ORB SLAM for localizing robots. We have experience 
+                    with the latest Nvidia embedded systems for robotics and machine
+                    learning.
                     </p>
                 </div>
             </div>
@@ -356,11 +361,12 @@
                         <div class="item-folio__caption">
                             <p>
                                 This is an embedded system for a client that
-                                need a Force Sensitive Resistor (FSR) array for
-                                a robotic gripper. It boasts an STM32F1 running
-                                freeRTOS and libopencm3. It samples data from
-                                the sensors and acting as a USB device, send the
-                                data back to the host ROS PC using rosserial.
+                                need a Force Sensitive Resistor (FSR) array  on
+                                a flex PCB to be used with a robotic gripper. It
+                                boasts an STM32F1 running freeRTOS and
+                                libopencm3. It samples data from the sensors and
+                                acting as a USB serial device, send the data
+                                back to the host ROS PC using rosserial.
                             </p>
                         </div>
                     </div>
@@ -390,13 +396,14 @@
 
                         <span class="item-folio__caption">
                             <p>
-                                This is an embedded PCB designed to control
-                                for a hydroponics system. It boasts an STM32
-                                and esp8266 wifi controller. It has three fets
-                                and various switching PMICs.
+                                This is an embedded PCB designed to control a
+                                hydroponics system. It boasts an STM32F4 and
+                                esp8266 wifi controller. It has three fets, 
+                                various switching power management ICs (PMICs)
+                                and a stepper motor driver. It uses FreeRTOS
+                                and libopencm3.
                             </p>
                         </span>
-
                     </div>
                 </div>
 
@@ -426,15 +433,15 @@
                         <span class="item-folio__caption">
                             <p>
                                 Soundhive is a product designed to reduce
-                                ewaste. Thousands of high quality speakers end
-                                up in the landfil because their driving
+                                e-waste. Thousands of high quality speakers end
+                                up in the landfill because their driving
                                 circuitry is dead. Soundhive provides a modular
-                                appoach to bringing old speakers back to live.
+                                approach to bringing old speakers back to life.
                                 The modules stack vertically to allow for 1-8
                                 speakers in a system. There is a battery
                                 backpack that enables the system to be portable.
-                                The PCB itself boasts a 40W class D high
-                                effiency amplifier.
+                                The PCB itself boasts a TI 40W class D high
+                                efficiency amplifier.
                             </p>
                         </span>
 
@@ -470,7 +477,12 @@
                                 classify species of birds using acoustic data
                                 in the wild. It uses tensorflow lite for
                                 microcontrollers to implement a neural net on an
-                                STM32F7. 
+                                STM32F7. Is contains all the analog circuitry to
+                                filter the input and adjust the amplitude. It is
+                                extremely lower power and only wakes up when it
+                                hears a loud noise, since it's a bare metal system
+                                wakeup time is extremely fast and sleep power is
+                                extremely low.
                             </p>
                         </span>
 
@@ -503,12 +515,13 @@
                         <span class="item-folio__caption">
                             <p>
                                 Page Up is a wireless pager designed for
-                                calling servers at restoraunts. It hosts and
+                                calling servers at restaurants. It hosts an
                                 embedded design that lasts years on two AA
                                 cells. It uses a 2.4Ghz radio to send the
                                 data back to a linux SBC which then moved
                                 it to the cloud. The data was consumed by
                                 Android apps running on the servers phones.
+                                We did not design the app.
                             </p>
                         </span>
 
@@ -540,8 +553,10 @@
 
                         <span class="item-folio__caption">
                             <p>
-                                Logic Crusher is a Eurorack module uses to
-                                sample and playback audio.
+                                Logic Crusher is a Eurorack module used to
+                                sample and playback audio in a modulated form
+                                is uses a STM32 DSP core so modify the audio in
+                                firmware.  
                             </p>
                         </span>
 
@@ -550,9 +565,8 @@
 
             </div>
         </div>
-
+<!--
         <div class="testimonials-wrap" data-aos="fade-up">
-
             <div class="row">
                 <div class="col-full testimonials-header">
                     <h2 class="h1">What Clients Are Saying.</h2>
@@ -596,6 +610,7 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- contact
     ================================================== -->
@@ -612,7 +627,7 @@
 
             <div class="col-full contact-main" data-aos="fade-up">
                 <p>
-                <a href="mailto:#0" class="contact-email">hello@interruptlabs.ca</a>
+                <a href="mailto:#0" class="contact-email">info@interruptlabs.ca</a>
                 </p>
             </div> 
 
