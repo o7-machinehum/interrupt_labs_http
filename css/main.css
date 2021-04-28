@@ -2215,9 +2215,8 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-about {
-  padding-top: 18rem;
-  padding-bottom: 18rem;
-  background-color: #ffffff;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   position: relative;
 }
 
@@ -2458,7 +2457,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 .s-works {
   background: #ffffff;
-  padding: 18rem 0 24rem;
+  padding: 10rem 0 10rem;
   position: relative;
 }
 
