@@ -1,6 +1,6 @@
 ---
 title: I'm Building a Self-Destructing USB Drive Part 2
-date: 2022-09-19 00:00:00
+date: 2022-08-31 00:00:00
 tags:
 ---
 
