@@ -1,0 +1,7 @@
+<%- partial('_partial/main') %>
+
+<% page.posts.each(function(item){ %>
+    <%- partial('_partial/article-index', {item: item}) %>
+<% }); %>
+
+<%- partial('_partial/main_bot') %>
