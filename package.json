@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "hexo": "^6.2.0",
-    "hexo-all-minifier": "^0.5.7",
+    "hexo-all-minifier": "^0.5.2",
     "hexo-autoprefixer": "^2.0.0",
     "hexo-front-matter": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",
