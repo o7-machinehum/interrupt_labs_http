@@ -107,7 +107,7 @@ deploy:
 feed:
   enable: true
   type: rss2
-  path: rss2.xml
+  path: atom.xml
   limit: 0
   content_limit: 140
   content_limit_delim: ' '
