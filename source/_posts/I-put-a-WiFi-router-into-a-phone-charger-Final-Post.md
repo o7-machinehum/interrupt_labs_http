@@ -1,10 +1,8 @@
 ---
 title: I put a WiFi router into a phone charger (Final Post)
 date: 2021-10-25 17:40:42
+previous_post: https://interruptlabs.ca/2021/09/22/I'm-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/
 ---
-
-This is the fifth and final installment about designing a WiFi router into a phone charger for security, pentesting and red teaming. You can find all other posts on the main page.
-
 ### Up Until Now
 
 The WifiWart is a powerful embedded Linux WiFi security device hiding inside a phone charger. It is akin to the WiFi Pineapple without looking malicious. Over the length of the project, I’ve had plenty of comments telling me to buy a single-board computer (SBC), jam in an existing enclosure, and call it done. If I was trying to build a one-off device for personal use, this is what I would do. But this project isn’t for me; it’s for the community. In the past six months, I’ve designed a completely open source SBC boasting a 1.2Ghz quad-core processor, 1GB of DDR3 RAM, two WiFi radios, a USB port and all the power supplies to convert mains electricity to the required voltages for the processor. In addition to the electronics, firmware and mechanical design open source, the CAD software used in the design is also open source. I did this intentionally, as having an open source design in Altium or Solidworks is pointless because nobody will shell out 10k+ for software to view my design. That being said, _I hope you enjoy the final post :)._

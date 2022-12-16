@@ -8,6 +8,20 @@
     var cover = item.cover || theme.index_cover;
 %>
 
+<style>
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+
 <header class="intro-header" style="background-image: url('<%- url_for(cover) %>')">
     <div class="container">
         <div class="row">
@@ -40,7 +54,7 @@
         <div class="row">
 
             <!-- Tags and categories -->
-           <% if (item.categories && item.categories.length || item.tags && item.tags.length) { %>
+            <% if (item.categories && item.categories.length || item.tags && item.tags.length) { %>
                 <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
                     <% if (item.tags && item.tags.length){ %>
                         <%- partial('article-tags', {item: item}) %>
@@ -62,6 +76,23 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <% if (item.previous_post || item.next_post){ %>
+                    <div class="row col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="column">
+                            <% if (item.previous_post){ %>
+                                <a href="<%= item.previous_post %>">&lt&lt Previous Post</a>
+                            <% } %>
+                            &#8205
+                        </div>
+                        <div class="column", style="text-align: right">
+                            <% if (item.next_post){ %>
+                                <a href="<%= item.next_post %>">Next Post &gt&gt</a>
+                            <% } %>
+                        </div>
+                    </div>
+                    <hr>
+                <% } %>
+
                 <%- item.content %>
 
                 <% if(theme.addthis) { %>

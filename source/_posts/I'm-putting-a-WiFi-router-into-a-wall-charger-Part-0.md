@@ -1,6 +1,7 @@
 ---
 title: I'm putting a WiFi router into a wall charger (Part 0)
 date: 2021-04-28 18:41:33
+next_post: https://interruptlabs.ca/2021/06/15/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-1/
 ---
 
 This is the first part of a blog about putting a wifi router into a phone charger. Join us on [Discord here](https://discord.gg/EtZT7mjNuM). Check out the [Github](https://github.com/Machine-Hum/wifiwart).

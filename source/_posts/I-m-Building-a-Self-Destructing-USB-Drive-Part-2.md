@@ -1,7 +1,7 @@
 ---
 title: I'm Building a Self-Destructing USB Drive Part 2
 date: 2022-08-31 00:00:00
-tags:
+previous_post: https://interruptlabs.ca/2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/
 ---
 
 I'm building an open-source USB drive with a hidden self-destruct feature. Say goodbye to your data if you don't lick your fingers before plugging it in. Its target customers are journalists in anti-privacy countries and security researchers. [Part One Here](https://interruptlabs.ca/2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/)

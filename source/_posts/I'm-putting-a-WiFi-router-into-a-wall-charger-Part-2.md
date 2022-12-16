@@ -1,11 +1,9 @@
 ---
 title: I'm putting a WiFi router into a wall charger (Part 2)
 date: 2021-07-19 13:37:10
+next_post: https://interruptlabs.ca/2021/09/22/I'm-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/
+previous_post: https://interruptlabs.ca/2021/06/15/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-1/
 ---
-
-This is the third part of a blog about putting a WiFi router into a phone charger. You can find all other posts on the main page.
-
-
 This post will outline the bringup of Linux on a PCB I developed from scratch. You can read more about the hardware design in the earlier posts linked above. I’ll talk about driver bringup, system characterization, testing, and software development. By the end of this post, we will have a fully booted single-board computer (SBC). The last post was left on a somewhat unexciting note. To recap, I populated the 2.5V regulator with a 3.3V. After powering up the board, I read this rail had an **absolute maximum rating of 2.7V**. Or so we were told…
 
 After replacing the regulator with a 2.5V variant, I fired everything up, and the current consumption looked reasonable. I cloned the Buildroot repository to have a poke around. Buildroot is an open source project designed to make building the bootloader, kernel, operating system and required apps easier. The A33-OLinuXino has similar hardware to my board, so I used that as a jumping-off point. There’s one command to configure the build: make olimex_a33_olinuxino_defconfigthis takes the config fromconfig/olimex_a33_olinuxino_defconfig and replaces the .config file in the buildroot home directory. The .config file is responsible for defining the top-level buildroot configuration. Issuing make menuconfig will bring up the config menu.
@@ -60,9 +58,9 @@ This is actually a preferable alternative to dongles, as those modules run off 3
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-2: **wlan0:** &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc 
+2: **wlan0:** &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc
     link/ether 28:f3:66:44:b1:b1 brd ff:ff:ff:ff:ff:ff
-3: **wlan1:** &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc 
+3: **wlan1:** &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc
     link/ether 28:f3:66:44:a9:f9 brd ff:ff:ff:ff:ff:ff</pre>
 
 Connecting to my home wifi was easy…
@@ -107,12 +105,12 @@ Loop 1/1:
   Compare AND         : ok
   Sequential Increment: ok
   Solid Bits          : ok
-  Block Sequential    : ok         
-  Checkerboard        : ok         
-  Bit Spread          : ok         
-  Bit Flip            : ok         
-  Walking Ones        : ok         
-  Walking Zeroes      : ok         
+  Block Sequential    : ok
+  Checkerboard        : ok
+  Bit Spread          : ok
+  Bit Flip            : ok
+  Walking Ones        : ok
+  Walking Zeroes      : ok
   8-bit Writes        : ok
   16-bit Writes       : ok
   Done.
