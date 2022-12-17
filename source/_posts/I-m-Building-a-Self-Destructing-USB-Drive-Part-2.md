@@ -5,7 +5,7 @@ next_post: /2022/12/15/I-m-Building-a-Self-Destructing-USB-Drive-Part-3/
 previous_post: /2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/
 ---
 
-I'm building an open-source USB drive with a hidden self-destruct feature. Say goodbye to your data if you don't lick your fingers before plugging it in. Its target customers are journalists in anti-privacy countries and security researchers. [Part One Here](https://interruptlabs.ca/2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/)
+I'm building an open-source USB drive with a hidden self-destruct feature. Say goodbye to your data if you don't lick your fingers before plugging it in. Its target customers are journalists in anti-privacy countries and security researchers. 
 
 ---
 This post outlines the design process and challenges. I'll discuss my bench prototyping, the schematic, layout and mechanical sourcing.
