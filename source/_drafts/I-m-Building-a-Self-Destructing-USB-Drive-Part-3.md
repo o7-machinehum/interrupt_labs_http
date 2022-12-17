@@ -4,15 +4,17 @@ date: 2022-12-15 00:00:00
 tags:
 previous_post: /2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
 next_post:
+cover: img/built_usb.jpg # This needs to be in themes/clean-blog/source/img
 ---
 
 I'm building an open-source USB drive with a hidden self-destruct feature. Say goodbye to your data if you don't lick your fingers before plugging it in. Its target customers are journalists in anti-privacy countries and security researchers.
 
 ---
-// Embed youtube video
 
-![](img/built_usb.jpg)
+For those of you who might not know
 
+{% youtuber video Wrcy6ySjSu8 %}
+{% endyoutuber %}
 
 ```
 [1676446.082295] usb 3-1: new high-speed USB device number 16 using ehci-pci
