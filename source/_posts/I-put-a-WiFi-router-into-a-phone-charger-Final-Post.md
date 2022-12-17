@@ -1,7 +1,7 @@
 ---
 title: I put a WiFi router into a phone charger (Final Post)
 date: 2021-10-25 17:40:42
-previous_post: https://interruptlabs.ca/2021/09/22/I'm-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/
+previous_post: /2021/09/22/I'm-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/
 ---
 ### Up Until Now
 

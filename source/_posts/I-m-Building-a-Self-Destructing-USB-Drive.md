@@ -1,7 +1,7 @@
 ---
 title: I'm Building a Self-Destructing USB Drive
 date: 2022-07-29 14:02:45
-next_post: https://interruptlabs.ca/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
+next_post: /2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
 ---
 
 Because we all know the best way to keep your data safe is by blowing it up, right?

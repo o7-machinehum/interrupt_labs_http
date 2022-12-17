@@ -1,8 +1,8 @@
 ---
 title: I'm putting a WiFi router into a wall charger (Part 2)
 date: 2021-07-19 13:37:10
-next_post: https://interruptlabs.ca/2021/09/22/I'm-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/
-previous_post: https://interruptlabs.ca/2021/06/15/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-1/
+next_post: /2021/09/22/I'm-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/
+previous_post: /2021/06/15/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-1/
 ---
 This post will outline the bringup of Linux on a PCB I developed from scratch. You can read more about the hardware design in the earlier posts linked above. I’ll talk about driver bringup, system characterization, testing, and software development. By the end of this post, we will have a fully booted single-board computer (SBC). The last post was left on a somewhat unexciting note. To recap, I populated the 2.5V regulator with a 3.3V. After powering up the board, I read this rail had an **absolute maximum rating of 2.7V**. Or so we were told…
 

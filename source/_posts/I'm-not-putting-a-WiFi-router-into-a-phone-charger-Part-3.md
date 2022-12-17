@@ -1,8 +1,8 @@
 ---
 title: I'm not putting a WiFi router into a phone charger (Part 3)
 date: 2021-09-22 12:19:07
-next_post: https://interruptlabs.ca/2021/10/25/I-put-a-WiFi-router-into-a-phone-charger-Final-Post/
-previous_post: https://interruptlabs.ca/2021/07/19/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-2/
+next_post: /2021/10/25/I-put-a-WiFi-router-into-a-phone-charger-Final-Post/
+previous_post: /2021/07/19/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-2/
 ---
 There are two classes of problems in the world: stupid and interesting. Building a fusion reactor is an interesting problem, while a thorn in your finger is a stupid problem. Typically you don’t like working on stupid problems. You want them gone. A job dealing with primarily stupid problems may be considered a shitty job. Currently, I’m working on some really stupid problems. Let’s read an email from my friend Mia.
 > As you know, the Texas IC components are tight supply, most components are out of stock, just some agents in market have limited inventory, but these agents seized this change to increase the cost maliciously, some IC components even increased 1000 times, but still hot selling. This is really bad situation for both of us. Fortunatelly, this IC still has 3000pcs in stock, but frankly speaking, cost is a little expensive, the unit price is 49.7usd/pcs based on EXW, and the quotation is valid for 3 days.

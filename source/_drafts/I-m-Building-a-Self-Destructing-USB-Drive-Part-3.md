@@ -2,7 +2,7 @@
 title: I'm Building a Self-Destructing USB Drive Part 3
 date: 2022-12-15 00:00:00
 tags:
-previous_post: https://interruptlabs.ca/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
+previous_post: /2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
 next_post:
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: I'm putting a WiFi router into a wall charger (Part 1)
 date: 2021-06-15 15:35:53
-next_post: https://interruptlabs.ca/2021/07/19/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-2/
-previous_post: https://interruptlabs.ca/2021/04/28/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-0/
+next_post: /2021/07/19/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-2/
+previous_post: /2021/04/28/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-0/
 ---
 This project is effectively “building a computer from scratch”; RAM, disk, USB and a processor. Our computer will be running a full-fledged operating system capable of installing programs, managing a network stack, playing games and even browsing the internet. However, we’re not going to be playing any games. This post is going to outline board layout, BOM generation, assembly and PCB bring up.
 
