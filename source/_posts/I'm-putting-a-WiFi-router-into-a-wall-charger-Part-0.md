@@ -4,7 +4,7 @@ date: 2021-04-28 18:41:33
 next_post: /2021/06/15/I'm-putting-a-WiFi-router-into-a-wall-charger-Part-1/
 ---
 
-This is the first part of a blog about putting a wifi router into a phone charger. Join us on [Discord here](https://discord.gg/EtZT7mjNuM). Check out the [Github](https://github.com/Machine-Hum/wifiwart).
+This is the first part of a blog about putting a wifi router into a phone charger. Join us on [Discord here](https://discord.gg/EtZT7mjNuM). Check out the [Github](https://github.com/o7-machinehum/wifiwart).
 
 WiFi Pineapples are well-known tools in the security community. For those unfamiliar, Pineapples are purpose-built routers to be used in network attacks and exploits. With a Pineapple, you can perform man-in-the-middle attacks, network deauthing and password sniffing. Gilfoyle and Elliot used them in popular shows such as Mr. Robot and Silicon Valley. Hak5 had made a splash in the security community when they created the Pineapple, but I think there’s one major flaw: The form factor.
 ![](https://cdn-images-1.medium.com/max/1024/1*qCt5mywjpZ9qsblO9COfAg.png)<figcaption>When IT finds your drop</figcaption>

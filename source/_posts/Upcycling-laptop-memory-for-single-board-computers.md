@@ -36,4 +36,4 @@ By now, I hope I have convinced you that removable RAM for SBCs is a good idea. 
 
 My next SBC design will feature removable RAM.
 
-If you’re interested in discussing or contributing to this project, consider joining the [Discord](https://discord.com/invite/EtZT7mjNuM) community. Here is the [gihub for the project.](https://github.com/Machine-Hum/F-MOMM)
+If you’re interested in discussing or contributing to this project, consider joining the [Discord](https://discord.com/invite/EtZT7mjNuM) community. Here is the [gihub for the project.](https://github.com/o7-machinehum/F-MOMM)

@@ -42,6 +42,6 @@ As for controlling the inhibit signal itself, I'm going to use an [ATTINY24](htt
 
 #### The Mission
 
-I'm trying to build hardware that solves problems and builds a community. If you think you might have a use for the hardware in this post or would like to help out, I would love to hear from you. I've created a [Discord](https://discord.gg/EtZT7mjNuM) server with like-minded people! Everything is on [github](https://github.com/Machine-Hum/ovrdrive)!
+I'm trying to build hardware that solves problems and builds a community. If you think you might have a use for the hardware in this post or would like to help out, I would love to hear from you. I've created a [Discord](https://discord.gg/EtZT7mjNuM) server with like-minded people! Everything is on [github](https://github.com/o7-machinehum/ovrdrive)!
 ![](https://cdn-images-1.medium.com/max/799/1*qaew9czYRuC--KSqTZQRDg.png)
 

@@ -26,7 +26,7 @@ addr[0:15], !WE, !CS, !RST, DBA[0:2], ODT, !CKE, CAS, RAS: 3mm
 DQ[0:7]: 1.27mm
 DQ[8:15]: 1.27mm</pre>
 
-To further elaborate on these numbers, CK/!CK should be within 0.2mm of each other, DQ[0:7] should be within 1.27mm of each other, etc. These numbers came from a [document](https://github.com/Machine-Hum/wifiwart/blob/master/electronics/app_notes/ddr3-uniphy-layout-guideline.pdf) and experience doing this type of work.
+To further elaborate on these numbers, CK/!CK should be within 0.2mm of each other, DQ[0:7] should be within 1.27mm of each other, etc. These numbers came from a [document](https://github.com/o7-machinehum/wifiwart/blob/master/electronics/app_notes/ddr3-uniphy-layout-guideline.pdf) and experience doing this type of work.
 
 Kicad is getting good; it ships with a nice length tuning tool. To start, I found the longest trace, which turned out to my 40mm; I then set the target to 40mm. After that, you click other traces to match, and it will automatically add the little squiggles to lengthen the trace. My one gripe is KiCad doesn’t add the via length to the total track length. To account for this, I just ensured matched traces have the same numbers of vias.
 ![](https://cdn-images-1.medium.com/max/1010/1*hCa5A4FfH7fUM8_AAdiUVw.png)

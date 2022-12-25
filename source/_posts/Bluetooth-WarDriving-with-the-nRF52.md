@@ -142,7 +142,7 @@ $ west update
 $ cd example-project
 $ west build</pre>
 
-I had issues building this, so I wiped out most of the code and pulled in some of the other stuff we [worked on before.](https://github.com/Machine-Hum/nRF52_War_Driving/blob/d09d4706e515ff42ddd0df914f0a82f19c70ca09/app/src/main.c) You can see I’ve stripped out most of the existing Bluetooth code, as we’re only concerned with scanning for other Bluetooth devices right now. I pulled in the SD card stuff and tested it. I encourage you to look through [the repository](https://github.com/Machine-Hum/nRF52_War_Driving). The repository is open so that anyone can expand on the project.
+I had issues building this, so I wiped out most of the code and pulled in some of the other stuff we [worked on before.](https://github.com/o7-machinehum/nRF52_War_Driving/blob/d09d4706e515ff42ddd0df914f0a82f19c70ca09/app/src/main.c) You can see I’ve stripped out most of the existing Bluetooth code, as we’re only concerned with scanning for other Bluetooth devices right now. I pulled in the SD card stuff and tested it. I encourage you to look through [the repository](https://github.com/o7-machinehum/nRF52_War_Driving). The repository is open so that anyone can expand on the project.
 
 #### One Small Hiccup
 
@@ -160,7 +160,7 @@ While doing my usual 2 AM workout, I tripped, launching the device into a nearby
 
 ### The Retrieval
 
-Once my back healed up, I picked up the drop. I slammed together a quick [python script](https://github.com/Machine-Hum/nRF52_War_Driving/blob/main/py/main.py) to analyze the data, and it reported there were 7054 MAC addresses discovered and 799 unique MAC addresses! A keen code observer would note that I imported a little API for finding the vendors as well. I then plotted this.
+Once my back healed up, I picked up the drop. I slammed together a quick [python script](https://github.com/o7-machinehum/nRF52_War_Driving/blob/main/py/main.py) to analyze the data, and it reported there were 7054 MAC addresses discovered and 799 unique MAC addresses! A keen code observer would note that I imported a little API for finding the vendors as well. I then plotted this.
 ![](https://cdn-images-1.medium.com/max/701/1*1Qf0RvHGn6Uh9XjPEMcRxw.png)
 
 ### Moving Forward
