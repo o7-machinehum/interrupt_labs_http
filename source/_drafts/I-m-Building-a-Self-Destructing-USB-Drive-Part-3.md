@@ -11,10 +11,15 @@ I'm building an open-source USB drive with a hidden self-destruct feature. Say g
 
 ---
 
-For those of you who might not know
+Well, I'm a YouTuber now, for those of you who are not at work you can checkout the video. If you like this content please subscribe and share within your network, it's popularity is directly proportional to making this content.
+
 
 {% youtuber video Wrcy6ySjSu8 %}
 {% endyoutuber %}
+
+The blog format isn't going away, the blogs will be more of the nitty-gritty while youtube will be high level flashy videos with ASMR like reflow shots. With that being said, lets get into the nitty gritty.
+
+After building the boards the device, I plugged them in the usb flash controller emumerated. It looks like this part of the design is working alright. 
 
 ```
 [1676446.082295] usb 3-1: new high-speed USB device number 16 using ehci-pci
@@ -28,6 +33,8 @@ For those of you who might not know
 [1676447.261910] sd 7:0:0:0: [sdg] Media removed, stopped polling
 [1676447.262814] sd 7:0:0:0: [sdg] Attached SCSI removable disk
 ```
+
+However the on snag I ran into is the bloak device isn't showing any memory. I tried using gparted to create a partition but this didn't work.
 
 ```
 [machinehum@whitebox photos]$ lsblk
@@ -46,4 +53,38 @@ sdd      8:48   0 931.5G  0 disk
 sde      8:64   0 931.5G  0 disk
 └─sde2   8:66   0 931.5G  0 part /dat
 sdg      8:96   1     0B  0 disk
+```
+
+So at this point, there could be a few different things going on
+
+  * The routing between the SM3257 (usb controller) and NAND flash is incorrect.
+  * There's some firmware component on the SM3257 that I'm not aware of.
+  * Something else I'm missing.
+
+## From Russia With Love
+I started snooping around and found a [few sites](https://flashboot.ru/files/file/454/)
+
+https://www.usbdev.ru/files/smi/smimptool/
+
+```
+[machinehum SMI_MPT_v.2.5.42_7_15-05-04]$ ls -l UFD_3257ENAA/Samsung/
+total 1196
+-rw-r--r--. 1 machinehum machinehum 73728 Apr 14  2015 SM3257ENAAISP-27nm.BIN
+-rw-r--r--. 1 machinehum machinehum 73728 Jan 30  2013 SM3257ENAAISP-bucket00.BIN
+-rw-r--r--. 1 machinehum machinehum 71680 Oct 23  2012 @SM3257ENAAISP-bucket01.BIN
+-rw-r--r--. 1 machinehum machinehum 71680 Sep  7  2012 SM3257ENAAISP-bucket01.BIN
+-rw-r--r--. 1 machinehum machinehum 89088 May 13  2015 SM3257ENAAISP-ISPSA16nmTLC.BIN
+-rw-r--r--. 1 machinehum machinehum 86016 Nov  6  2013 SM3257ENAAISP-ISPSA19nmTLC4P-2die.BIN
+-rw-r--r--. 1 machinehum machinehum 89088 Apr 17  2015 SM3257ENAAISP-ISPSA19nmTLC4P.BIN
+-rw-r--r--. 1 machinehum machinehum 89088 Nov 14  2013 SM3257ENAAISP-ISPSA19nmTLC-AAG.BIN
+-rw-r--r--. 1 machinehum machinehum 89088 May 13  2015 SM3257ENAAISP-ISPSA19nmTLC.BIN
+-rw-r--r--. 1 machinehum machinehum 89088 May 13  2015 SM3257ENAAISP-ISPSA21nmTLC.BIN
+-rw-r--r--. 1 machinehum machinehum 73728 May 13  2015 SM3257ENAAISP-SA16nmC.BIN
+-rw-r--r--. 1 machinehum machinehum 73728 Apr 14  2015 SM3257ENAAISP-SA19nmMLC.BIN
+-rw-r--r--. 1 machinehum machinehum 73728 Apr 14  2015 SM3257ENAAISP-SA21nmMLC.BIN
+-rw-r--r--. 1 machinehum machinehum 73728 Apr 14  2015 SM3257ENAAISP-SA27nmMLC.BIN
+-rw-r--r--. 1 machinehum machinehum 24576 Jul 25  2013 SM3257ENAATSPTEST24nm4P-2die.bin
+-rw-r--r--. 1 machinehum machinehum 24576 Jan 20  2015 SM3257ENAATSPTEST24nm4P.bin
+-rw-r--r--. 1 machinehum machinehum 24576 Nov 12  2013 SM3257ENAATSPTEST24nm-AAG.bin
+-rw-r--r--. 1 machinehum machinehum 24576 May  6  2015 SM3257ENAATSPTEST24nm.bin
 ```
