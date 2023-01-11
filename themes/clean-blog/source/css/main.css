@@ -1269,12 +1269,13 @@ input::-moz-focus-inner {
   margin: 0;
   padding: 0;
   position: absolute;
-  left: 100px;
+  left: 5%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
 .header-logo a {
   display: block;
   padding: 0;
@@ -1283,9 +1284,16 @@ input::-moz-focus-inner {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
 .header-logo img {
-  width: 200px;
-  height: 100px;
+  width: 20%;
+}
+
+/* Detect Mobile */
+@media (pointer:none), (pointer:coarse) {
+    .header-logo img {
+      width: 40%;
+    }
 }
 
 
@@ -1541,7 +1549,7 @@ input::-moz-focus-inner {
 /* -------------------------------------------------------------------
  * responsive:
  * header
- * ------------------------------------------------------------------- */
+ * -------------------------------------------------------------------
 @media only screen and (max-width: 1600px) {
   .header-logo {
     left: 60px;
@@ -1602,6 +1610,7 @@ input::-moz-focus-inner {
     right: 20px;
   }
 }
+*/
 
 
 /* ===================================================================
