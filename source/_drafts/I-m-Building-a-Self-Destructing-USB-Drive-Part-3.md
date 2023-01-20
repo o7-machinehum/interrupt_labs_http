@@ -70,13 +70,12 @@ So at this point, there could be a few different things going on
   * Something else I'm missing.
 
 ## From Russia With Love
-I started snooping around and found a [site here](https://flashboot.ru/files/file/454/). It's a Russian site that has a download link for the "SMI MP Tool". The download contains a Windows executable for working with the SM3257EN, my flash controller IC. I downloaded it, fired up the VM and got the GUI working.
-
-![](/img/mptool.png)
-
+I started snooping around and found a [site here](https://flashboot.ru/files/file/454/). It's a Russian site that has a download link for the "SMI MP Tool". The download contains a Windows executable for working with the SM3257EN, my flash controller IC. I downloaded it, fired up the VM and got the GUI working. However the VM was a Windows 10 machine, and when lauching the program the the drive was not detected by the program at all. I messed around with this for a quite a while, until I had the idea of trying a Windows XP VM. For some reason this actually worked.
 ![](/img/usb_winxp.png)
 
-Unfortunately there isn't a happy ending to this story, the application couldn't connect to the device.
+
+![](/img/usb_winxp-3.png)
+
 
 ```
 [machinehum SMI_MPT_v.2.5.42_7_15-05-04]$ ls -l UFD_3257ENAA/Samsung/
