@@ -1,6 +1,6 @@
 ---
 title: I'm Building a Self-Destructing USB Drive Part 3
-date: Fill me in
+date: 2023-02-01
 tags:
 previous_post: /2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
 next_post:
@@ -11,21 +11,22 @@ I'm building an open-source USB drive with a hidden self-destruct feature. Say g
 
 ---
 
-Well, I'm a YouTuber now. If you like this content please subscribe and share within your network, it's popularity is directly proportional to making this content.
+Well, I’m a YouTuber now. If you like this content, please subscribe and share it within your network. Its popularity is directly proportional to making this content.
 
 {% youtuber video Wrcy6ySjSu8 %}
 {% endyoutuber %}
 
-The blog format isn't going away, these posts will have more details while youtube will be high level flashy videos with ASMR reflow shots. It should also be noted that this blog post is around a month ahead of the video. So it has some updates for those following the project.
+The blog format is not going away. These posts will have more details, while youtube will be flashy high-level videos with reflow shots. It should also be noted that this blog post is around a month ahead of the video. So it has some updates for those following the project.
 
-The boards were hand assembled by myself, I used a stencil + reflow hotplate for the top, and a stencil + heatgun for the bottom.
+---
+
+The boards were hand assembled by myself. I used a stencil + reflow hotplate for the top and a stencil + heat gun for the bottom.
 
 ![](/img/usb-device.png)
 
-After building the boards the device, I plugged them in the usb flash controller emumerated. It looks like this part of the design is working alright.
+After building the device, I plugged it in, and the USB flash controller enumerated. So the USB databus and USB controller are working correctly. I then measured all three voltages rails, 1.8V, 3.3V and 5V. They all came up fine and looked stable. The dmesg logs got past the USB, usb-storage, scsi driver, but error out on the sd driver, for those interested [here](https://github.com/torvalds/linux/blob/master/drivers/scsi/sd.c#L2118) where the driver is sending the message. Interestingly, the same message is produced when you plug in an sd card reader with no SD card.
 
 ```
-# dmesg logs
 [1676446.082295] usb 3-1: new high-speed USB device number 16 using ehci-pci
 [1676446.240444] usb 3-1: New USB device found, idVendor=090c, idProduct=3000, bcdDevice= 1.00
 [1676446.240463] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
@@ -38,7 +39,7 @@ After building the boards the device, I plugged them in the usb flash controller
 [1676447.262814] sd 7:0:0:0: [sdg] Attached SCSI removable disk
 ```
 
-However the on snag I ran into is the bloak device isn't showing any memory. I tried using gparted to create a partition but this didn't work.
+As expected from the above kernel logs, the block device isn't showing any... blocks.
 
 ``` bash
 [machinehum@whitebox photos]$ lsblk
@@ -59,27 +60,76 @@ sde      8:64   0 931.5G  0 disk
 sdg      8:96   1     0B  0 disk   # <--- This drive is the one
 ```
 
-So at this point, there could be a few different things going on
+So, there could be a few different things going on at this point.
 
-  * The routing between the SM3257 (usb controller) and NAND flash is incorrect.
-  * There's some firmware component on the SM3257 that I'm not aware of.
+  * The routing between the SM3257 (USB controller) and NAND flash is incorrect.
+  * I'm not aware of some firmware components on the SM3257.
   * Something else I'm missing.
 
 ## From Russia With Love
-I started snooping around and found a [Russian site](https://flashboot.ru/files/file/454/) with a download link for the "SMI MP Tool". The download contains a Windows executable for working with the SM3257EN, my flash controller IC. I downloaded it, fired up the VM and got the GUI working. However the VM was a Windows 10 machine, and when lauching the program the the drive was not detected by the program. I messed around with this for a quite a while, until I had the idea of trying a Windows XP VM. For some reason this actually worked.
+I started snooping around and found a [Russian site](https://flashboot.ru/files/file/454/) with a download link for the "SMI MP Tool". The download contains a Windows executable for working with the SM3257EN, my flash controller IC. I downloaded it, fired up the VM and got the GUI working. However, the VM was a Windows 10 machine, and the drive was not detected when launching the program. I messed around with this for quite a while until I thought of trying a Windows XP VM. This actually worked for some reason.
 ![](/img/usb_winxp.png)
 
 ![](/img/usb_winxp-3.png)
-At this point I had some very unsupported software with zero documentation beyond the discourse of Russians in the comment section. Pretty much everyone was just trying to fix their drives. I became completely defeated and started wondering if this was even possible. I contacted every single flash drive repair house I could find. The reality is people don't really build flash drives. I dedicated 30 minuets a day to "flash drive fuck around time" or, FD-FAT, for short. I would fire up the Windows XP VM, and press random buttons in the software and try a flash binaries in the folder to the drive.
+At this point, I had some software with zero documentation beyond the discourse of Russians who were trying to fix their drives in the comment section. I became utterly defeated and started wondering if this was even possible. I contacted every single flash drive repair house I could find. People don't build flash drives. I dedicated 30 minutes a day to "flash drive fuck around time" or FD-FAT, for short. I would fire up the Windows XP VM, press random buttons in the software and try flash binaries in the folder to the drive.
 
-One day I was in a FD-FAT session and I got the GUI to spit out "ISP can't be found!!", I googed this and got back to the same [Russian Site](https://www.usbdev.ru/articles/a_smi/ispcantbefound/). The most important thing to take out of the article is this "DYNA MPTool" exists. I downloaded this, hit the "Start" button and it provisioned the drive. I now have a working 2GB flash drive that I built from scratch.
+One day I was in a FD-FAT session, and I got the GUI to spit out, "ISP can't be found!!" I googled this and ended up on the same [Russian Site](https://www.usbdev.ru/articles/a_smi/ispcantbefound/). The most important thing to take out of the article is this "DYNA MPTool" exists. I downloaded this, hit the "Start" button, and it provisioned the drive. I now have a 2GB flash drive I built from scratch.
 
 ![](/img/usb-device-asm.png)
 
-I then got the device out of it's case and flew some wires to the programming pads of the MCU. This system will have to change in the future. I probably wont go for a USB bootloader, but at least something smaller and more accessible.
+
+## Testing
+I used a few test applications. I started with badblock, which tests for spaces in memory that don't work. Badblock doesn't care about filesystems or partitions. It looks at a block device, which is why you specify /dev/sdf over a partition. It simply writes known data test patterns to the memory and reads them back.
+```
+[machinehum@whitebox ~]$ sudo badblocks -w -s -o error.log /dev/sdf
+Testing with pattern 0xaa: done
+Reading and comparing: done
+Testing with pattern 0x55: done
+Reading and comparing: done
+Testing with pattern 0xff: done
+Reading and comparing: done
+Testing with pattern 0x00: done
+Reading and comparing: done
+```
+
+With this working, I moved over to f3, which is partition aware. It works with files rather than raw memory blocks. These files are a pseudorandom bit sequence rather than a test pattern. It can then verify the data written and verify the speed.
+
+```
+[machinehum@whitebox ~]$ sudo f3write mnt/
+F3 write 8.0
+Copyright (C) 2010 Digirati Internet LTDA.
+This is free software; see the source for copying conditions.
+
+Free space: 1.91 GB
+Creating file 1.h2w ... OK!
+Creating file 2.h2w ... OK!
+Free space: 16.00 MB
+Average writing speed: 4.50 MB/s
+[machinehum@whitebox ~]$ ls mnt/
+1.h2w  2.h2w  lost+found
+[machinehum@whitebox ~]$ sudo f3read mnt/
+F3 read 8.0
+Copyright (C) 2010 Digirati Internet LTDA.
+This is free software; see the source for copying conditions.
+
+                  SECTORS      ok/corrupted/changed/overwritten
+Validating file 1.h2w ... 2097152/        0/      0/      0
+Validating file 2.h2w ... 1882432/        0/      0/      0
+
+  Data OK: 1.9 GB (3979584 sectors)
+Data LOST: 0 MB (0 sectors)
+	       Corrupted: 0.00 Byte (0 sectors)
+	Slightly changed: 0.00 Byte (0 sectors)
+	     Overwritten: 0.00 Byte (0 sectors)
+Average reading speed: 13.12 MB/s
+```
+Defiantly not the fasted drive on the market, but it looks to be working! At this point, I'm thrilled. I got my drive working with the crazy unsupported software, which can hold data.
+
+## Inhibit Circuity
+I then got the device out of its case and flew some wires to the programming pads of the microcontroller. This system will have to change in the future. I probably won't go for a USB bootloader, but at least something smaller and more accessible.
 ![](/img/atmel-header.jpg)
 
-Some of you may remember from the last post the flash memory's chip select line is "or'd" with a pin from the microcontroller. This can be used to inhibit the flash. I tested this out and it worked beautifully. When you try mounting the device with mount command hangs for 20 seconds or so, then dmesg spit this out...
+Some of you may remember from the last post the flash memory's chip select line is "or'd" with a pin from the microcontroller. This can be used to inhibit the flash. I tested this out, and it worked beautifully. When you try mounting the device, the mount command hangs for 20 seconds, then dmesg spits this out.
 
 ```
 [3064125.755814] usb 3-1: reset high-speed USB device number 84 using ehci-pci
@@ -93,3 +143,39 @@ Some of you may remember from the last post the flash memory's chip select line 
 [3064125.920698] /dev/sdf1: Can't open blockdev
 ```
 
+This functionality is suitable for actors that might not want their drive to self-destruct but appear as a corrupted or broken drive. I'm not in the business of telling people what they can and can't do with this open source device.
+
+## Destruction Circuitry
+Finally, we're getting to the good part, what everyone has been asking for. Recall the destruction circuit from the previous post.
+![](/img/distruct.png)
+The operation is simple C1, C2, D1, and D2 form a voltage doubler. When `Distruct_PWM` is 0V, C1 will charge to 5V. When `Distruct_PWM` goes high, the potential across C1 will go to 10V because voltages in series add. This forces current into C2 over D2 and will eventually charge to 10V. When I want to kill the flash, I can enable Q1 via `Kill_switch` and short 10V to 3.3V.
+
+I started with the original circuitry, which didn't produce any smoke. However, when I plugged it in, I reran our trusty f3read command.
+
+```
+[machinehum@whitebox ~]$ sudo f3read mnt/
+F3 read 8.0
+Copyright (C) 2010 Digirati Internet LTDA.
+This is free software; see the source for copying conditions.
+
+                  SECTORS      ok/corrupted/changed/overwritten
+Validating file 1.h2w ... 2097152/        0/      0/      0
+Validating file 2.h2w ... 1372480/   509952/      0/      0
+
+  Data OK: 1.65 GB (3469632 sectors)
+Data LOST: 249.00 MB (509952 sectors)
+	       Corrupted: 249.00 MB (509952 sectors)
+	Slightly changed: 0.00 Byte (0 sectors)
+	     Overwritten: 0.00 Byte (0 sectors)
+Average reading speed: 13.52 MB/s
+```
+
+Much was intact, but we did corrupt around 250MB of memory! I upgraded C2 from a 22uF to 122uF via electrolytic in parallel, I could fit 100uF on the board with two 47uF in parallel, but this is all I had lying around. I was paranoid about damaging my PC, so I powered the device with a bench supply.
+
+Then I repeated my experiment, and things worked!
+
+![](/img/smoke.gif)
+
+I plugged in the drive, and nothing happened, literally nothing. No partition, no block device, no dmesg logs, nothing. It looks like the USB controller IC was fried. In the interest of completion sake, I replaced that chip, then went through the steps to provision again, and the chip couldn't recognize the NAND flash. I think it's fair to say she's dead, Jim.
+
+It's been quite a long process, but I'm thrilled to say I've built the first spit-detecting, self-destructing flash drive. If you're interested in following this project, my socials are below. I would like to build more units and do more extensive testing on the device to get those out to the public, so stay tuned for that!
