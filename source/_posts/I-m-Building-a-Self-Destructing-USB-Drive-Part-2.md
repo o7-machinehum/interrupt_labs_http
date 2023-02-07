@@ -2,6 +2,7 @@
 title: I'm Building a Self-Destructing USB Drive Part 2
 date: 2022-08-31 00:00:00
 previous_post: /2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/
+next_post: /2023/02/06/I-Built-a-Self-Destructing-USB-Drive-Part-3/
 ---
 
 I'm building an open-source USB drive with a hidden self-destruct feature. Say goodbye to your data if you don't lick your fingers before plugging it in. Its target customers are journalists in anti-privacy countries and security researchers.
@@ -29,7 +30,7 @@ Hopefully, the final build will come out looking something like that.
 ## FSD: Full Self Destruct
 My goal is to build a discrete device; if the cops snatch a journalist in a non-privacy country, they shouldn't think twice about a loose USB drive. When they plug it in, the device shouldn't explode, melt, release corrosive material or do anything else insane (even though that would probably make a more exciting blog post). It should quietly destroy itself beyond repair.
 
-My solution for this is overloading the flash memory voltage rail. I'll have to say, this is the first time I've ever actually looked at the absolute maximum ratings of a component.
+My solution for this is overloading the flash memory voltage rail. I'll have to say, this is the first time I've ever actually looked at the absolute maximum ratings of a component with the intent to go outside them.
 ![](/img/max_ratings.png)
 
 The part needs to be pushed over 4.6V in order to be completely disabled. I can use a simple voltage doubler off the 5V line to do this.

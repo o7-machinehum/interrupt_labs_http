@@ -22,7 +22,7 @@ A flash drive is a relatively simple design electrically. For the first version,
 
 The typical flash drive is composed of a USB controller (blue) connected to a NAND flash chip (red). The flash chip holds all the data, while the controller contains a USB front end and logic to interface with the flash chip. To achieve my desired functionality, ill use a USB controller with a small microcontroller to read the electrodes and inhibit the flash chip if necessary.
 
-Understanding component economics is essential when designing hardware. The flash chip is **generic** and can be used in anything: smart TVs, computer BIOS, cars, you name it. However, the USB controller is an **application-specific **component for flash drives.
+Understanding component economics is essential when designing hardware. The flash chip is **generic** and can be used in anything: smart TVs, computer BIOS, cars, you name it. However, the USB controller is an **application-specific** component for flash drives.
 
 Application-specific ICs come around when there's a huge market, and you need to squeeze margins. There might only be a few dozen flash drive companies worldwide, and the engineering is stale. The lion's share of the volume comes from several huge factories with razor-thin margins. There's no hot new flash drive startup that's going to disrupt the market. Digikey or Mouser isn't the place to look for sourcing application-specific components.
 
