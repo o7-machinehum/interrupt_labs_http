@@ -8,6 +8,18 @@ Blogs litter the internet with business strategies, tips and templates to create
 
 ---
 
+- Don't Give away your shit
+    - Feedback has value
+- Don't Listen to your friends and family
+- Pay money to answer questions
+    - Will people buy your think
+- Understand your customers
+    - Restaraunts don't have money
+- Don't customise the product
+    - Create something that everyone wants
+- Push as much as you can into software land
+
+
 The year was 2013, I just graduated from college and had more confidence than a coked up Austrilian rugby player. I landed my first small role as a hardware designer at a local company designing embedded systems. I was young, dumb and full of (rhymes with cum but has something to with electrical engineering). I think I've emphasised it enought, but if you're still struggleing to understand where I was at here's a graphic.
 ![](/img/me_2013.png)
 
