@@ -12,35 +12,12 @@
     }
 %>
 
-<% if (isTagIndex || isCategoryIndex) { %>
-    <header class="intro-header" style="background-image: url('<%- url_for(theme.index_cover) %>')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1><%- page.title %></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <% items.forEach(function(item){ %>
-                    <%- partial('_partial/tag-category-index', {item: item}) %>
-                <% }); %>
-                <div class="archive-before-pagination"></div>
-            </div>
-        </div>
-    </div>
+<% if (page.type === 'contact'){ %>
+    <section class="main">
+        <%- partial('_partial/contact_full', {item: page}) %>
+    </section>
 <% } else { %>
     <section class="main">
         <%- partial('_partial/article-full', {item: page}) %>
     </section>
 <% } %>
-
-
-

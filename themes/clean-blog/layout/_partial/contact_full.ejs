@@ -1,0 +1,74 @@
+<%- partial('_partial/head') %>
+
+<%- partial('_partial/menu') %>
+
+<!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+<%
+    var cover = item.cover || theme.index_cover;
+%>
+
+<style>
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stroke {
+    -webkit-text-stroke: 1px black;
+}
+
+</style>
+
+<header class="intro-header" style="background-image: url('<%- url_for(cover) %>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1 class="stroke">Contact Us!</h1>
+                    <% if (item.subtitle && item.subtitle.length) { %>
+                    <h2 class="post-subheading">
+                        <%- item.subtitle %>
+                    </h2>
+                    <% } %>
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        <% if(item.author) { %>
+                            Posted by <%- item.author %> on
+                        <% } %>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <% if(theme.addthis) { %>
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<%- theme.addthis %>"></script>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
+                <% } %>
+            </div>
+
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <hr>
+                <%- partial('_partial/contact_form') %>
+            </div>
+        </div>
+    </div>
+</article>
