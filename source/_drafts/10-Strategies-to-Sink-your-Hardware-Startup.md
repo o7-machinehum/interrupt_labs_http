@@ -1,54 +1,60 @@
 ---
-title: 10 Strategies to Sink your Hardware Startup
+title: 5 Strategies to Sink your Hardware Startup
 date: 2022-09-23
 tags:
 ---
 
-Blogs litter the internet with business strategies, tips and templates to create a successful company. Lots of them will probably tell you more than I can, but I have an actual case study: my failed company.
+Blogs litter the internet with business strategies, tips, and templates for creating a successful company. Many of them will probably provide more insights than I can, but I have an actual case study: my failed company.
 
 ---
-A decade ago I was freshly out of college, I just lanted my first job as an "Electromechanical Technologist" and was ready to rule the world. Here's an image to describe where I was at. 
+A decade ago, fresh out of college, I landed my first job as an "Electromechanical Technologist" and felt ready to conquer the world. Here's an image that describes where I was at back then.
 ![](/img/me_2013.png)
 
-I was working with a software engineer, his side-hustle was writing and selling software used in restaurants, mainly point of sale machines. Dozens of local restaraunts loved and used this software. One sunny day after work he approached me with an idea: to build and sell table pagers. The concept was simple, the patron hits the button, server shows up. The device would look better than existing products and would connect to phones, tablets or computers. At the time I didn't have any side hustles, so I jumped on board. I cobbled together some hardware within a few months.
+I teamed up with a software engineer who had a successful side-hustle selling software for restaurants. Inspired by his work, we decided to venture into building and selling table pagers. Our device would outshine existing products, connecting seamlessly with phones, tablets, and computers. With no other side projects at the time, I eagerly joined the journey and quickly designed the hardware.
 ![](/img/page_up.jpg)<figcaption>"Next Generation" Table Pager</figcaption>
 
-The tech was good, it used a low power radio and could last years on two AA batteries. My partner made nice app and we were ready to get some feedback, which leads me into my first point.
+The technology was impressive it utilized low-power radio and could last for years on two AA batteries. My partner developed a great app, and we were eager to receive feedback, which leads me to my first point.
 
 ## Skip Market Research
-Don't Listen to your friends and family. They're not going to tell you it's a shit idea, even if it obviously is. People you love are a very good source positive encouragement when you're down, but not a good marketing point. You need to either hire a marketing specalist, or run the numbers yourself. We did neither, and just threw stuff at a wall to see what sticks. If we did the analasys we would quickly realised these things.
+We relied on the encouragement of friends and family, assuming they represented the entire market. Little did we realize that this approach had significant flaws. If we had conducted proper market research, we would have discovered these crucial insights:
 
- - Our target customer, restaraunt owners, are typically broke.
- - There are cultural issues, not everyone feels comfortable using a pager.
- - Restaraunt workers don't want to chage their workflow.
+  - Restaurant Owners: Typically financially strained.
+  - Patrons: Not everyone feels comfortable using a pager.
+  - Restaurant workers: resistant to changing their workflow.
 
+Three major issues with our three customers, off to a good start. 
 
 ## Skip Market Testing
-After we built a few devices we started getting volume quotes one the enclosure. We were quoted $5000 for 1000 units ($5/unit), and a smaller quote of $1000 for 75 units ($13/unit). This the first big expense, and at 20 years old, $2500 was a lot of cash.
+After building a few devices, we started receiving volume quotes for the enclosure. We were quoted $5,000 for 1,000 units ($5/unit) and a smaller quote of $1,000 for 75 units ($13/unit). This was our first significant expense, and as 20-year-olds, $2,500 seemed like a lot of cash.
 
-At the time, we had a sub 10$ BOM target for the device. This was one of our many mistakes, we were already focusing on margins. Since we skipped all the market research, our goal should have been to test the market. We needed to see if people would but the hardware, the cost of this was either $1000, or $5000.
+At the time, we aimed for a sub-$10 bill of materials (BOM) target for the device. Focusing on margins so early on was one of our many mistakes. Since we skipped market research, our goal should have been to test the market. We needed to determine if people would actually buy the hardware, and the cost of conducting this test was either $1,000 or $5,000.
 
-We paid $5000 to test the market.
-
+We chose to pay $5,000 to test the market.
 
 ## Don't Collect People's money
-We were working out of the basement of a restaurant at the time, the truck showed up with our 1000 units and dropped the pallet in the parking lot. We unpacked the shippment and were grinning cheak to cheak when we slide our boxes into the basement.
+Excitement filled the air as we unpacked the 1,000 units in the basement of a restaurant. We had verbal orders from nearby establishments, but we made a crucial mistake: not collecting any deposits. When we delivered the hardware, one by one, excuses started pouring in. Without any financial commitment from customers, our orders meant nothing.
 
-We assembled the units required to fill our several verbal "orders" from nearby restaurants. When we showed up with the hardwarer, one by one, excuses came out. This was of course naive of us, and when taking orders you take a deposit at minimum.
+Nothing means anything until you have cash in hand.
 
+## Try Selling Ice
+At this point, we felt defeated. We were tired of looking at the basement filled with our unsold product, so we finally admitted that we needed a salesperson. We connected with a local sales guy who specialized in selling restaurant equipment. He had a reputation for being a smooth talker, claiming he could "sell ice to an Eskimo." With him onboard, we hoped that our luck would turn around.
 
-## Engineers are all you need
-At this point we were pretty defeated, sick of looking at the basement filled with our product, nothing selling, we admitted we needed a sales person. We met up with a local sales guy that sold restaraunt equiptment. The guy was a used car salesman, he literially said he could "sell icecream to an Eskimo". With him onboard, our spirites were lifted thinking he might have better luck.
+Unfortunately, even with his sales expertise, he couldn't sell our product either. We found ourselves back at ground zero, feeling discouraged and uncertain about the future of our startup.
 
-That didn't happen, he couldn't sell it ether. We were back to ground zero.
+Even the best salesperson can't sell a flawed product.
 
+## Don't Pivot
+During one of my partner's visits to the physiotherapist, he happened to mention our venture. Intrigued, the physiotherapist became interested. He needed a system for his assistants to page him when patients were ready for inspection. On the spot, he purchased our system, with the condition that it came in a more reasonable enclosure.
 
-## Don't Think of Pivoting
-My partner was getting his necked looked by his physiotherapist, during the examination he started talking about our venture. After seeing some pictures, the physiotherapist became intersted.
-He needed a way for his assistants to page him when the patients were ready for their inspection. He end up buying a system on the spot, with the condition they came in a more reasonable enclosure.
+At that point, we regretted spending $5,000 instead of the $1,000 option for enclosures. Nevertheless, we designed different enclosures and delivered them to our first real customer. Since he had offices all over the province, he expressed interest in buying more. Revisiting the initial customer analysis.
 
-At this point we really wished we spent $1000 instead of the $5000. We got some different enclosures made up and delivered to out first real customer. He had offices all over the Provence, so he was intersted in buying more. 
+  - Physiotherapists: Typically financially well off.
+  - Office workers: More inclined to change their workflow if it benefits everyone.
 
+Our technology, with a mechanical modification worked perfectly for a different, better customer. 
 
-Unfortunately the project died out, but if we pivoted earlier then we might have been able to salvage things and made some cash back. I had moved to another job, I was busy traveling and couldn't support the electrical side anymore. I was jaded by the support needed and was off to more exciting ventures. I chocked this up to a small loss, and an amazing learning experience.
+## Finally
+Despite the success of the pivot the project eventually fizzled out. By then, I had moved on to another job and was busy with travel, unable to support the electrical side of the business. I became disillusioned with the support required and pursued other exciting ventures. 
+
+The project now sits in an undocumented, [open source repository](https://github.com/o7-machinehum/Pageup) with zero stars. I considered this experience a small loss but an invaluable learning opportunity, if I could go back in time I wouldn't change a think.
 
