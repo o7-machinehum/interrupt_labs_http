@@ -5,7 +5,7 @@ menu:
   Tags: /tags
   Categories: /categories
   Github:
-    url: https://github.com/machine-hum
+    url: https://github.com/o7-machinehum
     icon: github
 
 # Title on top left of menu. Leave empty to use main blog title
@@ -41,7 +41,7 @@ favicon:
 twitter_url:
 twitter_handle:
 facebook_url:
-github_url: 
+github_url:
 gitlab_url:
 linkedin_url:
 mailto:
