@@ -8,7 +8,7 @@ This isn't a dropshipping success story, a lucrative exit, or a guide. This is a
 Fresh out of college a decade ago, I landed my first job as an "Electromechanical Technologist". Here's a graphic to describe my mindset.
 
 ![](/img/me_2013.png)
-The software engineer at my company had a side hustle selling point of sale machines to restaurants. One day he confronted me with a venture. The idea was to build and sell restaurant table pagers. It was simple: press the button, and the server shows up. Our device would outshine existing products, connecting seamlessly with phones, tablets, and computers. I was excited with the project, and jumped onboard immediately. I did all the hardware, and he did all the software. It was built with beautifully stained bamboo and neatly held condiments on the table.
+The software engineer at my company had a side hustle selling point of sale machines to restaurants. One day he confronted me with a venture. The idea was to build and sell restaurant table pagers. It was simple: press the button, and the server shows up. Our device would outshine existing products, connecting seamlessly with phones, tablets, and computers. I was excited about the project and jumped on board immediately. I did all the hardware, and he did all the software. It was built with beautifully stained bamboo and neatly held condiments on the table.
 
 ![](/img/pageup/page_up.jpg)<figcaption>"Next Generation" Table Pager</figcaption>
 
