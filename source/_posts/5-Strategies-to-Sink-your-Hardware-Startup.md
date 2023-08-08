@@ -10,7 +10,7 @@ Fresh out of college a decade ago, I landed my first job as an "Electromechanica
 ![](/img/me_2013.png)
 The software engineer at my company had a side hustle selling point of sale machines to restaurants. One day he confronted me with a venture. The idea was to build and sell restaurant table pagers. It was simple: press the button, and the server shows up. Our device would outshine existing products, connecting seamlessly with phones, tablets, and computers. I did all the hardware, and he did all the software. It was built with beautifully stained bamboo and neatly held condiments on the table.
 
-![](/img/page_up.jpg)<figcaption>"Next Generation" Table Pager</figcaption>
+![](/img/pageup/page_up.jpg)<figcaption>"Next Generation" Table Pager</figcaption>
 
 The technology utilized low-power radios and could last for years on a single AA battery. My partner developed a great app, and we were eager to receive feedback, which leads me to my first point.
 
@@ -30,7 +30,7 @@ We were aiming for a sub-$10 target for the device. Focusing on margins so early
 
 We chose to pay $5,000 to test the market.
 
-(Image of 1000 pagers)
+![](/img/pageup/boxes.jpg)
 
 ## Don't Collect People's money
 Our HQ was the grubby basement of a restaurant in a strip mall. Rats were involved, but we didn't care; this is ground zero for all startups.
@@ -57,10 +57,10 @@ At that point, we regretted spending $5,000 instead of the $1,000 option for enc
 
 Another thing to mention is that this customer could see out product affecting his bottom line, which wasn't obvious when dealing with restaurant owners.
 
-With a mechanical modification, our technology worked perfectly for a different, better customer. 
+With a mechanical modification, our technology worked perfectly for a different, better customer.
 
 
 ## Finally
-Despite the success of the pivot, the project eventually fizzled out. By then, I had moved on to another job and was busy with travel, unable to support the electrical side of the business. I became disillusioned with the support required and pursued other exciting ventures. 
+Despite the success of the pivot, the project eventually fizzled out. By then, I had moved on to another job and was busy with travel, unable to support the electrical side of the business. I became disillusioned with the support required and pursued other exciting ventures.
 
 The project now sits in an undocumented, [open source repository](https://github.com/o7-machinehum/Pageup) with zero stars. I realize our mistakes were preventable; we could have produced a better outcome by reading a book or hiring a business person, but that’s not what happened. We acted out of impulse and blissful ignorance and paid the price. If I could go back in time, I wouldn't change a thing.
