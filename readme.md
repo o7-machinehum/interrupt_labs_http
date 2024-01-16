@@ -7,3 +7,10 @@ sudo npm install -g hexo-cli
 npm install
 hexo server --draft # Run the server
 ```
+
+## Generating Page
+``` bash
+hexo generate
+```
+
+
