@@ -2956,6 +2956,14 @@ html.no-csstransitions .home-content__main {
   padding-top: 3.6rem;
   position: relative;
 }
+
+/* Detect Mobile */
+@media (pointer:none), (pointer:coarse) {
+  .contact-email {
+    font-size: 3.4rem;
+  }
+}
+
 .contact-email::before {
   content: "";
   display: block;
