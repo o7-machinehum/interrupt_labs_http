@@ -4,6 +4,11 @@ date: 2022-07-29 14:02:45
 next_post: /2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
 ---
 
+<p align="center">
+<a href="https://shop.interruptlabs.ca/products/ovrdrive-usb">Device for Sale Now!</a>
+</p>
+
+
 Because we all know the best way to keep your data safe is by blowing it up, right?
 ![](https://cdn-images-1.medium.com/max/1024/1*3NhahmZ5sI8ZNdo98FUSsg.png)
 

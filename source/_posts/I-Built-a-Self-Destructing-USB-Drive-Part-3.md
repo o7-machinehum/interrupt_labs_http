@@ -6,7 +6,12 @@ previous_post: /2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/
 cover: img/built_usb.jpg # This needs to be in themes/clean-blog/source/img
 ---
 
-I'm building an open-source USB drive with a hidden self-destruct feature. Say goodbye to your data if you don't lick your fingers before plugging it in. Its target customers are journalists in anti-privacy countries and security researchers.
+
+I'm building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly plug it in three times in a row, you will be able to read and write data. We built Ovrdrive for journalists working in hostile environments, security researchers, and anyone interested in open hardware.
+
+<p align="center">
+<a href="https://shop.interruptlabs.ca/products/ovrdrive-usb">Device for Sale Now!</a>
+</p>
 
 ---
 I ended my last post with the design finished and the boards on order. Once I received the boards I built them up. I used a reflow hotplate for the top, and heat gun for the bottom.
