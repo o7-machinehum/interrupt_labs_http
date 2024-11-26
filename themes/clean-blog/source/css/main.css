@@ -1270,7 +1270,7 @@ input::-moz-focus-inner {
   padding: 0;
   position: absolute;
   left: 5%;
-  top: 50%;
+  top: 80%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -1286,7 +1286,7 @@ input::-moz-focus-inner {
 }
 
 .header-logo img {
-  width: 20%;
+  width: 40%;
 }
 
 /* Detect Mobile */
