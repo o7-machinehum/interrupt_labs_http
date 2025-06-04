@@ -9,8 +9,34 @@
     <atom:link href="https://interruptlabs.ca/atom.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 21 Oct 2024 08:16:04 GMT</pubDate>
+    <pubDate>Wed, 04 Jun 2025 10:43:02 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Pick Your Payload - What Open-source Security Hardware Should we Build Next?</title>
+      <link>https://interruptlabs.ca/2025/06/04/whats-next/</link>
+      <guid>https://interruptlabs.ca/2025/06/04/whats-next/</guid>
+      <pubDate>Tue, 03 Jun 2025 22:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;strong&gt;Everything we do is for educational and ethical purposes &lt;em&gt;only&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I build open source hardware that</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p><strong>Everything we do is for educational and ethical purposes <em>only</em>.</strong></p><p>I build open source hardware that <em>I</em> want, but I won’t work on hardware nobody else wants. If people aren’t fired up, I can’t get excited, so my projects only take off when there’s real interest. I’ve got three ideas, please pick your favourite. I only have so much time, and I want to gauge interest first. They’re all cybersecurity&#x2F;hacking devices, and must additionally meet these requirements:</p><ul><li><strong>Purposeful:</strong> The device should solve a real problem.</li><li><strong>Platform over Product:</strong> Users should think “What can I make this do” over, “What can it do”.</li><li><strong>Educational:</strong> Users learn from it.</li><li><strong>Community Focused:</strong> Users should be excited, share their experiences and be part of a community.</li><li><strong>Open Source:</strong> My work is <strong>100%</strong> open source. This is to reduce e-waste, empower users and provide an educational outlet.</li><li><strong>Legal:</strong> According to Canadian and Swiss law.</li></ul><p>The ideas…</p><h2 id="The-Blackhat-a-Hacking-Rig"><a href="#The-Blackhat-a-Hacking-Rig" class="headerlink" title="The Blackhat - a Hacking Rig"></a>The Blackhat - a Hacking Rig</h2><p><em>A handheld Linux-based computer with an emphasis on cybersecurity.</em></p><p><img src="/img/hacking-rig.jpg"><br>You might already be familiar with the Flipper Blackhat — a single-board computer (SBC) add-on module I developed for the Flipper Zero. This would be a stand-alone version of the device. Let’s get into the specs!</p><h3 id="Reasonable-Keyboard"><a href="#Reasonable-Keyboard" class="headerlink" title="Reasonable Keyboard"></a>Reasonable Keyboard</h3><p>You won’t have to retrain your fingers to type on this thing, no special key sequences, just a normal layout you would find on a PC. I would use a keyboard from Solder Party:</p><p><img src="/img/sp-keeb.jpg"></p><p>I’ve touched this thing IRL, and it feels great: super clacky and tactile. @arturo182 designed it and it’s gone into a few handheld cyberdecks already.</p><p>Additionally, I want the keyboard to be swappable, so the user can use a gamepad, trackpad, potentiometer, difference language keyboard, etc.</p><h3 id="GPIO-and-Ports"><a href="#GPIO-and-Ports" class="headerlink" title="GPIO and Ports"></a>GPIO and Ports</h3><p>I would hope to include…</p><h4 id="Ports"><a href="#Ports" class="headerlink" title="Ports"></a>Ports</h4><ul><li>2x USB-A</li><li>USB-C</li><li>Headphone Jack</li><li>HDMI</li><li>Micro SD</li><li>Ethernet if it fits</li><li>Micro SD card</li></ul><h4 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h4><ul><li>RPI form factor 2x20 headers with compatible pinout</li><li>Flipper Zero compatible headers</li></ul><h3 id="Wireless"><a href="#Wireless" class="headerlink" title="Wireless"></a>Wireless</h3><ul><li>WiFi 2.4&#x2F;5Ghz</li><li>BT</li><li>Lora</li></ul><h3 id="The-Shape"><a href="#The-Shape" class="headerlink" title="The Shape"></a>The Shape</h3><ul><li>Should be “handheld”, a little larger than a GameBoy Colour.</li><li>Powered by 2x 18650 cells.</li></ul><h2 id="Cypherwatch"><a href="#Cypherwatch" class="headerlink" title="Cypherwatch"></a>Cypherwatch</h2><p><em>Offline password keeper and cryptography engine on your wrist.</em></p><p><img src="/img/cypherwatch.jpg"><br>A watch is an ideal hardware password keeper, since these devices only really work if you bring it everywhere. I’m personally not a fan of smartwatches, so I actually wear the classic Casio F91W. Cypherwatch would be very similar aesthetically, with a monochrome screen and USB-C port. The USB port can be connected to a PC for password injection and public-key-based authentication and signing.</p><p>I would also add some other goodies like…</p><ul><li>Keystroke injection</li><li>EMMC that is exposed over USB-MSD for an encrypted USB drive. You can use it for datasmuggleing (I don’t know what that is, but it sounds cool)</li><li>Shell access to the MCU</li></ul><p>It’s important to note there would be zero overlap with existing smartwatch functionality.</p><h2 id="Root-Rabbit"><a href="#Root-Rabbit" class="headerlink" title="Root Rabbit"></a>Root Rabbit</h2><p><em>USB&#x2F;Ethernet Pentesting tool.</em></p><p><img src="/img/root-rabbit.jpg"></p><p>The device features an ethernet port, a USB-A port, a side USB-C port, a DIP switch for payload selection, a battery and WiFi.</p><p>This can be used for, but not limited to:</p><ul><li>Virtual ethernet device</li><li>Wireless keylogger</li><li>Keystroke injection</li><li>Network scanner</li><li>Insert other hoodrat nasty exploit here</li></ul><p>General Specs:</p><ul><li><strong>Processor:</strong> SG2002</li><li><strong>RAM:</strong> 256MB</li><li><strong>Disk:</strong> SD Card</li><li><strong>Wireless:</strong> ESP32-C5 (5Ghz&#x2F;2.4Ghz)</li><li><strong>Battery:</strong> Exists</li></ul><h2 id="What-now"><a href="#What-now" class="headerlink" title="What now?"></a>What now?</h2><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd-NHnerS3Yc0LiuKanCHcj7N8i9H2WL3qrmp7DtlQzH8sBpw/viewform?usp=sharing&ouid=112459697969469626051">Link here to vote</a></p><p>There is also a <a href="https://discord.gg/EtZT7mjNuM">discord server</a> if you have a project suggestion, or want to engage in more discussion. Some upbeat&#x2F;appreciative sentence here.</p>]]></content:encoded>
+      
+      
+      
+      
+      <comments>https://interruptlabs.ca/2025/06/04/whats-next/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>5 Strategies to Sink your Hardware Startup</title>
