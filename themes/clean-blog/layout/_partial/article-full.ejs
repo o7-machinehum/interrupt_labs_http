@@ -41,7 +41,8 @@
                     <span class="meta">
                         <!-- Date and Author -->
                         <% if(item.author) { %>
-                            Posted by <%- item.author %> on
+                            <%- item.author %>
+                            <br>
                         <% } %>
                         <% if(item.date) { %>
                             <%= item.date.format(config.date_format) %>

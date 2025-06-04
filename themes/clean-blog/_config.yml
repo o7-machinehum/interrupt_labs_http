@@ -35,7 +35,7 @@ google_analytics: G-JPDQ8MSX3T
 addthis:
 
 # set your own favicon
-favicon:
+favicon: /img/logo.png
 
 # Social Accounts
 twitter_url:
