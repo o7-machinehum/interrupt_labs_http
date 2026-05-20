@@ -1,16 +1,156 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 …"><meta property="og:description" content="The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 …"><meta name=author content="Ryan Walker"><meta property="og:title" content="Bluetooth WarDriving with the nRF52"><meta property="og:site_name" content="Interrupt Labs Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://interruptlabs.ca/img/home-bg.jpg"><meta name=twitter:image content="https://interruptlabs.ca/img/home-bg.jpg"><meta name=twitter:card content="summary_large_image"><title>Bluetooth WarDriving with the nRF52 - Interrupt Labs Blog</title><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/style.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JPDQ8MSX3T")</script><link rel=icon href=/img/logo.png><link rel=alternate href=/atom.xml title="Interrupt Labs Blog" type=application/rss+xml></head><body><section class=main><nav class=site-nav aria-label="Site navigation"><a class=site-home-link href=/#about aria-label="Go to blog section on homepage"><span class=site-home-link__arrow aria-hidden=true></span>
-<span>Blog</span></a></nav><header class=intro-header style=background-image:url(/img/home-bg.jpg)><div class=blog-container><div class=blog-row><div class=blog-content><div class=post-heading><h1>Bluetooth WarDriving with the nRF52</h1><span class=meta>2021-10-15</span></div></div></div></div></header><article><div class=blog-container><div class=blog-row><div class=blog-content><p>The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 and 2.4Ghz radio to implement various wireless protocols. In this tutorial, I want to walk through setting up a Zephyr RTOS environment and building/flashing some code to do some wardriving.</p><p>But first, what is wardriving?</p><blockquote><p><strong>Wardriving</strong> is the act of searching for Wi-Fi wireless networks, usually from a moving vehicle, using a laptop or smartphone.> — Wikipedia</p></blockquote><p>We’re going to do some “Bluetooth wardriving”, and we’re not going to be driving. I’m planning on “forgetting” a battery-powered nRF52 in a public space for a few days and see what sort of Bluetooth data we can collect.</p><p>If you’re following along at home, you’re going to need the following things.</p><ul><li>nRF52DK, I’m using PCA10040</li><li>Unix system or WSL</li></ul><p>I’m going to be using Zephyr RTOS, so before getting started, <a href=https://docs.zephyrproject.org/latest/getting_started/index.html>do all this</a> and install <a href=https://www.nordicsemi.com/Products/Development-tools/nRF-Command-Line-Tools>nrfjprog</a>.</p><h3 id=project-requirements>Project Requirements</h3><p>Before we start, it’s a good idea to define where we want to end up. I’ll list some requirements below.</p><ol><li>The device can scan for nearby Bluetooth devices.</li><li>The device can timestamp the data.</li><li>The device can keep the addresses in non-volatile memory</li><li>The device is battery-powered and lasts for days.</li></ol><h3 id=building--flashingblinky>Building / Flashing Blinky</h3><p>Please keep in mind code prefixed with “$” are bash commands, while code with no prefix is output. To conserve space, I haven’t displayed all output. Start by navigating to the zephyr folder and update. I am assuming you checked out zephyrproject right in your home directory.</p><pre>$ cd ~/zephyrproject/zephyr/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+        
+    
+
+    
+        <meta name="description" content="The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 …">
+        <meta property="og:description" content="The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 …">
+    
+
+    
+        <meta name="author" content="Ryan Walker">
+    
+
+    <meta property="og:title" content="Bluetooth WarDriving with the nRF52">
+    <meta property="og:site_name" content="Interrupt Labs Blog">
+    <meta property="og:type" content="article">
+
+    
+    
+        <meta property="og:image" content="https://interruptlabs.ca/img/home-bg.jpg">
+        <meta name="twitter:image" content="https://interruptlabs.ca/img/home-bg.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Bluetooth WarDriving with the nRF52 - Interrupt Labs Blog</title>
+
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JPDQ8MSX3T');
+</script>
+
+
+
+    
+        <link rel="icon" href="/img/logo.png">
+    
+    <link rel="alternate" href="/atom.xml" title="Interrupt Labs Blog" type="application/rss+xml">
+</head>
+
+<body>
+<section class="main">
+<nav class="site-nav" aria-label="Site navigation">
+    <a class="site-home-link" href="/#about" aria-label="Go to blog section on homepage">
+        <span class="site-home-link__arrow" aria-hidden="true"></span>
+        <span>Blog</span>
+    </a>
+</nav>
+
+
+
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="blog-container">
+        <div class="blog-row">
+            <div class="blog-content">
+                <div class="post-heading">
+                    <h1>Bluetooth WarDriving with the nRF52</h1>
+                    
+                    <span class="meta">
+                        
+                        
+                            2021-10-15
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="blog-container">
+        <div class="blog-row">
+            
+
+            <div class="blog-content">
+                
+
+                <p>The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 and 2.4Ghz radio to implement various wireless protocols. In this tutorial, I want to walk through setting up a Zephyr RTOS environment and building/flashing some code to do some wardriving.</p>
+<p>But first, what is wardriving?</p>
+<blockquote>
+<p><strong>Wardriving</strong> is the act of searching for Wi-Fi wireless networks, usually from a moving vehicle, using a laptop or smartphone.&gt; — Wikipedia</p>
+</blockquote>
+<p>We’re going to do some “Bluetooth wardriving”, and we’re not going to be driving. I’m planning on “forgetting” a battery-powered nRF52 in a public space for a few days and see what sort of Bluetooth data we can collect.</p>
+<p>If you’re following along at home, you’re going to need the following things.</p>
+<ul>
+<li>nRF52DK, I’m using PCA10040</li>
+<li>Unix system or WSL</li>
+</ul>
+<p>I’m going to be using Zephyr RTOS, so before getting started, <a href="https://docs.zephyrproject.org/latest/getting_started/index.html">do all this</a> and install <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Command-Line-Tools">nrfjprog</a>.</p>
+<h3 id="project-requirements">Project Requirements</h3>
+<p>Before we start, it’s a good idea to define where we want to end up. I’ll list some requirements below.</p>
+<ol>
+<li>The device can scan for nearby Bluetooth devices.</li>
+<li>The device can timestamp the data.</li>
+<li>The device can keep the addresses in non-volatile memory</li>
+<li>The device is battery-powered and lasts for days.</li>
+</ol>
+<h3 id="building--flashingblinky">Building / Flashing Blinky</h3>
+<p>Please keep in mind code prefixed with “$” are bash commands, while code with no prefix is output. To conserve space, I haven’t displayed all output. Start by navigating to the zephyr folder and update. I am assuming you checked out zephyrproject right in your home directory.</p>
+<pre>$ cd ~/zephyrproject/zephyr/
 $ west update
-$ ls boards/arm | grep nrf52dk</pre><p>You should get an output of all the nrf52dk boards. Most likely, you want nrf52dk_nrf52832. So let’s build some simple firmware for that board.</p><pre>$ cd samples/basic/blinky
+$ ls boards/arm | grep nrf52dk</pre>
+<p>You should get an output of all the nrf52dk boards. Most likely, you want nrf52dk_nrf52832. So let’s build some simple firmware for that board.</p>
+<pre>$ cd samples/basic/blinky
 $ west build -b nrf52dk_nrf52832
-$ west flash</pre><p>You should now get a blinking light. What a pain in the ass; feel free to turn back and use Segger Studio forever.</p><h4 id=device-tree>Device Tree</h4><p>A keen observer would note that samples/basic/blinky/ is not related to any specific hardware. Blinky knows the correct GPIO for this LED using the nrf52 device tree file.</p><pre>$ cd ~/zephyrproject/zephyr/ # Move back to the project root
+$ west flash</pre>
+<p>You should now get a blinking light. What a pain in the ass; feel free to turn back and use Segger Studio forever.</p>
+<h4 id="device-tree">Device Tree</h4>
+<p>A keen observer would note that samples/basic/blinky/ is not related to any specific hardware. Blinky knows the correct GPIO for this LED using the nrf52 device tree file.</p>
+<pre>$ cd ~/zephyrproject/zephyr/ # Move back to the project root
 $ find . -name nrf52dk_nrf52832.dts
-./boards/arm/nrf52dk_nrf52832/nrf52dk_nrf52832.dts</pre><p>Take a look at that dts file and look for a “led0”. The device tree file provides information to a generic project about a specific board. Device tree is extremely powerful and used all around the Linux Kernel. If you want to understand the ins and outs of Device Tree, I would recommend this video, but I will talk more about it later on.</p><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2Fm_NyYEBxfn8%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dm_NyYEBxfn8&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fm_NyYEBxfn8%2Fhqdefault.jpg&amp;key=a19fcc184b9711e1b4764040d3dc5c07&amp;type=text%2Fhtml&amp;schema=youtube" width=854 height=480 frameborder=0 scrolling=no>[https://medium.com/media/e1669fa084eac77c221689f8994cb330/href](https://medium.com/media/e1669fa084eac77c221689f8994cb330/href)</iframe><h4 id=config-files>Config Files</h4><p>Before we move on, it’s important to understand the config system. These are files of the form: *.conf and *_defconfig. You can edit these files manually or with menuconfig. After launching west build you should see something like this.</p><pre>Loaded configuration '(path)/nrf52dk_nrf52832_defconfig'</pre><p>Open this file up and take a look. This is the base config for your board. There is also an prj.conf in the blinky folder, and this gets merged with the base config and written to build/zephyr/.config . Let us take a look at menuconfig.</p><pre>west build -t menuconfig</pre>![](https://cdn-images-1.medium.com/max/630/1*8KMk5DvUf57L9rcrcWoneA.png)<figcaption>menuconfig</figcaption><p>Menuconfig is an interface to enable and disable settings; these settings will get saved to a config file.</p><h3 id=bluetooth-central>Bluetooth Central</h3><p>Let’s do something with Bluetooth! We want to develop a device that scans for other Bluetooth devices. This is called a “Central” in Bluetooth speak.</p><pre>$ cd ~/zephyrproject/zephyr/samples/bluetooth/central_hr
+./boards/arm/nrf52dk_nrf52832/nrf52dk_nrf52832.dts</pre>
+<p>Take a look at that dts file and look for a “led0”. The device tree file provides information to a generic project about a specific board. Device tree is extremely powerful and used all around the Linux Kernel. If you want to understand the ins and outs of Device Tree, I would recommend this video, but I will talk more about it later on.</p>
+<iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2Fm_NyYEBxfn8%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dm_NyYEBxfn8&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fm_NyYEBxfn8%2Fhqdefault.jpg&amp;key=a19fcc184b9711e1b4764040d3dc5c07&amp;type=text%2Fhtml&amp;schema=youtube" width="854" height="480" frameborder="0" scrolling="no">[https://medium.com/media/e1669fa084eac77c221689f8994cb330/href](https://medium.com/media/e1669fa084eac77c221689f8994cb330/href)</iframe>
+<h4 id="config-files">Config Files</h4>
+<p>Before we move on, it’s important to understand the config system. These are files of the form: *.conf and *_defconfig. You can edit these files manually or with menuconfig. After launching west build you should see something like this.</p>
+<pre>Loaded configuration '(path)/nrf52dk_nrf52832_defconfig'</pre>
+<p>Open this file up and take a look. This is the base config for your board. There is also an prj.conf in the blinky folder, and this gets merged with the base config and written to build/zephyr/.config . Let us take a look at menuconfig.</p>
+<pre>west build -t menuconfig</pre>![](https://cdn-images-1.medium.com/max/630/1*8KMk5DvUf57L9rcrcWoneA.png)<figcaption>menuconfig</figcaption>
+<p>Menuconfig is an interface to enable and disable settings; these settings will get saved to a config file.</p>
+<h3 id="bluetooth-central">Bluetooth Central</h3>
+<p>Let’s do something with Bluetooth! We want to develop a device that scans for other Bluetooth devices. This is called a “Central” in Bluetooth speak.</p>
+<pre>$ cd ~/zephyrproject/zephyr/samples/bluetooth/central_hr
 $ west build -b nrf52dk_nrf52832
 $ west flash
 $ screen /dev/ttyACM0 115200 # Or whatever ACM you are
-# Now reset the board, you should see something like this \/</pre><p><img src=https://cdn-images-1.medium.com/max/544/1*-EfGxxdtvQRNbUP2-uvZ6Q.png alt></p><p>These are the MAC addresses of nearby Bluetooth devices. <a href=https://pastebin.com/raw/YUv7CLKm>Here is a more extended output</a>. I want to log these MAC’s with their Received Signal Strength Indicator (RSSI) and a timestamp. I want to use non-volatile memory, so that brings us to the next part.</p><h3 id=sd-card>SD Card</h3><p>SD cards are a cheap and easy way to log some data from a microcontroller. They usually use SDIO but can also work over SPI. I had an Arduino SD card breakout lying around.
-<img src=https://cdn-images-1.medium.com/max/1024/1*X6EnJeYw89jhe3HpZvdXhg.jpeg alt><figcaption>Arduino SD card interface</figcaption></p><p>Most Arduino’s are 5V logic level while SD cards are 3.3V. This board has a 3.3V regulator and a level shifter to convert the logic levels. As the nRF52 is 3.3V, I ripped all that off and made the required modifications to interface directly. Let’s go to the fatfs project folder.</p><pre>cd ~/zephyrproject/zephyr/samples/subsys/fs/fat_fs</pre><p>Fatfs is a project created by <a href=http://elm-chan.org/fsw/ff/00index_e.html>Elm Chan</a> which allows microcontrollers to recognize filesystems, specifically FAT and FAT32 filesystems. We can use fatfs to log data to the SD card. Take a look in the boards folder. We can see some *.conf and *.overlays files.</p><h4 id=device-tree-overlays-andconfigs>Device Tree Overlays and Configs</h4><p>Device Tree overlays are special files that get laid on top of base device tree files. Let’s take a look in nrf52840_blip.overlay</p><pre>
+# Now reset the board, you should see something like this \/</pre>
+<p><img src="https://cdn-images-1.medium.com/max/544/1*-EfGxxdtvQRNbUP2-uvZ6Q.png" alt=""></p>
+<p>These are the MAC addresses of nearby Bluetooth devices. <a href="https://pastebin.com/raw/YUv7CLKm">Here is a more extended output</a>. I want to log these MAC’s with their Received Signal Strength Indicator (RSSI) and a timestamp. I want to use non-volatile memory, so that brings us to the next part.</p>
+<h3 id="sd-card">SD Card</h3>
+<p>SD cards are a cheap and easy way to log some data from a microcontroller. They usually use SDIO but can also work over SPI. I had an Arduino SD card breakout lying around.
+<img src="https://cdn-images-1.medium.com/max/1024/1*X6EnJeYw89jhe3HpZvdXhg.jpeg" alt=""><figcaption>Arduino SD card interface</figcaption></p>
+<p>Most Arduino’s are 5V logic level while SD cards are 3.3V. This board has a 3.3V regulator and a level shifter to convert the logic levels. As the nRF52 is 3.3V, I ripped all that off and made the required modifications to interface directly. Let’s go to the fatfs project folder.</p>
+<pre>cd ~/zephyrproject/zephyr/samples/subsys/fs/fat_fs</pre>
+<p>Fatfs is a project created by <a href="http://elm-chan.org/fsw/ff/00index_e.html">Elm Chan</a> which allows microcontrollers to recognize filesystems, specifically FAT and FAT32 filesystems. We can use fatfs to log data to the SD card. Take a look in the boards folder. We can see some *.conf and *.overlays files.</p>
+<h4 id="device-tree-overlays-andconfigs">Device Tree Overlays and Configs</h4>
+<p>Device Tree overlays are special files that get laid on top of base device tree files. Let’s take a look in nrf52840_blip.overlay</p>
+<pre>
  &amp;spi1 {
         status = &quot;okay&quot;;
         cs-gpios = &lt;&amp;gpio0 17 GPIO_ACTIVE_LOW&gt;;        sdhc0: sdhc@0 {
@@ -20,12 +160,18 @@ $ screen /dev/ttyACM0 115200 # Or whatever ACM you are
                 label = &quot;SDHC0&quot;;
                 spi-max-frequency = &lt;24000000&gt;;
         };
-};</pre><p>This file is overlaying some information into spi1, it’s telling the build system that we want to use the spi1 bus for sdhc0 which is the sd card driver. We’re also specifying a chip select line. If we look inside nrf52840_blip.conf</p><pre>CONFIG_DISK_DRIVER_SDMMC=y
-CONFIG_SPI=y</pre><p>We can see this config file is turning on spi and sdmmc. We now want to copy the nrf52840_blip files for use in our boards.</p><pre>cd boards
+};</pre>
+<p>This file is overlaying some information into spi1, it’s telling the build system that we want to use the spi1 bus for sdhc0 which is the sd card driver. We’re also specifying a chip select line. If we look inside nrf52840_blip.conf</p>
+<pre>CONFIG_DISK_DRIVER_SDMMC=y
+CONFIG_SPI=y</pre>
+<p>We can see this config file is turning on spi and sdmmc. We now want to copy the nrf52840_blip files for use in our boards.</p>
+<pre>cd boards
 cp nrf52840_blip.overlay nrf52dk_nrf52832.overlay
 cp nrf52840_blip.conf nrf52dk_nrf52832.conf
 cd ..
-west build -b nrf52dk_nrf52832</pre><p>Since your build board has the same name as the overlay’s, you should see something that says “Found devicetree overlay” and “Merged configuration” in your build spew. West will put the final device tree file in build/zephyr/zephyr.dts , you can open this up and see sdhc0 nesting inside spi1.</p><pre>spi1: spi@40004000 {
+west build -b nrf52dk_nrf52832</pre>
+<p>Since your build board has the same name as the overlay’s, you should see something that says “Found devicetree overlay” and “Merged configuration” in your build spew. West will put the final device tree file in build/zephyr/zephyr.dts , you can open this up and see sdhc0 nesting inside spi1.</p>
+<pre>spi1: spi@40004000 {
     #address-cells = &lt; 0x1 &gt;;
     #size-cells = &lt; 0x0 &gt;;
     reg = &lt; 0x40004000 0x1000 &gt;;
@@ -44,18 +190,67 @@ west build -b nrf52dk_nrf52832</pre><p>Since your build board has the same name 
         label = &quot;SDHC0&quot;;
         spi-max-frequency = &lt; 0x16e3600 &gt;;
     };
-};</pre><p>You can then convert those hex values after sck-pin, mosi-pin, miso-pin to get your SD card wiring, and bob’s your uncle. Flash the board with west flash and open a serial port like before, pop in an SD card and reset your board — you should see <a href=https://pastebin.com/raw/X3APGksj>something like this</a>.</p><h3 id=new-project>New Project</h3><p>It’s about time we start to build our app. I want to <a href=https://github.com/zephyrproject-rtos/example-application>fork this app</a> and make it our own.</p><pre>$ west init -m https://github.com/zephyrproject-rtos/example-application --mr main my-workspace
+};</pre>
+<p>You can then convert those hex values after sck-pin, mosi-pin, miso-pin to get your SD card wiring, and bob’s your uncle. Flash the board with west flash and open a serial port like before, pop in an SD card and reset your board — you should see <a href="https://pastebin.com/raw/X3APGksj">something like this</a>.</p>
+<h3 id="new-project">New Project</h3>
+<p>It’s about time we start to build our app. I want to <a href="https://github.com/zephyrproject-rtos/example-application">fork this app</a> and make it our own.</p>
+<pre>$ west init -m https://github.com/zephyrproject-rtos/example-application --mr main my-workspace
 $ cd my-workspace
 $ west update
 $ cd example-project
-$ west build</pre><p>I had issues building this, so I wiped out most of the code and pulled in some of the other stuff we <a href=https://github.com/o7-machinehum/nRF52_War_Driving/blob/d09d4706e515ff42ddd0df914f0a82f19c70ca09/app/src/main.c>worked on before.</a> You can see I’ve stripped out most of the existing Bluetooth code, as we’re only concerned with scanning for other Bluetooth devices right now. I pulled in the SD card stuff and tested it. I encourage you to look through <a href=https://github.com/o7-machinehum/nRF52_War_Driving>the repository</a>. The repository is open so that anyone can expand on the project.</p><h4 id=one-smallhiccup>One Small Hiccup</h4><p>I noticed one of the LEDs on the board was flickering. This wiring isn’t ideal as I want to dead drop the device for days and flicker a pointless LED is very power hungry. I looked into the board’s schematic, and it turned out my chip select (CS) pin for my micro SD card was sharing a pin with LED1!
-<img src=https://cdn-images-1.medium.com/max/275/1*IKiw7lijnwmf-X5b60es_g.png alt></p><p>I changed the device tree file to use another pin, moved the jumper over and starting have issues mounting the drive. Looking at the schematic above, you can see the pin is being pulled high to Vdd through R1. When the SD card is powered on without the pullup, something goes wrong in the hardware. I added this pullup with a regular 10k, and it started working.</p><h3 id=the-drop>The Drop</h3><p>With everything in place, it’s time for the dead drop. I opted for an old pelican case buried in the dirt.
-<img src=https://cdn-images-1.medium.com/max/963/0*Ea4dGXYpCjbX0MND alt><figcaption>Just in case someone thought it was a bomb.</figcaption></p><p>While doing my usual 2 AM workout, I tripped, launching the device into a nearby hole. As I pulled my back at the gym, I couldn’t bend over to pick it up, so the only safe thing to do was bury the device and pick it once I had healed.</p><h3 id=the-retrieval>The Retrieval</h3><p>Once my back healed up, I picked up the drop. I slammed together a quick <a href=https://github.com/o7-machinehum/nRF52_War_Driving/blob/main/py/main.py>python script</a> to analyze the data, and it reported there were 7054 MAC addresses discovered and 799 unique MAC addresses! A keen code observer would note that I imported a little API for finding the vendors as well. I then plotted this.
-<img src=https://cdn-images-1.medium.com/max/701/1*1Qf0RvHGn6Uh9XjPEMcRxw.png alt></p><h3 id=moving-forward>Moving Forward</h3><p>I want to continue my wardriving work but up the ante with location inference. In the dataset, we have the RSSI strength, which is correlated to distance from the device. RSSI gives a magnitude of a vector with the angle θ unknown.
-<img src=https://cdn-images-1.medium.com/max/512/0*xCyz5Stb89x8vuNh alt><figcaption>θ Unknown</figcaption></p><p>With some basic knowledge of the environment, i.e. people won’t be standing on obstacles. We can reduce the number of solutions. We can reduce the solutions set again by looking at the time series and understanding people won’t be jumping from place to place. Perhaps one day, we can fully track people just with Bluetooth.</p></div><div class=blog-content><hr><h3 id=_authors>Author</h3><div class=author-card><div class=author-card__photo><img src=/img/me.jpg alt="Ryan Walker"></div><div class=author-card__body><h4>Ryan Walker</h4><p>Building open source stuff with open source stuff.</p><div class=author-links><div class=author-links__column><a class=author-link href=https://shop.rootkitlabs.com><img src=/img/shop.png alt>Our Shop</a>
-<a class=author-link href=mailto:info@rootkitlabs.com><img src=/img/email.png alt>Email</a>
-<a class=author-link href=https://www.youtube.com/@rootkitlabs><img src=/img/youtube.png alt>Youtube</a>
-<a class=author-link href=https://github.com/o7-machinehum><img src=/img/github.png alt>GitHub</a></div><div class=author-links__column><a class=author-link href=https://www.instagram.com/rootkitlabs/><img src=/img/ig.jpg alt>Instagram</a>
-<a class=author-link href=https://discord.gg/EtZT7mjNuM><img src=/img/discord.png alt>Discord</a>
-<a class=author-link href=https://twitter.com/machinehum><img src=/img/twitter.png alt>Twitter</a>
-<a class=author-link href=https://rootkitlabs.com/atom.xml><img src=/img/rss.png alt>RSS Feed</a></div></div></div></div></div></div></div></article></section></body></html>
+$ west build</pre>
+<p>I had issues building this, so I wiped out most of the code and pulled in some of the other stuff we <a href="https://github.com/o7-machinehum/nRF52_War_Driving/blob/d09d4706e515ff42ddd0df914f0a82f19c70ca09/app/src/main.c">worked on before.</a> You can see I’ve stripped out most of the existing Bluetooth code, as we’re only concerned with scanning for other Bluetooth devices right now. I pulled in the SD card stuff and tested it. I encourage you to look through <a href="https://github.com/o7-machinehum/nRF52_War_Driving">the repository</a>. The repository is open so that anyone can expand on the project.</p>
+<h4 id="one-smallhiccup">One Small Hiccup</h4>
+<p>I noticed one of the LEDs on the board was flickering. This wiring isn’t ideal as I want to dead drop the device for days and flicker a pointless LED is very power hungry. I looked into the board’s schematic, and it turned out my chip select (CS) pin for my micro SD card was sharing a pin with LED1!
+<img src="https://cdn-images-1.medium.com/max/275/1*IKiw7lijnwmf-X5b60es_g.png" alt=""></p>
+<p>I changed the device tree file to use another pin, moved the jumper over and starting have issues mounting the drive. Looking at the schematic above, you can see the pin is being pulled high to Vdd through R1. When the SD card is powered on without the pullup, something goes wrong in the hardware. I added this pullup with a regular 10k, and it started working.</p>
+<h3 id="the-drop">The Drop</h3>
+<p>With everything in place, it’s time for the dead drop. I opted for an old pelican case buried in the dirt.
+<img src="https://cdn-images-1.medium.com/max/963/0*Ea4dGXYpCjbX0MND" alt=""><figcaption>Just in case someone thought it was a bomb.</figcaption></p>
+<p>While doing my usual 2 AM workout, I tripped, launching the device into a nearby hole. As I pulled my back at the gym, I couldn’t bend over to pick it up, so the only safe thing to do was bury the device and pick it once I had healed.</p>
+<h3 id="the-retrieval">The Retrieval</h3>
+<p>Once my back healed up, I picked up the drop. I slammed together a quick <a href="https://github.com/o7-machinehum/nRF52_War_Driving/blob/main/py/main.py">python script</a> to analyze the data, and it reported there were 7054 MAC addresses discovered and 799 unique MAC addresses! A keen code observer would note that I imported a little API for finding the vendors as well. I then plotted this.
+<img src="https://cdn-images-1.medium.com/max/701/1*1Qf0RvHGn6Uh9XjPEMcRxw.png" alt=""></p>
+<h3 id="moving-forward">Moving Forward</h3>
+<p>I want to continue my wardriving work but up the ante with location inference. In the dataset, we have the RSSI strength, which is correlated to distance from the device. RSSI gives a magnitude of a vector with the angle θ unknown.
+<img src="https://cdn-images-1.medium.com/max/512/0*xCyz5Stb89x8vuNh" alt=""><figcaption>θ Unknown</figcaption></p>
+<p>With some basic knowledge of the environment, i.e. people won’t be standing on obstacles. We can reduce the number of solutions. We can reduce the solutions set again by looking at the time series and understanding people won’t be jumping from place to place. Perhaps one day, we can fully track people just with Bluetooth.</p>
+
+            </div>
+
+            <div class="blog-content">
+                <hr>
+                <h3 id="_authors">Author</h3>
+<div class="author-card">
+    <div class="author-card__photo">
+        <img src="/img/me.jpg" alt="Ryan Walker">
+    </div>
+
+    <div class="author-card__body">
+        <h4>Ryan Walker</h4>
+        <p>Building open source stuff with open source stuff.</p>
+
+        <div class="author-links">
+            <div class="author-links__column">
+                <a class="author-link" href="https://shop.rootkitlabs.com"><img src="/img/shop.png" alt="">Our Shop</a>
+                <a class="author-link" href="mailto:info@rootkitlabs.com"><img src="/img/email.png" alt="">Email</a>
+                <a class="author-link" href="https://www.youtube.com/@rootkitlabs"><img src="/img/youtube.png" alt="">Youtube</a>
+                <a class="author-link" href="https://github.com/o7-machinehum"><img src="/img/github.png" alt="">GitHub</a>
+            </div>
+            <div class="author-links__column">
+                <a class="author-link" href="https://www.instagram.com/rootkitlabs/"><img src="/img/ig.jpg" alt="">Instagram</a>
+                <a class="author-link" href="https://discord.gg/EtZT7mjNuM"><img src="/img/discord.png" alt="">Discord</a>
+                <a class="author-link" href="https://twitter.com/machinehum"><img src="/img/twitter.png" alt="">Twitter</a>
+                <a class="author-link" href="https://rootkitlabs.com/atom.xml"><img src="/img/rss.png" alt="">RSS Feed</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</article>
+</section>
+</body>
+</html>

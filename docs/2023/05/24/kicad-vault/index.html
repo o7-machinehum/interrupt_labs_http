@@ -1,11 +1,155 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="This post is not sponsored or affiliated with KiCad or Digikey.
-Back when I worked for a hardware startup, rather than making my own, we used Altium. …"><meta property="og:description" content="This post is not sponsored or affiliated with KiCad or Digikey.
-Back when I worked for a hardware startup, rather than making my own, we used Altium. …"><meta name=author content="Ryan Walker"><meta property="og:title" content="Kicad Vault - A Component Management System"><meta property="og:site_name" content="Interrupt Labs Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://interruptlabs.ca/img/home-bg.jpg"><meta name=twitter:image content="https://interruptlabs.ca/img/home-bg.jpg"><meta name=twitter:card content="summary_large_image"><title>Kicad Vault - A Component Management System - Interrupt Labs Blog</title><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/style.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JPDQ8MSX3T")</script><link rel=icon href=/img/logo.png><link rel=alternate href=/atom.xml title="Interrupt Labs Blog" type=application/rss+xml></head><body><section class=main><nav class=site-nav aria-label="Site navigation"><a class=site-home-link href=/#about aria-label="Go to blog section on homepage"><span class=site-home-link__arrow aria-hidden=true></span>
-<span>Blog</span></a></nav><header class=intro-header style=background-image:url(/img/home-bg.jpg)><div class=blog-container><div class=blog-row><div class=blog-content><div class=post-heading><h1>Kicad Vault - A Component Management System</h1><span class=meta>2023-05-24</span></div></div></div></div></header><article><div class=blog-container><div class=blog-row><div class=blog-content><p><strong>This post is not sponsored or affiliated with KiCad or Digikey.</strong></p><p>Back when I worked for a hardware startup, rather than making my own, we used Altium. Altium is a PCB design suite that is loved and hated by thousands. It’s not cheap, and if you need a component management system, you could pry open your wallet and shell out more, upgrading to “Altium Vault”. Vault looks at all your schematics, checks the stock, and highlights supply risks and costs. The system works well but costs a ton, so I made my own.</p><p><img src=/img/kicad-vault/logo.png alt></p><p>This idea is simple. It&rsquo;s just a Python script that&mldr;</p><ul><li>Finds all your KiCad projects.</li><li>Builds their BOMs.</li><li>Extends their BOMs with digikeys description of components.</li><li>Checks their availability on Digikey.</li><li>Generates some HTML pages that can be used to view this info.</li></ul><p>Here is an example of the first page after the content is generated. Pretty simple but does the trick.
-<img src=/img/kicad-vault/index.png alt></p><p>If you click on one of the projects, you&rsquo;ll get it&rsquo;s BOM, with digikey pricing and stock. <a href=/kicad-vault/>Link to the BOM here.</a></p><p>Here&rsquo;s a list of features I plan to integrate into it over the next few months.</p><ul><li>Part swapping: If a component is out of stock, you should be able to click a button and &ldquo;substitute with a reasonable alternative from a drop-down menu&rdquo;. It should then update the part number in KiCad.</li><li>Components Library: A global library of all the parts you have used should exist. The ones that are in stock and cheaper should be highlighted.</li><li>Auto Population: When you&rsquo;re done with your schematic, the script should automatically populate components with part numbers based on the description, value and footprint entered in KiCad.</li><li>Ordering: Using the APIs ordering boards and components should be done with a button click.</li></ul><p>Currently, it&rsquo;s not a lot, an nowhere near Altium&rsquo;s solution. But maybe on day it will be. <a href=https://github.com/o7-machinehum/kicad-vault>Github repository here</a>.</p></div><div class=blog-content><hr><h3 id=_authors>Author</h3><div class=author-card><div class=author-card__photo><img src=/img/me.jpg alt="Ryan Walker"></div><div class=author-card__body><h4>Ryan Walker</h4><p>Building open source stuff with open source stuff.</p><div class=author-links><div class=author-links__column><a class=author-link href=https://shop.rootkitlabs.com><img src=/img/shop.png alt>Our Shop</a>
-<a class=author-link href=mailto:info@rootkitlabs.com><img src=/img/email.png alt>Email</a>
-<a class=author-link href=https://www.youtube.com/@rootkitlabs><img src=/img/youtube.png alt>Youtube</a>
-<a class=author-link href=https://github.com/o7-machinehum><img src=/img/github.png alt>GitHub</a></div><div class=author-links__column><a class=author-link href=https://www.instagram.com/rootkitlabs/><img src=/img/ig.jpg alt>Instagram</a>
-<a class=author-link href=https://discord.gg/EtZT7mjNuM><img src=/img/discord.png alt>Discord</a>
-<a class=author-link href=https://twitter.com/machinehum><img src=/img/twitter.png alt>Twitter</a>
-<a class=author-link href=https://rootkitlabs.com/atom.xml><img src=/img/rss.png alt>RSS Feed</a></div></div></div></div></div></div></div></article></section></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+        
+    
+
+    
+        <meta name="description" content="This post is not sponsored or affiliated with KiCad or Digikey.
+Back when I worked for a hardware startup, rather than making my own, we used Altium. …">
+        <meta property="og:description" content="This post is not sponsored or affiliated with KiCad or Digikey.
+Back when I worked for a hardware startup, rather than making my own, we used Altium. …">
+    
+
+    
+        <meta name="author" content="Ryan Walker">
+    
+
+    <meta property="og:title" content="Kicad Vault - A Component Management System">
+    <meta property="og:site_name" content="Interrupt Labs Blog">
+    <meta property="og:type" content="article">
+
+    
+    
+        <meta property="og:image" content="https://interruptlabs.ca/img/home-bg.jpg">
+        <meta name="twitter:image" content="https://interruptlabs.ca/img/home-bg.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Kicad Vault - A Component Management System - Interrupt Labs Blog</title>
+
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JPDQ8MSX3T');
+</script>
+
+
+
+    
+        <link rel="icon" href="/img/logo.png">
+    
+    <link rel="alternate" href="/atom.xml" title="Interrupt Labs Blog" type="application/rss+xml">
+</head>
+
+<body>
+<section class="main">
+<nav class="site-nav" aria-label="Site navigation">
+    <a class="site-home-link" href="/#about" aria-label="Go to blog section on homepage">
+        <span class="site-home-link__arrow" aria-hidden="true"></span>
+        <span>Blog</span>
+    </a>
+</nav>
+
+
+
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="blog-container">
+        <div class="blog-row">
+            <div class="blog-content">
+                <div class="post-heading">
+                    <h1>Kicad Vault - A Component Management System</h1>
+                    
+                    <span class="meta">
+                        
+                        
+                            2023-05-24
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="blog-container">
+        <div class="blog-row">
+            
+
+            <div class="blog-content">
+                
+
+                <p><strong>This post is not sponsored or affiliated with KiCad or Digikey.</strong></p>
+<p>Back when I worked for a hardware startup, rather than making my own, we used Altium. Altium is a PCB design suite that is loved and hated by thousands. It’s not cheap, and if you need a component management system, you could pry open your wallet and shell out more, upgrading to “Altium Vault”. Vault looks at all your schematics, checks the stock, and highlights supply risks and costs. The system works well but costs a ton, so I made my own.</p>
+<p><img src="/img/kicad-vault/logo.png" alt=""></p>
+<p>This idea is simple. It&rsquo;s just a Python script that&hellip;</p>
+<ul>
+<li>Finds all your KiCad projects.</li>
+<li>Builds their BOMs.</li>
+<li>Extends their BOMs with digikeys description of components.</li>
+<li>Checks their availability on Digikey.</li>
+<li>Generates some HTML pages that can be used to view this info.</li>
+</ul>
+<p>Here is an example of the first page after the content is generated. Pretty simple but does the trick.
+<img src="/img/kicad-vault/index.png" alt=""></p>
+<p>If you click on one of the projects, you&rsquo;ll get it&rsquo;s BOM, with digikey pricing and stock. <a href="/kicad-vault/">Link to the BOM here.</a></p>
+<p>Here&rsquo;s a list of features I plan to integrate into it over the next few months.</p>
+<ul>
+<li>Part swapping: If a component is out of stock, you should be able to click a button and &ldquo;substitute with a reasonable alternative from a drop-down menu&rdquo;. It should then update the part number in KiCad.</li>
+<li>Components Library: A global library of all the parts you have used should exist. The ones that are in stock and cheaper should be highlighted.</li>
+<li>Auto Population: When you&rsquo;re done with your schematic, the script should automatically populate components with part numbers based on the description, value and footprint entered in KiCad.</li>
+<li>Ordering: Using the APIs ordering boards and components should be done with a button click.</li>
+</ul>
+<p>Currently, it&rsquo;s not a lot, an nowhere near Altium&rsquo;s solution. But maybe on day it will be. <a href="https://github.com/o7-machinehum/kicad-vault">Github repository here</a>.</p>
+
+            </div>
+
+            <div class="blog-content">
+                <hr>
+                <h3 id="_authors">Author</h3>
+<div class="author-card">
+    <div class="author-card__photo">
+        <img src="/img/me.jpg" alt="Ryan Walker">
+    </div>
+
+    <div class="author-card__body">
+        <h4>Ryan Walker</h4>
+        <p>Building open source stuff with open source stuff.</p>
+
+        <div class="author-links">
+            <div class="author-links__column">
+                <a class="author-link" href="https://shop.rootkitlabs.com"><img src="/img/shop.png" alt="">Our Shop</a>
+                <a class="author-link" href="mailto:info@rootkitlabs.com"><img src="/img/email.png" alt="">Email</a>
+                <a class="author-link" href="https://www.youtube.com/@rootkitlabs"><img src="/img/youtube.png" alt="">Youtube</a>
+                <a class="author-link" href="https://github.com/o7-machinehum"><img src="/img/github.png" alt="">GitHub</a>
+            </div>
+            <div class="author-links__column">
+                <a class="author-link" href="https://www.instagram.com/rootkitlabs/"><img src="/img/ig.jpg" alt="">Instagram</a>
+                <a class="author-link" href="https://discord.gg/EtZT7mjNuM"><img src="/img/discord.png" alt="">Discord</a>
+                <a class="author-link" href="https://twitter.com/machinehum"><img src="/img/twitter.png" alt="">Twitter</a>
+                <a class="author-link" href="https://rootkitlabs.com/atom.xml"><img src="/img/rss.png" alt="">RSS Feed</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</article>
+</section>
+</body>
+</html>

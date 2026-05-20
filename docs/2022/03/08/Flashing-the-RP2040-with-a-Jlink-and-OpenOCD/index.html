@@ -1,17 +1,159 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — …"><meta property="og:description" content="Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — …"><meta name=author content="Ryan Walker"><meta property="og:title" content="Flashing the RP2040 with a Jlink and OpenOCD"><meta property="og:site_name" content="Interrupt Labs Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://interruptlabs.ca/img/home-bg.jpg"><meta name=twitter:image content="https://interruptlabs.ca/img/home-bg.jpg"><meta name=twitter:card content="summary_large_image"><title>Flashing the RP2040 with a Jlink and OpenOCD - Interrupt Labs Blog</title><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/style.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JPDQ8MSX3T")</script><link rel=icon href=/img/logo.png><link rel=alternate href=/atom.xml title="Interrupt Labs Blog" type=application/rss+xml></head><body><section class=main><nav class=site-nav aria-label="Site navigation"><a class=site-home-link href=/#about aria-label="Go to blog section on homepage"><span class=site-home-link__arrow aria-hidden=true></span>
-<span>Blog</span></a></nav><header class=intro-header style=background-image:url(/img/home-bg.jpg)><div class=blog-container><div class=blog-row><div class=blog-content><div class=post-heading><h1>Flashing the RP2040 with a Jlink and OpenOCD</h1><span class=meta>2022-03-08</span></div></div></div></div></header><article><div class=blog-container><div class=blog-row><div class=blog-content><blockquote><p>Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — Raspberry Pi People</p></blockquote><p>I picked up a Pico for a couple of bucks to try it out. In a time of extreme scarcity and shortage in silicon, I&rsquo;ve started evaluating different options, and the RP2040 is very available. It hosts a dual Cortex M0+ processor with 264k RAM and all the usual peripherals. However, it lacks flash. The chip requires an external QSPI flash to hold the program instructions.
-<img src=https://cdn-images-1.medium.com/max/687/1*Uu8Z74Z2he-8lcompmJlXw.png alt></p><p>To program the chip, you hold the boot button while plugging in a USB cable; the chip will come up as a mass storage device. Then drag and drop in the image. This would be incredible functionality if I needed a client to flash their device. However, for development, I reached for my Jtag programmer.</p><p>It seems like most people are using the Pico Probe, which is another Pico board acting as a programmer. This is an excellent solution for someone that doesn&rsquo;t have a Jtag debugger, but I only have a Jlink and don&rsquo;t want to buy another Pico just yet.</p><p>Let&rsquo;s get going: start by removing openocd. The version of openocd for this is not upstreamed yet.</p><pre>git clone https://github.com/raspberrypi/openocd.git
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+        
+    
+
+    
+        <meta name="description" content="Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — …">
+        <meta property="og:description" content="Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — …">
+    
+
+    
+        <meta name="author" content="Ryan Walker">
+    
+
+    <meta property="og:title" content="Flashing the RP2040 with a Jlink and OpenOCD">
+    <meta property="og:site_name" content="Interrupt Labs Blog">
+    <meta property="og:type" content="article">
+
+    
+    
+        <meta property="og:image" content="https://interruptlabs.ca/img/home-bg.jpg">
+        <meta name="twitter:image" content="https://interruptlabs.ca/img/home-bg.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Flashing the RP2040 with a Jlink and OpenOCD - Interrupt Labs Blog</title>
+
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JPDQ8MSX3T');
+</script>
+
+
+
+    
+        <link rel="icon" href="/img/logo.png">
+    
+    <link rel="alternate" href="/atom.xml" title="Interrupt Labs Blog" type="application/rss+xml">
+</head>
+
+<body>
+<section class="main">
+<nav class="site-nav" aria-label="Site navigation">
+    <a class="site-home-link" href="/#about" aria-label="Go to blog section on homepage">
+        <span class="site-home-link__arrow" aria-hidden="true"></span>
+        <span>Blog</span>
+    </a>
+</nav>
+
+
+
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="blog-container">
+        <div class="blog-row">
+            <div class="blog-content">
+                <div class="post-heading">
+                    <h1>Flashing the RP2040 with a Jlink and OpenOCD</h1>
+                    
+                    <span class="meta">
+                        
+                        
+                            2022-03-08
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="blog-container">
+        <div class="blog-row">
+            
+
+            <div class="blog-content">
+                
+
+                <blockquote>
+<p>Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — Raspberry Pi People</p>
+</blockquote>
+<p>I picked up a Pico for a couple of bucks to try it out. In a time of extreme scarcity and shortage in silicon, I&rsquo;ve started evaluating different options, and the RP2040 is very available. It hosts a dual Cortex M0+ processor with 264k RAM and all the usual peripherals. However, it lacks flash. The chip requires an external QSPI flash to hold the program instructions.
+<img src="https://cdn-images-1.medium.com/max/687/1*Uu8Z74Z2he-8lcompmJlXw.png" alt=""></p>
+<p>To program the chip, you hold the boot button while plugging in a USB cable; the chip will come up as a mass storage device. Then drag and drop in the image. This would be incredible functionality if I needed a client to flash their device. However, for development, I reached for my Jtag programmer.</p>
+<p>It seems like most people are using the Pico Probe, which is another Pico board acting as a programmer. This is an excellent solution for someone that doesn&rsquo;t have a Jtag debugger, but I only have a Jlink and don&rsquo;t want to buy another Pico just yet.</p>
+<p>Let&rsquo;s get going: start by removing openocd. The version of openocd for this is not upstreamed yet.</p>
+<pre>git clone https://github.com/raspberrypi/openocd.git
 cd openocd
 ./bootstrap
 ./configure --enable-picoprobe
 make -j$(nproc)
-sudo make install</pre><p>As for wiring…</p><ul><li><strong>Pico SWDIO</strong> to <strong>Jlink SWDIO, Pin 7</strong></li><li><strong>Pico SWCLK</strong> to <strong>Jlink SWCLK, Pin 9</strong></li><li><strong>Pico GND</strong> to <strong>Jlink GND</strong></li><li>**Pico 3V3(OUT), Pin 36 **to <strong>Jlink VTref, Pin 1</strong></li><li>**Pico RUN, Pin 30 **to <strong>Jlink RESET, Pin 15</strong></li></ul><p>Here is the flash script I got working.</p><pre>
+sudo make install</pre>
+<p>As for wiring…</p>
+<ul>
+<li><strong>Pico SWDIO</strong> to <strong>Jlink SWDIO, Pin 7</strong></li>
+<li><strong>Pico SWCLK</strong> to <strong>Jlink SWCLK, Pin 9</strong></li>
+<li><strong>Pico GND</strong> to <strong>Jlink GND</strong></li>
+<li>**Pico 3V3(OUT), Pin 36 **to <strong>Jlink VTref, Pin 1</strong></li>
+<li>**Pico RUN, Pin 30 **to <strong>Jlink RESET, Pin 15</strong></li>
+</ul>
+<p>Here is the flash script I got working.</p>
+<pre>
 #!/bin/bash
 openocd -f interface/jlink.cfg -c &quot;transport select swd&quot; -c &quot;adapter_khz 6000&quot; -f target/rp2040.cfg  -c &quot;program blink.elf reset exit&quot;
-</pre><p>Good luck!</p></div><div class=blog-content><hr><h3 id=_authors>Author</h3><div class=author-card><div class=author-card__photo><img src=/img/me.jpg alt="Ryan Walker"></div><div class=author-card__body><h4>Ryan Walker</h4><p>Building open source stuff with open source stuff.</p><div class=author-links><div class=author-links__column><a class=author-link href=https://shop.rootkitlabs.com><img src=/img/shop.png alt>Our Shop</a>
-<a class=author-link href=mailto:info@rootkitlabs.com><img src=/img/email.png alt>Email</a>
-<a class=author-link href=https://www.youtube.com/@rootkitlabs><img src=/img/youtube.png alt>Youtube</a>
-<a class=author-link href=https://github.com/o7-machinehum><img src=/img/github.png alt>GitHub</a></div><div class=author-links__column><a class=author-link href=https://www.instagram.com/rootkitlabs/><img src=/img/ig.jpg alt>Instagram</a>
-<a class=author-link href=https://discord.gg/EtZT7mjNuM><img src=/img/discord.png alt>Discord</a>
-<a class=author-link href=https://twitter.com/machinehum><img src=/img/twitter.png alt>Twitter</a>
-<a class=author-link href=https://rootkitlabs.com/atom.xml><img src=/img/rss.png alt>RSS Feed</a></div></div></div></div></div></div></div></article></section></body></html>
+</pre>
+<p>Good luck!</p>
+
+            </div>
+
+            <div class="blog-content">
+                <hr>
+                <h3 id="_authors">Author</h3>
+<div class="author-card">
+    <div class="author-card__photo">
+        <img src="/img/me.jpg" alt="Ryan Walker">
+    </div>
+
+    <div class="author-card__body">
+        <h4>Ryan Walker</h4>
+        <p>Building open source stuff with open source stuff.</p>
+
+        <div class="author-links">
+            <div class="author-links__column">
+                <a class="author-link" href="https://shop.rootkitlabs.com"><img src="/img/shop.png" alt="">Our Shop</a>
+                <a class="author-link" href="mailto:info@rootkitlabs.com"><img src="/img/email.png" alt="">Email</a>
+                <a class="author-link" href="https://www.youtube.com/@rootkitlabs"><img src="/img/youtube.png" alt="">Youtube</a>
+                <a class="author-link" href="https://github.com/o7-machinehum"><img src="/img/github.png" alt="">GitHub</a>
+            </div>
+            <div class="author-links__column">
+                <a class="author-link" href="https://www.instagram.com/rootkitlabs/"><img src="/img/ig.jpg" alt="">Instagram</a>
+                <a class="author-link" href="https://discord.gg/EtZT7mjNuM"><img src="/img/discord.png" alt="">Discord</a>
+                <a class="author-link" href="https://twitter.com/machinehum"><img src="/img/twitter.png" alt="">Twitter</a>
+                <a class="author-link" href="https://rootkitlabs.com/atom.xml"><img src="/img/rss.png" alt="">RSS Feed</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</article>
+</section>
+</body>
+</html>

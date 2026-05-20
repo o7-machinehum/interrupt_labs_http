@@ -1,5 +1,116 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly …"><meta property="og:description" content="I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly …"><meta name=author content="Ryan Walker"><meta property="og:title" content="I Built a Self-Destructing USB Drive Part 3"><meta property="og:site_name" content="Interrupt Labs Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://interruptlabs.ca/img/built_usb.jpg"><meta name=twitter:image content="https://interruptlabs.ca/img/built_usb.jpg"><meta name=twitter:card content="summary_large_image"><title>I Built a Self-Destructing USB Drive Part 3 - Interrupt Labs Blog</title><link rel=stylesheet href=/css/fonts.css><link rel=stylesheet href=/css/style.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JPDQ8MSX3T")</script><link rel=icon href=/img/logo.png><link rel=alternate href=/atom.xml title="Interrupt Labs Blog" type=application/rss+xml></head><body><section class=main><nav class=site-nav aria-label="Site navigation"><a class=site-home-link href=/#about aria-label="Go to blog section on homepage"><span class=site-home-link__arrow aria-hidden=true></span>
-<span>Blog</span></a></nav><header class=intro-header style=background-image:url(/img/built_usb.jpg)><div class=blog-container><div class=blog-row><div class=blog-content><div class=post-heading><h1>I Built a Self-Destructing USB Drive Part 3</h1><span class=meta>2023-02-06</span></div></div></div></div></header><article><div class=blog-container><div class=blog-row><div class=blog-content><nav class=post-nav aria-label="Post navigation"><div class=post-nav__item><a href=/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/>&lt;&lt; Previous Post</a></div><div class="post-nav__item post-nav__item--next"></div></nav><hr><p>I&rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly plug it in three times in a row, you will be able to read and write data. We built Ovrdrive for journalists working in hostile environments, security researchers, and anyone interested in open hardware.</p><p align=center><a href=https://shop.interruptlabs.ca/products/ovrdrive-usb>Device for Sale Now!</a></p><hr><p>I ended my last post with the design finished and the boards on order. Once I received the boards I built them up. I used a reflow hotplate for the top, and heat gun for the bottom.</p><p><img src=/img/usb-device.png alt></p><p>After plugging the device into my PC, the USB flash controller enumerated and seemed to be working. All three voltage rails came up and looked stable. The dmesg logs got past the <code>USB</code> driver, the <code>usb-storage</code> driver, the <code>scsi</code> driver, but errored out on the <code>sd</code> driver. <a href=https://github.com/torvalds/linux/blob/master/drivers/scsi/sd.c#L2118>This is the section</a> of code where it was erroring out. Interestingly, the same message is produced when you plug in an sd card reader with no SD card. Here&rsquo;s the error message:</p><pre tabindex=0><code>[1676446.082295] usb 3-1: new high-speed USB device number 16 using ehci-pci
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+        
+    
+
+    
+        <meta name="description" content="I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly …">
+        <meta property="og:description" content="I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly …">
+    
+
+    
+        <meta name="author" content="Ryan Walker">
+    
+
+    <meta property="og:title" content="I Built a Self-Destructing USB Drive Part 3">
+    <meta property="og:site_name" content="Interrupt Labs Blog">
+    <meta property="og:type" content="article">
+
+    
+    
+        <meta property="og:image" content="https://interruptlabs.ca/img/built_usb.jpg">
+        <meta name="twitter:image" content="https://interruptlabs.ca/img/built_usb.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>I Built a Self-Destructing USB Drive Part 3 - Interrupt Labs Blog</title>
+
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JPDQ8MSX3T');
+</script>
+
+
+
+    
+        <link rel="icon" href="/img/logo.png">
+    
+    <link rel="alternate" href="/atom.xml" title="Interrupt Labs Blog" type="application/rss+xml">
+</head>
+
+<body>
+<section class="main">
+<nav class="site-nav" aria-label="Site navigation">
+    <a class="site-home-link" href="/#about" aria-label="Go to blog section on homepage">
+        <span class="site-home-link__arrow" aria-hidden="true"></span>
+        <span>Blog</span>
+    </a>
+</nav>
+
+
+
+
+<header class="intro-header" style="background-image: url('/img/built_usb.jpg')">
+    <div class="blog-container">
+        <div class="blog-row">
+            <div class="blog-content">
+                <div class="post-heading">
+                    <h1>I Built a Self-Destructing USB Drive Part 3</h1>
+                    
+                    <span class="meta">
+                        
+                        
+                            2023-02-06
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="blog-container">
+        <div class="blog-row">
+            
+
+            <div class="blog-content">
+                
+                    <nav class="post-nav" aria-label="Post navigation">
+                        <div class="post-nav__item">
+                            
+                                <a href="/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/">&lt;&lt; Previous Post</a>
+                            
+                        </div>
+                        <div class="post-nav__item post-nav__item--next">
+                            
+                        </div>
+                    </nav>
+                    <hr>
+                
+
+                <p>I&rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly plug it in three times in a row, you will be able to read and write data. We built Ovrdrive for journalists working in hostile environments, security researchers, and anyone interested in open hardware.</p>
+<p align="center">
+<a href="https://shop.interruptlabs.ca/products/ovrdrive-usb">Device for Sale Now!</a>
+</p>
+<hr>
+<p>I ended my last post with the design finished and the boards on order. Once I received the boards I built them up. I used a reflow hotplate for the top, and heat gun for the bottom.</p>
+<p><img src="/img/usb-device.png" alt=""></p>
+<p>After plugging the device into my PC, the USB flash controller enumerated and seemed to be working. All three voltage rails came up and looked stable. The dmesg logs got past the <code>USB</code> driver, the <code>usb-storage</code> driver, the <code>scsi</code> driver, but errored out on the <code>sd</code> driver. <a href="https://github.com/torvalds/linux/blob/master/drivers/scsi/sd.c#L2118">This is the section</a> of code where it was erroring out. Interestingly, the same message is produced when you plug in an sd card reader with no SD card. Here&rsquo;s the error message:</p>
+<pre tabindex="0"><code>[1676446.082295] usb 3-1: new high-speed USB device number 16 using ehci-pci
 [1676446.240444] usb 3-1: New USB device found, idVendor=090c, idProduct=3000, bcdDevice= 1.00
 [1676446.240463] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
 [1676446.240467] usb 3-1: Product: SM3255AA MEMORY BAR
@@ -9,26 +120,39 @@
 [1676447.260193] scsi 7:0:0:0: Direct-Access USB MEMORY BAR   1000 PQ: 0 ANSI: 0 CCS
 [1676447.261910] sd 7:0:0:0: [sdg] Media removed, stopped polling
 [1676447.262814] sd 7:0:0:0: [sdg] Attached SCSI removable disk
-</code></pre><p>It looks like this so-called &ldquo;block device&rdquo; isn&rsquo;t showing any blocks.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>[</span>machinehum@whitebox photos<span style=color:#f92672>]</span>$ lsblk
-</span></span><span style=display:flex><span>NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-</span></span><span style=display:flex><span>sda      8:0    <span style=color:#ae81ff>0</span> 111.8G  <span style=color:#ae81ff>0</span> disk
-</span></span><span style=display:flex><span>├─sda1   8:1    <span style=color:#ae81ff>0</span>   200M  <span style=color:#ae81ff>0</span> part /boot
-</span></span><span style=display:flex><span>├─sda2   8:2    <span style=color:#ae81ff>0</span>    12G  <span style=color:#ae81ff>0</span> part <span style=color:#f92672>[</span>SWAP<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>└─sda3   8:3    <span style=color:#ae81ff>0</span>  99.6G  <span style=color:#ae81ff>0</span> part /
-</span></span><span style=display:flex><span>sdb      8:16   <span style=color:#ae81ff>0</span> 476.9G  <span style=color:#ae81ff>0</span> disk /home
-</span></span><span style=display:flex><span>sdc      8:32   <span style=color:#ae81ff>0</span>   489G  <span style=color:#ae81ff>0</span> disk
-</span></span><span style=display:flex><span>├─sdc1   8:33   <span style=color:#ae81ff>0</span> 469.2G  <span style=color:#ae81ff>0</span> part
-</span></span><span style=display:flex><span>├─sdc2   8:34   <span style=color:#ae81ff>0</span>     1K  <span style=color:#ae81ff>0</span> part
-</span></span><span style=display:flex><span>└─sdc5   8:37   <span style=color:#ae81ff>0</span>  19.8G  <span style=color:#ae81ff>0</span> part
-</span></span><span style=display:flex><span>sdd      8:48   <span style=color:#ae81ff>0</span> 931.5G  <span style=color:#ae81ff>0</span> disk
-</span></span><span style=display:flex><span>└─sdd1   8:49   <span style=color:#ae81ff>0</span> 931.5G  <span style=color:#ae81ff>0</span> part /mov
-</span></span><span style=display:flex><span>sde      8:64   <span style=color:#ae81ff>0</span> 931.5G  <span style=color:#ae81ff>0</span> disk
-</span></span><span style=display:flex><span>└─sde2   8:66   <span style=color:#ae81ff>0</span> 931.5G  <span style=color:#ae81ff>0</span> part /dat
-</span></span><span style=display:flex><span>sdg      8:96   <span style=color:#ae81ff>1</span>     0B  <span style=color:#ae81ff>0</span> disk   <span style=color:#75715e># &lt;--- This drive is the one</span>
-</span></span></code></pre></div><p>There could be a few different things going on at this point.</p><ul><li>The routing between the SM3257 (USB controller) and NAND flash is incorrect.</li><li>Some configuration is necessary on the SM3257.</li><li>Something else I&rsquo;m missing.</li></ul><h2 id=into-the-jank>Into the Jank</h2><p>I started googling around for information on the SM3257EN (my USB controller IC). This led me to a <a href=https://flashboot.ru/files/file/454/>Russian site</a> with a download link for a &ldquo;SMI MP Tool&rdquo;. The download contains a Windows executable for working with the SM3257EN. I fired up a Windows 10 VM and got the GUI working, but the software failed to detect the drive. I messed around with this for when felt like ages. I had nearly given up about when the sortware might have been developed. I thought it was probably the Windows XP era. Miraculusly, switching to an XP VM actually worked: the software finally detected the drive.
-<img src=/img/usb_winxp-2.png alt></p><p>This is one of the many interfaces, don&rsquo;t ask me what anything means.
-<img src=/img/usb_winxp-3.png alt>
-At this point, I had zero documentation beyond the Russian comment section. I dedicated 30 minutes a day to &ldquo;flash drive fuck around time&rdquo; or FD-FAT, for short. I would fire up the Windows XP VM, press random buttons in the software and try to flash config files to the drive. I became utterly defeated and started wondering if this was even possible.</p><p>One day, I was in a FD-FAT session, pressing random buttons, when suddenly the GUI spat out, <code>ISP can't be found!!</code>. I googled this and ended up on the same <a href=https://www.usbdev.ru/articles/a_smi/ispcantbefound/>Russian Site</a>. From this webpage I found the &ldquo;DYNA MPTool&rdquo;. I downloaded this, hit the &ldquo;Start&rdquo; button, and somehow it provisioned the drive! I now had a 2GB flash drive I built from scratch! I have no idea how this worked, so don&rsquo;t ask me.</p><h2 id=testing>Testing</h2><p>I used a few test applications. I started with badblock, which tests for spaces in memory that don&rsquo;t work. Badblock doesn&rsquo;t care about filesystems or partitions. It looks at a block device, which is why you specify /dev/sdf over a partition. It simply writes known data test patterns to the memory and reads them back.</p><pre tabindex=0><code>[machinehum@whitebox ~]$ sudo badblocks -w -s -o error.log /dev/sdf
+</code></pre><p>It looks like this so-called &ldquo;block device&rdquo; isn&rsquo;t showing any blocks.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>machinehum@whitebox photos<span style="color:#f92672">]</span>$ lsblk
+</span></span><span style="display:flex;"><span>NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+</span></span><span style="display:flex;"><span>sda      8:0    <span style="color:#ae81ff">0</span> 111.8G  <span style="color:#ae81ff">0</span> disk
+</span></span><span style="display:flex;"><span>├─sda1   8:1    <span style="color:#ae81ff">0</span>   200M  <span style="color:#ae81ff">0</span> part /boot
+</span></span><span style="display:flex;"><span>├─sda2   8:2    <span style="color:#ae81ff">0</span>    12G  <span style="color:#ae81ff">0</span> part <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>└─sda3   8:3    <span style="color:#ae81ff">0</span>  99.6G  <span style="color:#ae81ff">0</span> part /
+</span></span><span style="display:flex;"><span>sdb      8:16   <span style="color:#ae81ff">0</span> 476.9G  <span style="color:#ae81ff">0</span> disk /home
+</span></span><span style="display:flex;"><span>sdc      8:32   <span style="color:#ae81ff">0</span>   489G  <span style="color:#ae81ff">0</span> disk
+</span></span><span style="display:flex;"><span>├─sdc1   8:33   <span style="color:#ae81ff">0</span> 469.2G  <span style="color:#ae81ff">0</span> part
+</span></span><span style="display:flex;"><span>├─sdc2   8:34   <span style="color:#ae81ff">0</span>     1K  <span style="color:#ae81ff">0</span> part
+</span></span><span style="display:flex;"><span>└─sdc5   8:37   <span style="color:#ae81ff">0</span>  19.8G  <span style="color:#ae81ff">0</span> part
+</span></span><span style="display:flex;"><span>sdd      8:48   <span style="color:#ae81ff">0</span> 931.5G  <span style="color:#ae81ff">0</span> disk
+</span></span><span style="display:flex;"><span>└─sdd1   8:49   <span style="color:#ae81ff">0</span> 931.5G  <span style="color:#ae81ff">0</span> part /mov
+</span></span><span style="display:flex;"><span>sde      8:64   <span style="color:#ae81ff">0</span> 931.5G  <span style="color:#ae81ff">0</span> disk
+</span></span><span style="display:flex;"><span>└─sde2   8:66   <span style="color:#ae81ff">0</span> 931.5G  <span style="color:#ae81ff">0</span> part /dat
+</span></span><span style="display:flex;"><span>sdg      8:96   <span style="color:#ae81ff">1</span>     0B  <span style="color:#ae81ff">0</span> disk   <span style="color:#75715e"># &lt;--- This drive is the one</span>
+</span></span></code></pre></div><p>There could be a few different things going on at this point.</p>
+<ul>
+<li>The routing between the SM3257 (USB controller) and NAND flash is incorrect.</li>
+<li>Some configuration is necessary on the SM3257.</li>
+<li>Something else I&rsquo;m missing.</li>
+</ul>
+<h2 id="into-the-jank">Into the Jank</h2>
+<p>I started googling around for information on the SM3257EN (my USB controller IC). This led me to a <a href="https://flashboot.ru/files/file/454/">Russian site</a> with a download link for a &ldquo;SMI MP Tool&rdquo;. The download contains a Windows executable for working with the SM3257EN. I fired up a Windows 10 VM and got the GUI working, but the software failed to detect the drive. I messed around with this for when felt like ages. I had nearly given up about when the sortware might have been developed. I thought it was probably the Windows XP era. Miraculusly, switching to an XP VM actually worked: the software finally detected the drive.
+<img src="/img/usb_winxp-2.png" alt=""></p>
+<p>This is one of the many interfaces, don&rsquo;t ask me what anything means.
+<img src="/img/usb_winxp-3.png" alt="">
+At this point, I had zero documentation beyond the Russian comment section. I dedicated 30 minutes a day to &ldquo;flash drive fuck around time&rdquo; or FD-FAT, for short. I would fire up the Windows XP VM, press random buttons in the software and try to flash config files to the drive. I became utterly defeated and started wondering if this was even possible.</p>
+<p>One day, I was in a FD-FAT session, pressing random buttons, when suddenly the GUI spat out, <code>ISP can't be found!!</code>. I googled this and ended up on the same <a href="https://www.usbdev.ru/articles/a_smi/ispcantbefound/">Russian Site</a>. From this webpage I found the &ldquo;DYNA MPTool&rdquo;. I downloaded this, hit the &ldquo;Start&rdquo; button, and somehow it provisioned the drive! I now had a 2GB flash drive I built from scratch! I have no idea how this worked, so don&rsquo;t ask me.</p>
+<h2 id="testing">Testing</h2>
+<p>I used a few test applications. I started with badblock, which tests for spaces in memory that don&rsquo;t work. Badblock doesn&rsquo;t care about filesystems or partitions. It looks at a block device, which is why you specify /dev/sdf over a partition. It simply writes known data test patterns to the memory and reads them back.</p>
+<pre tabindex="0"><code>[machinehum@whitebox ~]$ sudo badblocks -w -s -o error.log /dev/sdf
 Testing with pattern 0xaa: done
 Reading and comparing: done
 Testing with pattern 0x55: done
@@ -37,7 +161,8 @@ Testing with pattern 0xff: done
 Reading and comparing: done
 Testing with pattern 0x00: done
 Reading and comparing: done
-</code></pre><p>With this working, I moved over to f3, which is partition aware. It works with files rather than raw memory blocks. These files are a pseudorandom bit sequence rather than a test pattern. It can then verify the data written and verify the speed.</p><pre tabindex=0><code>[machinehum@whitebox ~]$ sudo f3write mnt/
+</code></pre><p>With this working, I moved over to f3, which is partition aware. It works with files rather than raw memory blocks. These files are a pseudorandom bit sequence rather than a test pattern. It can then verify the data written and verify the speed.</p>
+<pre tabindex="0"><code>[machinehum@whitebox ~]$ sudo f3write mnt/
 F3 write 8.0
 Copyright (C) 2010 Digirati Internet LTDA.
 This is free software; see the source for copying conditions.
@@ -64,8 +189,12 @@ Data LOST: 0 MB (0 sectors)
 	Slightly changed: 0.00 Byte (0 sectors)
 	     Overwritten: 0.00 Byte (0 sectors)
 Average reading speed: 13.12 MB/s
-</code></pre><p>Definitely not the fasted drive on the market, but it looks to be working. At this point, I&rsquo;m thrilled. Time to blow it up!</p><h2 id=inhibit-circuity>Inhibit Circuity</h2><p>I then flew some wires to the programming pads of the microcontroller. I probably won&rsquo;t go for a USB bootloader, but I&rsquo;ll need a better programming method in the future.
-<img src=/img/atmel-header.jpg alt></p><p>In the last post I explained how the flash memory&rsquo;s chip select line is &ldquo;or&rsquo;d&rdquo; with a pin from the microcontroller. This can be used to inhibit the flash. I tested this out, and it worked beautifully. When you try to mount the device, the mount command hangs for 20 seconds, then dmesg spits this out:</p><pre tabindex=0><code>[3064125.755814] usb 3-1: reset high-speed USB device number 84 using ehci-pci
+</code></pre><p>Definitely not the fasted drive on the market, but it looks to be working. At this point, I&rsquo;m thrilled. Time to blow it up!</p>
+<h2 id="inhibit-circuity">Inhibit Circuity</h2>
+<p>I then flew some wires to the programming pads of the microcontroller. I probably won&rsquo;t go for a USB bootloader, but I&rsquo;ll need a better programming method in the future.
+<img src="/img/atmel-header.jpg" alt=""></p>
+<p>In the last post I explained how the flash memory&rsquo;s chip select line is &ldquo;or&rsquo;d&rdquo; with a pin from the microcontroller. This can be used to inhibit the flash. I tested this out, and it worked beautifully. When you try to mount the device, the mount command hangs for 20 seconds, then dmesg spits this out:</p>
+<pre tabindex="0"><code>[3064125.755814] usb 3-1: reset high-speed USB device number 84 using ehci-pci
 [3064125.906688] usb 3-1: device firmware changed
 [3064125.906832] sd 6:0:0:0: [sdf] tag#0 FAILED Result: hostbyte=DID_TIME_OUT driverbyte=DRIVER_OK cmd_age=31s
 [3064125.906844] sd 6:0:0:0: [sdf] tag#0 CDB: Read(10) 28 00 00 3f 57 80 00 00 08 00
@@ -74,8 +203,13 @@ Average reading speed: 13.12 MB/s
 [3064125.919296] device offline error, dev sdf, sector 4151168 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
 [3064125.919314] Buffer I/O error on dev sdf1, logical block 518640, async page read
 [3064125.920698] /dev/sdf1: Can&#39;t open blockdev
-</code></pre><p>This functionality is suitable for actors who might not want their drive to self-destruct but instead appear as a corrupted or broken drive.</p><h2 id=destruction-circuitry>Destruction Circuitry</h2><p>Finally, we&rsquo;re getting to the good part. Recall the destruction circuit from the previous post.
-<img src=/img/distruct.png alt></p><p>In this circuit C1, C2, D1, and D2 form a voltage doubler. When <code>Distruct_PWM</code> is 0V, C1 will charge to 5V. When <code>Distruct_PWM</code> goes high, the potential across C1 will go to 10V because voltages in series add. This forces current through D2 and will eventually charge C2 to 10V. When I want to kill the flash, I can enable Q1 via <code>Kill_switch</code> and short 10V to 3.3V.</p><p>I started with the original circuitry, which didn&rsquo;t produce any smoke. However, when I reran our trusty f3read I got this.</p><pre tabindex=0><code>[machinehum@whitebox ~]$ sudo f3read mnt/
+</code></pre><p>This functionality is suitable for actors who might not want their drive to self-destruct but instead appear as a corrupted or broken drive.</p>
+<h2 id="destruction-circuitry">Destruction Circuitry</h2>
+<p>Finally, we&rsquo;re getting to the good part. Recall the destruction circuit from the previous post.
+<img src="/img/distruct.png" alt=""></p>
+<p>In this circuit C1, C2, D1, and D2 form a voltage doubler. When <code>Distruct_PWM</code> is 0V, C1 will charge to 5V. When <code>Distruct_PWM</code> goes high, the potential across C1 will go to 10V because voltages in series add. This forces current through D2 and will eventually charge C2 to 10V. When I want to kill the flash, I can enable Q1 via <code>Kill_switch</code> and short 10V to 3.3V.</p>
+<p>I started with the original circuitry, which didn&rsquo;t produce any smoke. However, when I reran our trusty f3read I got this.</p>
+<pre tabindex="0"><code>[machinehum@whitebox ~]$ sudo f3read mnt/
 F3 read 8.0
 Copyright (C) 2010 Digirati Internet LTDA.
 This is free software; see the source for copying conditions.
@@ -90,11 +224,53 @@ Data LOST: 249.00 MB (509952 sectors)
 	Slightly changed: 0.00 Byte (0 sectors)
 	     Overwritten: 0.00 Byte (0 sectors)
 Average reading speed: 13.52 MB/s
-</code></pre><p>A lot of the data was intact, but 250MB was corrupted! I upgraded C2 from a 22uF to 122uF via electrolytic in parallel. I could fit 100uF on the board with two 47uF in parallel, but this is all I had lying around. I was paranoid about damaging my PC, so I powered the device with a bench supply.</p><p>I then repeated my experiment.</p><p><img src=/img/smoke.gif alt></p><p>After testing the destruction circuit I plugged the drive into my PC. No partition, no block device, no dmesg logs, nothing. It looks like the USB controller IC was fried. To further analyse the damage, I replaced that USB controller IC. The new chip still couldn&rsquo;t recognize the NAND flash. I think it&rsquo;s fair to say she&rsquo;s dead, Jim.</p><h2 id=whats-next>What&rsquo;s next?</h2><p><img src=/img/usb-device-asm.png alt></p><p>It&rsquo;s been quite a long process, but I&rsquo;m thrilled to say I&rsquo;ve built the first spit-detecting, self-destructing flash drive. If you&rsquo;re interested in following this project, my socials are below. I&rsquo;m also planning to do a beta deployment of these devices soon, if this is something you might use, please reach out! I would love to hear your story.</p><hr><p>I also have YouTube content, which can be considered part 2.5 of the series.</p><p>{% youtuber video Wrcy6ySjSu8 %}
-{% endyoutuber %}</p></div><div class=blog-content><hr><h3 id=_authors>Author</h3><div class=author-card><div class=author-card__photo><img src=/img/me.jpg alt="Ryan Walker"></div><div class=author-card__body><h4>Ryan Walker</h4><p>Building open source stuff with open source stuff.</p><div class=author-links><div class=author-links__column><a class=author-link href=https://shop.rootkitlabs.com><img src=/img/shop.png alt>Our Shop</a>
-<a class=author-link href=mailto:info@rootkitlabs.com><img src=/img/email.png alt>Email</a>
-<a class=author-link href=https://www.youtube.com/@rootkitlabs><img src=/img/youtube.png alt>Youtube</a>
-<a class=author-link href=https://github.com/o7-machinehum><img src=/img/github.png alt>GitHub</a></div><div class=author-links__column><a class=author-link href=https://www.instagram.com/rootkitlabs/><img src=/img/ig.jpg alt>Instagram</a>
-<a class=author-link href=https://discord.gg/EtZT7mjNuM><img src=/img/discord.png alt>Discord</a>
-<a class=author-link href=https://twitter.com/machinehum><img src=/img/twitter.png alt>Twitter</a>
-<a class=author-link href=https://rootkitlabs.com/atom.xml><img src=/img/rss.png alt>RSS Feed</a></div></div></div></div></div></div></div></article></section></body></html>
+</code></pre><p>A lot of the data was intact, but 250MB was corrupted! I upgraded C2 from a 22uF to 122uF via electrolytic in parallel. I could fit 100uF on the board with two 47uF in parallel, but this is all I had lying around. I was paranoid about damaging my PC, so I powered the device with a bench supply.</p>
+<p>I then repeated my experiment.</p>
+<p><img src="/img/smoke.gif" alt=""></p>
+<p>After testing the destruction circuit I plugged the drive into my PC. No partition, no block device, no dmesg logs, nothing. It looks like the USB controller IC was fried. To further analyse the damage, I replaced that USB controller IC. The new chip still couldn&rsquo;t recognize the NAND flash. I think it&rsquo;s fair to say she&rsquo;s dead, Jim.</p>
+<h2 id="whats-next">What&rsquo;s next?</h2>
+<p><img src="/img/usb-device-asm.png" alt=""></p>
+<p>It&rsquo;s been quite a long process, but I&rsquo;m thrilled to say I&rsquo;ve built the first spit-detecting, self-destructing flash drive. If you&rsquo;re interested in following this project, my socials are below. I&rsquo;m also planning to do a beta deployment of these devices soon, if this is something you might use, please reach out! I would love to hear your story.</p>
+<hr>
+<p>I also have YouTube content, which can be considered part 2.5 of the series.</p>
+<p>{% youtuber video Wrcy6ySjSu8 %}
+{% endyoutuber %}</p>
+
+            </div>
+
+            <div class="blog-content">
+                <hr>
+                <h3 id="_authors">Author</h3>
+<div class="author-card">
+    <div class="author-card__photo">
+        <img src="/img/me.jpg" alt="Ryan Walker">
+    </div>
+
+    <div class="author-card__body">
+        <h4>Ryan Walker</h4>
+        <p>Building open source stuff with open source stuff.</p>
+
+        <div class="author-links">
+            <div class="author-links__column">
+                <a class="author-link" href="https://shop.rootkitlabs.com"><img src="/img/shop.png" alt="">Our Shop</a>
+                <a class="author-link" href="mailto:info@rootkitlabs.com"><img src="/img/email.png" alt="">Email</a>
+                <a class="author-link" href="https://www.youtube.com/@rootkitlabs"><img src="/img/youtube.png" alt="">Youtube</a>
+                <a class="author-link" href="https://github.com/o7-machinehum"><img src="/img/github.png" alt="">GitHub</a>
+            </div>
+            <div class="author-links__column">
+                <a class="author-link" href="https://www.instagram.com/rootkitlabs/"><img src="/img/ig.jpg" alt="">Instagram</a>
+                <a class="author-link" href="https://discord.gg/EtZT7mjNuM"><img src="/img/discord.png" alt="">Discord</a>
+                <a class="author-link" href="https://twitter.com/machinehum"><img src="/img/twitter.png" alt="">Twitter</a>
+                <a class="author-link" href="https://rootkitlabs.com/atom.xml"><img src="/img/rss.png" alt="">RSS Feed</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</article>
+</section>
+</body>
+</html>
