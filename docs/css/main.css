@@ -1702,6 +1702,15 @@ input::-moz-focus-inner {
   position: relative;
 }
 
+.home-content__cta {
+  margin-top: 2.8rem;
+  padding-left: 10rem;
+}
+
+.home-content__cta .btn {
+  margin-bottom: 0;
+}
+
 
 /* -------------------------------------------------------------------
  * ## home sidelinks
@@ -2004,6 +2013,9 @@ html.no-csstransitions .home-content__main {
     padding-right: 2rem;
     padding-left: 8rem;
   }
+  .home-content__cta {
+    padding-left: 8rem;
+  }
   .home-content h1 + p::before {
     width: 5.5rem;
     top: 1.8rem;
@@ -2077,6 +2089,9 @@ html.no-csstransitions .home-content__main {
   }
   .home-content h1 + p {
     padding-top: 3rem;
+    padding-left: 0;
+  }
+  .home-content__cta {
     padding-left: 0;
   }
   .home-content h1 + p::before {
