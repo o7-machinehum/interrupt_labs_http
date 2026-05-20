@@ -1,0 +1,32 @@
+baseURL = "https://interruptlabs.ca/"
+locale = "en"
+title = "Interrupt Labs Blog"
+publishDir = "docs"
+buildFuture = true
+
+[params]
+author = "Ryan Walker"
+description = ""
+indexCover = "/img/home-bg.jpg"
+favicon = "/img/logo.png"
+googleAnalytics = "G-JPDQ8MSX3T"
+
+[permalinks]
+posts = "/:year/:month/:day/:slug/"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[outputs]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML"]
+term = ["HTML"]
+
+[outputFormats.RSS]
+mediaType = "application/rss+xml"
+baseName = "atom"
+
+[markup.goldmark.renderer]
+unsafe = true

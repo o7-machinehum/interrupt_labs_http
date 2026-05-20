@@ -1,35 +1,10 @@
 {
-  "name": "hexo-site",
+  "name": "interrupt-labs-site",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate",
-    "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "hexo server"
-  },
-  "hexo": {
-    "version": "7.0.0"
-  },
-  "dependencies": {
-    "hexo": "^7.0.0",
-    "hexo-all-minifier": "^0.5.7",
-    "hexo-autoprefixer": "^2.0.0",
-    "hexo-front-matter": "^4.2.1",
-    "hexo-generator-archive": "^2.0.0",
-    "hexo-generator-category": "^2.0.0",
-    "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index": "^3.0.0",
-    "hexo-generator-tag": "^2.0.0",
-    "hexo-math": "^4.0.0",
-    "hexo-migrator-medium.com": "git@github.com:blockmason/hexo-migrator-medium.com.git",
-    "hexo-pagination": "^3.0.0",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.2.0",
-    "hexo-renderer-stylus": "^3.0.1",
-    "hexo-server": "^3.0.0",
-    "hexo-tag-youtube-responsive": "^0.4.2",
-    "highlight.js": "^11.9.0",
-    "lodash": "^4.17.21"
+    "build": "hugo --cleanDestinationDir --minify",
+    "server": "hugo server --buildFuture --disableFastRender",
+    "check": "hugo --cleanDestinationDir --minify"
   }
 }

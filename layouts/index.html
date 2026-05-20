@@ -1,0 +1,5 @@
+{{ partial "home-start.html" . }}
+{{ range (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+    {{ partial "article-index.html" . }}
+{{ end }}
+{{ partial "home-end.html" . }}

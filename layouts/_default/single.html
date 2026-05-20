@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+{{ partial "head.html" . }}
+<body>
+<section class="main">
+{{ partial "menu.html" . }}
+
+{{ $cover := .Params.cover | default site.Params.indexCover }}
+
+<style>
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stroke {
+    -webkit-text-stroke: 1px black;
+}
+</style>
+
+<header class="intro-header" style="background-image: url('{{ $cover | relURL }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1 class="stroke">{{ .Title | default "Untitled" }}</h1>
+                    {{ with .Params.subtitle }}
+                    <h2 class="post-subheading">
+                        {{ . }}
+                    </h2>
+                    {{ end }}
+                    <span class="meta">
+                        {{ with .Params.author }}
+                            {{ . }}
+                            <br>
+                        {{ end }}
+                        {{ if not .Date.IsZero }}
+                            {{ .Date.Format "2006-01-02" }}
+                        {{ end }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            {{ if or (.GetTerms "tags") (.GetTerms "categories") }}
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    {{ with .GetTerms "tags" }}
+                        {{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a> {{ end }}
+                    {{ else }}
+                        {{ range .GetTerms "categories" }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ end }}
+                    {{ end }}
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    {{ if and (.GetTerms "tags") (.GetTerms "categories") }}
+                        {{ range .GetTerms "categories" }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ end }}
+                    {{ end }}
+                </div>
+            {{ end }}
+
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{ if or .Params.previous_post .Params.next_post }}
+                    <div>
+                        <div class="column">
+                            {{ with .Params.previous_post }}
+                                <a href="{{ . }}">&lt;&lt; Previous Post</a>
+                            {{ end }}
+                            &#8205;
+                        </div>
+                        <div class="column" style="text-align: right">
+                            {{ with .Params.next_post }}
+                                <a href="{{ . }}">Next Post &gt;&gt;</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                {{ end }}
+
+                {{ .Content }}
+            </div>
+
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <hr>
+                {{ partial "author.html" . }}
+            </div>
+        </div>
+    </div>
+</article>
+</section>
+</body>
+</html>

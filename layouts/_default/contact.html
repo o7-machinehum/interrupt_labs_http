@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+{{ partial "head.html" . }}
+<body>
+<section class="main">
+{{ partial "menu.html" . }}
+
+{{ $cover := .Params.cover | default site.Params.indexCover }}
+
+<style>
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stroke {
+    -webkit-text-stroke: 1px black;
+}
+</style>
+
+<header class="intro-header" style="background-image: url('{{ $cover | relURL }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1 class="stroke">{{ .Title | default "Contact Us!" }}</h1>
+                    <span class="meta"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{ .Content }}
+            </div>
+
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <hr>
+                {{ partial "contact-form.html" . }}
+            </div>
+        </div>
+    </div>
+</article>
+</section>
+</body>
+</html>
