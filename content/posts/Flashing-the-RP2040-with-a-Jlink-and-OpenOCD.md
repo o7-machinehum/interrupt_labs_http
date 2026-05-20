@@ -15,8 +15,8 @@ It seems like most people are using the Pico Probe, which is another Pico board 
 
 Let's get going: start by removing openocd. The version of openocd for this is not upstreamed yet.
 <pre>git clone https://github.com/raspberrypi/openocd.git
-cd openocd 
-./bootstrap 
+cd openocd
+./bootstrap
 ./configure --enable-picoprobe
 make -j$(nproc)
 sudo make install</pre>
@@ -30,6 +30,9 @@ As for wiring…
 *   **Pico RUN, Pin 30 **to **Jlink RESET, Pin 15**
 
 Here is the flash script I got working.
-<pre>#!/bin/bash</pre><pre>openocd -f interface/jlink.cfg -c &quot;transport select swd&quot; -c &quot;adapter_khz 6000&quot; -f target/rp2040.cfg  -c &quot;program blink.elf reset exit&quot;</pre>
+<pre>
+#!/bin/bash
+openocd -f interface/jlink.cfg -c &quot;transport select swd&quot; -c &quot;adapter_khz 6000&quot; -f target/rp2040.cfg  -c &quot;program blink.elf reset exit&quot;
+</pre>
 
 Good luck!

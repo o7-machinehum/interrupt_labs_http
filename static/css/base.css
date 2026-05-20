@@ -30,7 +30,9 @@
  * # imports
  *
  * ------------------------------------------------------------------- */
-@import url("font-awesome/css/fontawesome-all.css");
+@import url("font-awesome/css/fontawesome.css");
+@import url("font-awesome/css/fa-brands.css");
+@import url("font-awesome/css/fa-solid.css");
 @import url("micons/micons.css");
 @import url("fonts.css");
 

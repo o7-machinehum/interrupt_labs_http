@@ -7,29 +7,12 @@
 
 {{ $cover := .Params.cover | default site.Params.indexCover }}
 
-<style>
-.column {
-  float: left;
-  width: 50%;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.stroke {
-    -webkit-text-stroke: 1px black;
-}
-</style>
-
 <header class="intro-header" style="background-image: url('{{ $cover | relURL }}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <div class="blog-container">
+        <div class="blog-row">
+            <div class="blog-content">
                 <div class="post-heading">
-                    <h1 class="stroke">{{ .Title | default "Contact Us!" }}</h1>
+                    <h1>{{ .Title | default "Contact Us!" }}</h1>
                     <span class="meta"></span>
                 </div>
             </div>
@@ -38,13 +21,13 @@
 </header>
 
 <article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <div class="blog-container">
+        <div class="blog-row">
+            <div class="blog-content">
                 {{ .Content }}
             </div>
 
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="blog-content">
                 <hr>
                 {{ partial "contact-form.html" . }}
             </div>
