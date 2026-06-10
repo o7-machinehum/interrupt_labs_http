@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+{{ partial "head.html" . }}
+<body class="pd-page">
+{{ $shopURL := "https://shop.rootkitlabs.com/products/phantomdrive" }}
+{{ $videoURL := "https://www.youtube-nocookie.com/embed/QxqeU8ZfaYg?rel=0&modestbranding=1" }}
+{{ $fundingEndpoint := "" }}
+{{ $fundingCurrent := 0 }}
+{{ $fundingGoal := 30000 }}
+
+<header class="pd-top">
+    <nav class="pd-nav" aria-label="PhantomDrive navigation">
+        <a href="{{ "/" | relURL }}" class="pd-nav__brand" aria-label="Rootkit Labs home">
+            <img src="{{ "/img/interrupt_white.svg" | relURL }}" alt="Rootkit Labs">
+        </a>
+        <div class="pd-nav__links">
+            <a href="#story">Story</a>
+            <a href="#specs">Specs</a>
+            <a href="#faq">FAQ</a>
+            <a href="{{ $shopURL }}" class="pd-nav__shop">Shop</a>
+        </div>
+    </nav>
+
+    <div class="pd-wrap pd-title">
+        <img src="{{ "/img/phantomdrive/Logo_white_big.png" | relURL }}" alt="PhantomDrive">
+    </div>
+
+    <div class="pd-wrap">
+        <div class="pd-video-shell">
+            <iframe src="{{ $videoURL }}" title="PhantomDrive project video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <aside class="pd-pledge" aria-label="Back PhantomDrive">
+        <div class="pd-wrap pd-pledge__inner">
+            <div class="pd-funding" data-funding-progress data-funding-endpoint="{{ $fundingEndpoint }}" data-funding-current="{{ $fundingCurrent }}" data-funding-goal="{{ $fundingGoal }}">
+                <div class="pd-funding__head">
+                    <div>
+                        <span class="pd-pledge__label">Funding progress</span>
+                        <strong data-funding-amount>$0 raised</strong>
+                    </div>
+                    <span class="pd-funding__goal">$30,000 goal</span>
+                </div>
+                <div class="pd-funding__bar" role="progressbar" aria-label="Funding progress" aria-valuemin="0" aria-valuemax="{{ $fundingGoal }}" aria-valuenow="{{ $fundingCurrent }}">
+                    <span data-funding-fill style="width: 0%;"></span>
+                </div>
+                <div class="pd-funding__scale" aria-hidden="true">
+                    <span>$0</span>
+                    <span>$30k</span>
+                </div>
+            </div>
+            <a href="{{ $shopURL }}" class="pd-button">Open shop page</a>
+        </div>
+    </aside>
+</header>
+
+<main>
+    <section id="story" class="pd-section pd-section--light pd-story-section">
+        <div class="pd-wrap pd-story">
+            <div class="pd-story__copy">
+                <p class="pd-eyebrow">The project</p>
+                <h2>It starts as a boring flash drive.</h2>
+                <p>Plug Phantomdrive in and the host sees a regular USB mass storage device. The first section behaves like normal storage. The rest stays hidden until the unlock pattern is written...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pd-section pd-section--dark">
+        <div class="pd-wrap">
+            <div class="pd-section-head">
+                <p class="pd-eyebrow">Unlock flow</p>
+                <h2>Normal storage first, protected storage after unlock.</h2>
+            </div>
+            <ol class="pd-flow">
+                <li>
+                    <span>01</span>
+                    <h3>Mounts normally</h3>
+                    <p>Phantomdrive first appears as a normal USB drive.</p>
+                </li>
+                <li>
+                    <span>02</span>
+                    <h3>Waits for the trigger</h3>
+                    <p>Create file called unlock.txt containing <code>password:addyourpasswordhere</code>.</p>
+                </li>
+                <li>
+                    <span>03</span>
+                    <h3>Intercepts the write</h3>
+                    <p>The firmware does not allow the password file write to persist to storage.</p>
+                </li>
+                <li>
+                    <span>04</span>
+                    <h3>Reveals the rest</h3>
+                    <p>The remaining disk is remounted and encrypted/decrypted in place with AES-256.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="specs" class="pd-section pd-section--light">
+        <div class="pd-wrap pd-details">
+            <div>
+                <p class="pd-eyebrow">Known details</p>
+                <h2>Prototype facts from the repo.</h2>
+            </div>
+            <div class="pd-specs-stack">
+                <ul class="pd-tech-list">
+                    <li><strong>Open hardware target</strong><span>Hardware, firmware, and mechanical files are intended for open release.</span></li>
+                    <li><strong>Controller platform</strong><span>Firmware targets the CH569W SoC with USB3, SDIO, and hardware AES support.</span></li>
+                    <li><strong>Visible storage mode</strong><span>The device initially enumerates as a normal USB mass-storage drive.</span></li>
+                    <li><strong>Unlock path</strong><span>The firmware intercepts the unlock write, derives the key, and remounts protected storage.</span></li>
+                    <li><strong>Key derivation</strong><span>The password feeds the project KDF used to derive the AES-256 key.</span></li>
+                    <li><strong>Prototype media</strong><span>The current build uses SD-card storage; eMMC remains possible in a later board spin.</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="pd-wrap pd-carousel-wrap">
+            <div class="pd-carousel" data-pd-carousel aria-label="PhantomDrive hardware images">
+                <div class="pd-carousel__viewport">
+                    <figure class="pd-carousel__slide is-active">
+                        <img src="{{ "/img/phantomdrive/pcb-front.jpg" | relURL }}" alt="PhantomDrive PCB front">
+                        <figcaption>PCB front</figcaption>
+                    </figure>
+                    <figure class="pd-carousel__slide">
+                        <img src="{{ "/img/phantomdrive/pcb-back.jpg" | relURL }}" alt="PhantomDrive PCB back">
+                        <figcaption>PCB back</figcaption>
+                    </figure>
+                    <figure class="pd-carousel__slide">
+                        <img src="{{ "/img/phantomdrive/phantomdrive-closed.webp" | relURL }}" alt="Closed PhantomDrive prototype">
+                        <figcaption>Closed prototype</figcaption>
+                    </figure>
+                    <figure class="pd-carousel__slide">
+                        <img src="{{ "/img/phantomdrive/phantomdrive-hero.webp" | relURL }}" alt="PhantomDrive prototype hero image">
+                        <figcaption>Prototype hero</figcaption>
+                    </figure>
+                    <button class="pd-carousel__button" type="button" data-carousel-prev aria-label="Previous image">&lt;</button>
+                    <button class="pd-carousel__button" type="button" data-carousel-next aria-label="Next image">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="pd-section pd-section--dark">
+        <div class="pd-wrap pd-faq">
+            <div class="pd-section-head">
+                <p class="pd-eyebrow">FAQ</p>
+                <h2>Questions and Answers</h2>
+            </div>
+            <details open>
+                <summary>Why crowdfunding? Why not Kickstarter?</summary>
+                <p>I would like to know how many units to order for the first batch. This simplifies distribution and helps me understand demand. I have use crowdfunding platforms before, they take a cut which raises the price for you.</p>
+            </details>
+            <details>
+                <summary>How far along is the project?</summary>
+                <p>The egineering is finished, I just need to know my volumes to place an order.</p>
+            </details>
+            <details>
+                <summary>Isn't this just VeraCrypt?</summary>
+                <p>No. A normal encrypted volume exposes random-looking encrypted data. PhantomDrive first presents as a normal USB drive, then reveals the protected section only after the unlock trigger.</p>
+            </details>
+            <details>
+                <summary>Is entering a password into a text file insecure?</summary>
+                <p>The firmware watches for the unlock write and does not allow that write to persist to storage.</p>
+            </details>
+            <details>
+                <summary>Why use an SD card?</summary>
+                <p>The current prototype uses SD card storage because eMMC pricing and availability were not attractive for this revision. A future eMMC board spin is still possible.</p>
+            </details>
+            <details>
+                <summary>Is it fully open source?</summary>
+                <p>The project goal is full openness across hardware, firmware, and mechanical files.</p>
+            </details>
+        </div>
+    </section>
+</main>
+
+<div class="pd-sticky-pledge" aria-label="PhantomDrive pledge shortcut">
+    <span>PhantomDrive</span>
+    <a href="{{ $shopURL }}">Back it</a>
+</div>
+<script>
+(function () {
+    var widgets = document.querySelectorAll("[data-funding-progress]");
+
+    function setAmount(widget, value) {
+        var goal = Number(widget.getAttribute("data-funding-goal")) || 30000;
+        var amount = Math.max(0, Math.min(goal, Number(value) || 0));
+        var percent = goal > 0 ? amount / goal * 100 : 0;
+        var fill = widget.querySelector("[data-funding-fill]");
+        var amountLabel = widget.querySelector("[data-funding-amount]");
+        var progress = widget.querySelector('[role="progressbar"]');
+
+        if (fill) {
+            fill.style.width = percent + "%";
+        }
+        if (amountLabel) {
+            amountLabel.textContent = "$" + amount.toLocaleString("en-US") + " raised";
+        }
+        if (progress) {
+            progress.setAttribute("aria-valuenow", String(Math.round(amount)));
+        }
+    }
+
+    widgets.forEach(function (widget) {
+        var endpoint = (widget.getAttribute("data-funding-endpoint") || "").trim();
+
+        setAmount(widget, widget.getAttribute("data-funding-current"));
+        if (!endpoint) {
+            return;
+        }
+
+        fetch(endpoint)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Funding endpoint failed");
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                setAmount(widget, data.raised || data.amount || data.current || 0);
+            })
+            .catch(function () {});
+    });
+}());
+
+(function () {
+    var carousels = document.querySelectorAll("[data-pd-carousel]");
+
+    carousels.forEach(function (carousel) {
+        var slides = Array.prototype.slice.call(carousel.querySelectorAll(".pd-carousel__slide"));
+        var previous = carousel.querySelector("[data-carousel-prev]");
+        var next = carousel.querySelector("[data-carousel-next]");
+        var activeIndex = 0;
+
+        function setSlide(index) {
+            activeIndex = (index + slides.length) % slides.length;
+
+            slides.forEach(function (slide, slideIndex) {
+                var isActive = slideIndex === activeIndex;
+
+                slide.classList.toggle("is-active", isActive);
+                slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+            });
+
+        }
+
+        if (!slides.length) {
+            return;
+        }
+
+        if (previous) {
+            previous.addEventListener("click", function () {
+                setSlide(activeIndex - 1);
+            });
+        }
+
+        if (next) {
+            next.addEventListener("click", function () {
+                setSlide(activeIndex + 1);
+            });
+        }
+
+        setSlide(0);
+    });
+}());
+</script>
+</body>
+</html>
