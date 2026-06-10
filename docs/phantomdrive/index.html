@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,8 +25,8 @@
 
     
     
-        <meta property="og:image" content="http://localhost:1313/img/phantomdrive/phantomdrive-hero.webp">
-        <meta name="twitter:image" content="http://localhost:1313/img/phantomdrive/phantomdrive-hero.webp">
+        <meta property="og:image" content="https://rootkitlabs.com/img/phantomdrive/phantomdrive-hero.webp">
+        <meta name="twitter:image" content="https://rootkitlabs.com/img/phantomdrive/phantomdrive-hero.webp">
     
     <meta name="twitter:card" content="summary_large_image">
 
@@ -83,20 +83,20 @@
 
     <aside class="pd-pledge" aria-label="Back Phantomdrive">
         <div class="pd-wrap pd-pledge__inner">
-            <div class="pd-funding" data-funding-progress data-funding-endpoint="" data-funding-current="0" data-funding-goal="30000">
+            <div class="pd-funding" data-funding-progress data-funding-endpoint="http://139.162.136.197/sold" data-funding-current="0" data-funding-goal="10000">
                 <div class="pd-funding__head">
                     <div>
                         <span class="pd-pledge__label">Funding progress</span>
                         <strong data-funding-amount>$0 raised</strong>
                     </div>
-                    <span class="pd-funding__goal">$30,000 goal</span>
+                    <span class="pd-funding__goal">$10,000 goal</span>
                 </div>
-                <div class="pd-funding__bar" role="progressbar" aria-label="Funding progress" aria-valuemin="0" aria-valuemax="30000" aria-valuenow="0">
+                <div class="pd-funding__bar" role="progressbar" aria-label="Funding progress" aria-valuemin="0" aria-valuemax="10000" aria-valuenow="0">
                     <span data-funding-fill style="width: 0%;"></span>
                 </div>
                 <div class="pd-funding__scale" aria-hidden="true">
                     <span>$0</span>
-                    <span>$30k</span>
+                    <span>$10k</span>
                 </div>
             </div>
             <a href="https://shop.rootkitlabs.com/products/phantomdrive" class="pd-button">Open shop page</a>
@@ -166,6 +166,10 @@
             <div class="pd-carousel" data-pd-carousel aria-label="Phantomdrive hardware images">
                 <div class="pd-carousel__viewport">
                     <figure class="pd-carousel__slide is-active">
+                        <img src="/img/phantomdrive/phantomdrive-hero.webp" alt="Phantomdrive prototype hero image">
+                        <figcaption>Prototype hero</figcaption>
+                    </figure>
+                    <figure class="pd-carousel__slide">
                         <img src="/img/phantomdrive/pcb-front.jpg" alt="Phantomdrive PCB front">
                         <figcaption>PCB front</figcaption>
                     </figure>
@@ -177,13 +181,10 @@
                         <img src="/img/phantomdrive/phantomdrive-closed.webp" alt="Closed Phantomdrive prototype">
                         <figcaption>Closed prototype</figcaption>
                     </figure>
-                    <figure class="pd-carousel__slide">
-                        <img src="/img/phantomdrive/phantomdrive-hero.webp" alt="Phantomdrive prototype hero image">
-                        <figcaption>Prototype hero</figcaption>
-                    </figure>
                     <button class="pd-carousel__button" type="button" data-carousel-prev aria-label="Previous image">&lt;</button>
                     <button class="pd-carousel__button" type="button" data-carousel-next aria-label="Next image">&gt;</button>
                 </div>
+                <div class="pd-carousel__dots" aria-label="Carousel position"></div>
             </div>
         </div>
     </section>
@@ -195,28 +196,43 @@
                 <h2>Questions and Answers</h2>
             </div>
             <details open>
-                <summary>Why crowdfunding? Why not Kickstarter?</summary>
-                <p>I want to know how many units to order for the first batch. That simplifies distribution and helps me understand demand. I have used crowdfunding platforms before; they take a cut, which raises the price for you.</p>
+                <summary>When will my device ship?</summary>
+                <p> The campaign will run until July 15th, 2026. I will start manufacturing after, which will take 4-8 weeks. The first backers should start seeing their Phantomdrives after that.</p>
+            <details>
+                <summary>Why Crowdfunding?</summary>
+                <p>I want to aggregate initial orders so everyone can get a device. My usual customers will tell you I'm usually sold out, this is because as a very small maker I can't take the risk to order large initial volumes.</p>
+            </details>
+            <details>
+                <summary>Why not Kickstarter?</summary>
+                <p>I have used crowdfunding platforms before; they take a cut, which increases the price for you.</p>
+            </details>
+            <details>
+                <summary>Do you has a history of shipping hardware?</summary>
+                <p>Yes! <a href="https://www.crowdsupply.com/interrupt-labs/ovrdrive-usb">Ovrdrive</a> was very successful. I've also shipped hundreds of Flipper Blackhats and Blankpants.<p>
             </details>
             <details>
                 <summary>How far along is the project?</summary>
-                <p>The engineering is finished. I just need to know the order volume before placing the first batch.</p>
+                <p>The engineering is finished, and the devices have been tested. There are 30 units out in the field already.</p>
             </details>
             <details>
                 <summary>Isn't this just VeraCrypt?</summary>
-                <p>No. A normal encrypted volume exposes random-looking encrypted data. Phantomdrive first presents as a normal USB drive, then reveals the protected section only after the unlock trigger.</p>
+                <p>No. A normal encrypted volume exposes random-looking encrypted data. Phantomdrive presents normal enencrypted data, then reveals the protected section only after the unlock trigger.</p>
             </details>
             <details>
                 <summary>Is entering a password into a text file insecure?</summary>
-                <p>The firmware watches for the unlock write and does not allow that write to persist to storage.</p>
+                <p>The firmware snoops for unlock write and will inhibit it.</p>
             </details>
             <details>
                 <summary>Why use an SD card?</summary>
-                <p>The current prototype uses an SD card for storage because eMMC pricing and availability were not attractive for this revision. A future eMMC board spin is still possible.</p>
+                <p>Because AI fucked up the cost of eMMC.</p>
             </details>
             <details>
-                <summary>Is it fully open source?</summary>
-                <p>The goal is full openness across hardware, firmware, and mechanical files.</p>
+                <summary>Can't you just crack open the device and take out the SD card?</summary>
+                <p>Yes, but all the data is encrypted.</p>
+            </details>
+            <details>
+                <summary>What KDF do you use?</summary>
+                <p><code>AES(sha256(password | padding | salt))</code> 100k sha256's. The salt is "per device". If you want a different KDF, DIY :) </p>
             </details>
         </div>
     </section>
@@ -256,7 +272,7 @@
     var widgets = document.querySelectorAll("[data-funding-progress]");
 
     function setAmount(widget, value) {
-        var goal = Number(widget.getAttribute("data-funding-goal")) || 30000;
+        var goal = Number(widget.getAttribute("data-funding-goal")) || 10000;
         var amount = Math.max(0, Math.min(goal, Number(value) || 0));
         var percent = goal > 0 ? amount / goal * 100 : 0;
         var fill = widget.querySelector("[data-funding-fill]");
@@ -287,9 +303,18 @@
                 if (!response.ok) {
                     throw new Error("Funding endpoint failed");
                 }
-                return response.json();
+                return response.text();
             })
-            .then(function (data) {
+            .then(function (text) {
+                var trimmed = text.trim();
+                var amount = Number(trimmed);
+
+                if (trimmed && !isNaN(amount)) {
+                    setAmount(widget, amount);
+                    return;
+                }
+
+                var data = JSON.parse(trimmed);
                 setAmount(widget, data.raised || data.amount || data.current || 0);
             })
             .catch(function () {});
@@ -303,7 +328,11 @@
         var slides = Array.prototype.slice.call(carousel.querySelectorAll(".pd-carousel__slide"));
         var previous = carousel.querySelector("[data-carousel-prev]");
         var next = carousel.querySelector("[data-carousel-next]");
+        var dots = carousel.querySelector(".pd-carousel__dots");
         var activeIndex = 0;
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var dotButtons = [];
 
         function setSlide(index) {
             activeIndex = (index + slides.length) % slides.length;
@@ -315,10 +344,31 @@
                 slide.setAttribute("aria-hidden", isActive ? "false" : "true");
             });
 
+            dotButtons.forEach(function (dot, dotIndex) {
+                var isActive = dotIndex === activeIndex;
+
+                dot.classList.toggle("is-active", isActive);
+                dot.setAttribute("aria-current", isActive ? "true" : "false");
+            });
         }
 
         if (!slides.length) {
             return;
+        }
+
+        if (dots) {
+            dotButtons = slides.map(function (slide, slideIndex) {
+                var dot = document.createElement("button");
+
+                dot.type = "button";
+                dot.setAttribute("aria-label", "Show image " + (slideIndex + 1));
+                dot.addEventListener("click", function () {
+                    setSlide(slideIndex);
+                });
+                dots.appendChild(dot);
+
+                return dot;
+            });
         }
 
         if (previous) {
@@ -332,6 +382,35 @@
                 setSlide(activeIndex + 1);
             });
         }
+
+        carousel.addEventListener("touchstart", function (event) {
+            if (!event.changedTouches.length) {
+                return;
+            }
+
+            touchStartX = event.changedTouches[0].clientX;
+            touchStartY = event.changedTouches[0].clientY;
+        }, { passive: true });
+
+        carousel.addEventListener("touchend", function (event) {
+            var touch;
+            var deltaX;
+            var deltaY;
+
+            if (!event.changedTouches.length) {
+                return;
+            }
+
+            touch = event.changedTouches[0];
+            deltaX = touch.clientX - touchStartX;
+            deltaY = touch.clientY - touchStartY;
+
+            if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) {
+                return;
+            }
+
+            setSlide(activeIndex + (deltaX < 0 ? 1 : -1));
+        }, { passive: true });
 
         setSlide(0);
     });
