@@ -59,7 +59,7 @@
         <div class="pd-wrap pd-story">
             <div class="pd-story__copy">
                 <h2>It starts as a boring flash drive.</h2>
-                <p>Plug Phantomdrive in, and the host sees a regular USB mass storage device. The first section behaves like normal storage. The rest stays hidden until the unlock pattern is written.</p>
+                <p>Phantomdrive masquerades itself as a normal 8GB drive. The remainder of the disk stays hidden until the unlock sequence is activated.</p>
             </div>
         </div>
     </section>
@@ -67,7 +67,7 @@
     <section class="pd-section pd-section--dark">
         <div class="pd-wrap">
             <div class="pd-section-head">
-                <h2>Phantomdrive Unlock Flow</h2>
+                <h2>Phantomdrive Unlock Sequence</h2>
             </div>
             <ol class="pd-flow">
                 <li>
@@ -78,12 +78,12 @@
                 <li>
                     <span>02</span>
                     <h3>Waits for the trigger</h3>
-                    <p>Create a file called <code>unlock.txt</code> containing <code>password:addyourpasswordhere</code>.</p>
+                    <p>To trigger: create a text file containing <code>password:addyourpasswordhere</code>.</p>
                 </li>
                 <li>
                     <span>03</span>
-                    <h3>Intercepts the write</h3>
-                    <p>The firmware prevents that password file from persisting on storage.</p>
+                    <h3>Snoops the password</h3>
+                    <p>The device reads your password and derives an AES256 key. The password is never written to memory.</p>
                 </li>
                 <li>
                     <span>04</span>
@@ -101,14 +101,15 @@
             </div>
             <div class="pd-specs-stack">
                 <ul class="pd-tech-list">
+                    <li><strong>Container size:</strong><span>8GB is reserved for for your "unencrypted" section. While the remainder of the SD card is left for encrypted data.</span></li>
                     <li><strong>Open hardware:</strong><span>Hardware, firmware, software, and mechanical files are <a href="https://github.com/o7-machinehum/phantomdrive">open source</a>.</span></li>
-                    <li><strong>Easy updates:</strong><span>The CH569W firmware can be updated by pressing the reset button while inserting it into your PC. No programmer required.</span></li>
-                    <li><strong>KDF:</strong><span>The key derivation function is <a href="https://github.com/o7-machinehum/phantomdrive/blob/master/src/crypto.c#L169">open</a>.</span></li>
-                    <li><strong>Measured speeds:</strong><span>We've recorded 20 MB/s reads and 9 MB/s writes.</span></li>
-                    <li><strong>Designed in KiCad:</strong><span>You do not need to pay thousands to edit the design files.</span></li>
-                    <li><strong>UART:</strong><span>UART is available through TP1, TP2, and TP3.</span></li>
+                    <li><strong>Storage:</strong><span>An SD card is used for storage, so you determine the capacity. SD card <b>not</b> included.</span></li>
                     <li><strong>Nondescript enclosure:</strong><span>The enclosure has no special markings.</span></li>
-                    <li><strong>SD card storage:</strong><span>An SD card is used for storage, so you determine the capacity.</span></li>
+                    <li><strong>Speed:</strong><span>We've recorded 20 MB/s reads and 9 MB/s writes. We're working to improve it.</span></li>
+                    <li><strong>Easy updates:</strong><span>The CH569W firmware can be updated by pressing the reset button while inserting it into your PC. No special programmer required.</span></li>
+                    <li><strong>KDF:</strong><span>The key derivation function is <a href="https://github.com/o7-machinehum/phantomdrive/blob/master/src/crypto.c#L169">open</a>.</span></li>
+                    <li><strong>UART:</strong><span>UART is available through TP1, TP2, and TP3.</span></li>
+                    <li><strong>Designed in KiCad:</strong><span>You do not need to pay thousands to edit the design files.</span></li>
                 </ul>
             </div>
         </div>
@@ -147,42 +148,43 @@
             </div>
             <details open>
                 <summary>When will my device ship?</summary>
-                <p> The campaign will run until July 15th, 2026. I will start manufacturing after, which will take 4-8 weeks. The first backers should start seeing their Phantomdrives after that.</p>
-            <details>
-                <summary>Why Crowdfunding?</summary>
-                <p>I want to aggregate initial orders so everyone can get a device. My usual customers will tell you I'm usually sold out, this is because as a very small maker I can't take the risk to order large initial volumes.</p>
+                <p> The campaign will run until July 15th, 2026. I will start manufacturing after, which will take 4&ndash;8 weeks. The first backers should start seeing their Phantomdrives after that.</p>
             </details>
             <details>
-                <summary>Why not Kickstarter?</summary>
-                <p>I have used crowdfunding platforms before; they take a cut, which increases the price for you.</p>
-            </details>
-            <details>
-                <summary>Do you has a history of shipping hardware?</summary>
-                <p>Yes! <a href="https://www.crowdsupply.com/interrupt-labs/ovrdrive-usb">Ovrdrive</a> was very successful. I've also shipped hundreds of Flipper Blackhats and Blankpants.<p>
+                <summary>Do you have a history of shipping hardware?</summary>
+                <p>Yes! My previous crowdfunding campaign <a href="https://www.crowdsupply.com/interrupt-labs/ovrdrive-usb">Ovrdrive</a> was successful. I've also shipped hundreds of Flipper Blackhats and Blankpants. Jump on our Discord (linked below) to chat with our community.</p>
             </details>
             <details>
                 <summary>How far along is the project?</summary>
-                <p>The engineering is finished, and the devices have been tested. There are 30 units out in the field already.</p>
+                <p>The engineering is finished and the devices have been tested. There are 30 units out in the field already.</p>
             </details>
             <details>
                 <summary>Isn't this just VeraCrypt?</summary>
-                <p>No. A normal encrypted volume exposes random-looking encrypted data. Phantomdrive presents normal enencrypted data, then reveals the protected section only after the unlock trigger.</p>
+                <p>No. An encrypted volume exposes random-looking encrypted data. Phantomdrive presents normal unenencrypted data, then reveals the protected section after being unlocked. When the device is locked, there's no way for the OS to know there's more space or data on the drive.</p>
             </details>
             <details>
-                <summary>Is entering a password into a text file insecure?</summary>
-                <p>The firmware snoops for unlock write and will inhibit it.</p>
+                <summary>Isn't entering a password into a text file insecure?</summary>
+                <p>The firmware snoops for the string "password:xyz" and inhibits the write of "xyz". Otherwise, yes this would be very insecure.</p>
             </details>
             <details>
                 <summary>Why use an SD card?</summary>
-                <p>Because AI fucked up the cost of eMMC.</p>
+                <p>Because of AI driving up the cost of eMMC. In the future I will likely make an eMMC version, and you will get a discount code if you support this project now.</p>
+            </details>
+            <details>
+                <summary>What KDF do you use?</summary>
+                <p><code>AES(sha256(password | salt))</code> 100k sha256's. The salt is "per device". Since it's an open source project, you have the option to implement your own KDF.</p>
             </details>
             <details>
                 <summary>Can't you just crack open the device and take out the SD card?</summary>
                 <p>Yes, but all the data is encrypted.</p>
             </details>
             <details>
-                <summary>What KDF do you use?</summary>
-                <p><code>AES(sha256(password | padding | salt))</code> 100k sha256's. The salt is "per device". If you want a different KDF, DIY :) </p>
+                <summary>Why Crowdfunding?</summary>
+                <p>As a small maker, I can't take the risk to order large initial volumes. Crowdfunding gives me a way to aggregate orders so that everyone can get a device. </p>
+            </details>
+            <details>
+                <summary>Why not Kickstarter?</summary>
+                <p>I have used crowdfunding platforms before; they take a cut, which increases the price for you.</p>
             </details>
         </div>
     </section>
