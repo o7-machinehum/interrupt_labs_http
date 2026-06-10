@@ -58,7 +58,6 @@
     <section id="story" class="pd-section pd-section--light pd-story-section">
         <div class="pd-wrap pd-story">
             <div class="pd-story__copy">
-                <p class="pd-eyebrow">The project</p>
                 <h2>It starts as a boring flash drive.</h2>
                 <p>Plug Phantomdrive in and the host sees a regular USB mass storage device. The first section behaves like normal storage. The rest stays hidden until the unlock pattern is written...</p>
             </div>
@@ -68,8 +67,7 @@
     <section class="pd-section pd-section--dark">
         <div class="pd-wrap">
             <div class="pd-section-head">
-                <p class="pd-eyebrow">Unlock flow</p>
-                <h2>Normal storage first, protected storage after unlock.</h2>
+                <h2>Phantomdrive Unlock Flow.</h2>
             </div>
             <ol class="pd-flow">
                 <li>
@@ -99,17 +97,18 @@
     <section id="specs" class="pd-section pd-section--light">
         <div class="pd-wrap pd-details">
             <div>
-                <p class="pd-eyebrow">Known details</p>
-                <h2>Prototype facts from the repo.</h2>
+                <h2>Project Details</h2>
             </div>
             <div class="pd-specs-stack">
                 <ul class="pd-tech-list">
-                    <li><strong>Open hardware target</strong><span>Hardware, firmware, and mechanical files are intended for open release.</span></li>
-                    <li><strong>Controller platform</strong><span>Firmware targets the CH569W SoC with USB3, SDIO, and hardware AES support.</span></li>
-                    <li><strong>Visible storage mode</strong><span>The device initially enumerates as a normal USB mass-storage drive.</span></li>
-                    <li><strong>Unlock path</strong><span>The firmware intercepts the unlock write, derives the key, and remounts protected storage.</span></li>
-                    <li><strong>Key derivation</strong><span>The password feeds the project KDF used to derive the AES-256 key.</span></li>
-                    <li><strong>Prototype media</strong><span>The current build uses SD-card storage; eMMC remains possible in a later board spin.</span></li>
+                    <li><strong>The Hardware,</strong><span>firmware, software, and mechanical files are <a href="https://github.com/o7-machinehum/phantomdrive">open source.</a></span></li>
+                    <li><strong>Easy Updates - </strong><span>The CH569W's firmware can be updated by pressing the reset button, and inserted it into your PC. No programmer required.</span></li>
+                    <li><strong>The KDF,</strong><span>or "key derivation function" is <a href ="https://github.com/o7-machinehum/phantomdrive/blob/master/src/crypto.c#L169">open.</a></span></li>
+                    <li><strong>We've recorded</strong><span>20MB/s read and 9MB/s write speeds.</span></li>
+                    <li><strong>Designed in KiCad,</strong><span>so don't need to pay thousands to edit the design files</span></li>
+                    <li><strong>UART</strong><span>is available though TP1, TP2, TP3.</span></li>
+                    <li><strong>Nondescript Enclosure</strong><span>with no special markings.</span></li>
+                    <li><strong>SD Card</strong><span>Is used for storage, so you determine the capacity.</span></li>
                 </ul>
             </div>
         </div>

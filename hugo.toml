@@ -1,6 +1,6 @@
-baseURL = "https://interruptlabs.ca/"
+baseURL = "https://rootkitlabs.com/"
 locale = "en"
-title = "Interrupt Labs Blog"
+title = "Rootkit Labs Blog"
 publishDir = "docs"
 buildFuture = true
 
