@@ -9,7 +9,7 @@
 {{ $fundingGoal := 30000 }}
 
 <header class="pd-top">
-    <nav class="pd-nav" aria-label="PhantomDrive navigation">
+    <nav class="pd-nav" aria-label="Phantomdrive navigation">
         <a href="{{ "/" | relURL }}" class="pd-nav__brand" aria-label="Rootkit Labs home">
             <img src="{{ "/img/interrupt_white.svg" | relURL }}" alt="Rootkit Labs">
         </a>
@@ -22,16 +22,16 @@
     </nav>
 
     <div class="pd-wrap pd-title">
-        <img src="{{ "/img/phantomdrive/Logo_white_big.png" | relURL }}" alt="PhantomDrive">
+        <img src="{{ "/img/phantomdrive/Logo_white_big.png" | relURL }}" alt="Phantomdrive">
     </div>
 
     <div class="pd-wrap">
         <div class="pd-video-shell">
-            <iframe src="{{ $videoURL }}" title="PhantomDrive project video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="{{ $videoURL }}" title="Phantomdrive project video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
 
-    <aside class="pd-pledge" aria-label="Back PhantomDrive">
+    <aside class="pd-pledge" aria-label="Back Phantomdrive">
         <div class="pd-wrap pd-pledge__inner">
             <div class="pd-funding" data-funding-progress data-funding-endpoint="{{ $fundingEndpoint }}" data-funding-current="{{ $fundingCurrent }}" data-funding-goal="{{ $fundingGoal }}">
                 <div class="pd-funding__head">
@@ -59,7 +59,7 @@
         <div class="pd-wrap pd-story">
             <div class="pd-story__copy">
                 <h2>It starts as a boring flash drive.</h2>
-                <p>Plug Phantomdrive in and the host sees a regular USB mass storage device. The first section behaves like normal storage. The rest stays hidden until the unlock pattern is written...</p>
+                <p>Plug Phantomdrive in, and the host sees a regular USB mass storage device. The first section behaves like normal storage. The rest stays hidden until the unlock pattern is written.</p>
             </div>
         </div>
     </section>
@@ -67,7 +67,7 @@
     <section class="pd-section pd-section--dark">
         <div class="pd-wrap">
             <div class="pd-section-head">
-                <h2>Phantomdrive Unlock Flow.</h2>
+                <h2>Phantomdrive Unlock Flow</h2>
             </div>
             <ol class="pd-flow">
                 <li>
@@ -78,17 +78,17 @@
                 <li>
                     <span>02</span>
                     <h3>Waits for the trigger</h3>
-                    <p>Create file called unlock.txt containing <code>password:addyourpasswordhere</code>.</p>
+                    <p>Create a file called <code>unlock.txt</code> containing <code>password:addyourpasswordhere</code>.</p>
                 </li>
                 <li>
                     <span>03</span>
                     <h3>Intercepts the write</h3>
-                    <p>The firmware does not allow the password file write to persist to storage.</p>
+                    <p>The firmware prevents that password file from persisting on storage.</p>
                 </li>
                 <li>
                     <span>04</span>
                     <h3>Reveals the rest</h3>
-                    <p>The remaining disk is remounted and encrypted/decrypted in place with AES-256.</p>
+                    <p>The remaining disk is remounted, and data is encrypted and decrypted in place.</p>
                 </li>
             </ol>
         </div>
@@ -101,34 +101,34 @@
             </div>
             <div class="pd-specs-stack">
                 <ul class="pd-tech-list">
-                    <li><strong>The Hardware,</strong><span>firmware, software, and mechanical files are <a href="https://github.com/o7-machinehum/phantomdrive">open source.</a></span></li>
-                    <li><strong>Easy Updates - </strong><span>The CH569W's firmware can be updated by pressing the reset button, and inserted it into your PC. No programmer required.</span></li>
-                    <li><strong>The KDF,</strong><span>or "key derivation function" is <a href ="https://github.com/o7-machinehum/phantomdrive/blob/master/src/crypto.c#L169">open.</a></span></li>
-                    <li><strong>We've recorded</strong><span>20MB/s read and 9MB/s write speeds.</span></li>
-                    <li><strong>Designed in KiCad,</strong><span>so don't need to pay thousands to edit the design files</span></li>
-                    <li><strong>UART</strong><span>is available though TP1, TP2, TP3.</span></li>
-                    <li><strong>Nondescript Enclosure</strong><span>with no special markings.</span></li>
-                    <li><strong>SD Card</strong><span>Is used for storage, so you determine the capacity.</span></li>
+                    <li><strong>Open hardware:</strong><span>Hardware, firmware, software, and mechanical files are <a href="https://github.com/o7-machinehum/phantomdrive">open source</a>.</span></li>
+                    <li><strong>Easy updates:</strong><span>The CH569W firmware can be updated by pressing the reset button while inserting it into your PC. No programmer required.</span></li>
+                    <li><strong>KDF:</strong><span>The key derivation function is <a href="https://github.com/o7-machinehum/phantomdrive/blob/master/src/crypto.c#L169">open</a>.</span></li>
+                    <li><strong>Measured speeds:</strong><span>We've recorded 20 MB/s reads and 9 MB/s writes.</span></li>
+                    <li><strong>Designed in KiCad:</strong><span>You do not need to pay thousands to edit the design files.</span></li>
+                    <li><strong>UART:</strong><span>UART is available through TP1, TP2, and TP3.</span></li>
+                    <li><strong>Nondescript enclosure:</strong><span>The enclosure has no special markings.</span></li>
+                    <li><strong>SD card storage:</strong><span>An SD card is used for storage, so you determine the capacity.</span></li>
                 </ul>
             </div>
         </div>
         <div class="pd-wrap pd-carousel-wrap">
-            <div class="pd-carousel" data-pd-carousel aria-label="PhantomDrive hardware images">
+            <div class="pd-carousel" data-pd-carousel aria-label="Phantomdrive hardware images">
                 <div class="pd-carousel__viewport">
                     <figure class="pd-carousel__slide is-active">
-                        <img src="{{ "/img/phantomdrive/pcb-front.jpg" | relURL }}" alt="PhantomDrive PCB front">
+                        <img src="{{ "/img/phantomdrive/pcb-front.jpg" | relURL }}" alt="Phantomdrive PCB front">
                         <figcaption>PCB front</figcaption>
                     </figure>
                     <figure class="pd-carousel__slide">
-                        <img src="{{ "/img/phantomdrive/pcb-back.jpg" | relURL }}" alt="PhantomDrive PCB back">
+                        <img src="{{ "/img/phantomdrive/pcb-back.jpg" | relURL }}" alt="Phantomdrive PCB back">
                         <figcaption>PCB back</figcaption>
                     </figure>
                     <figure class="pd-carousel__slide">
-                        <img src="{{ "/img/phantomdrive/phantomdrive-closed.webp" | relURL }}" alt="Closed PhantomDrive prototype">
+                        <img src="{{ "/img/phantomdrive/phantomdrive-closed.webp" | relURL }}" alt="Closed Phantomdrive prototype">
                         <figcaption>Closed prototype</figcaption>
                     </figure>
                     <figure class="pd-carousel__slide">
-                        <img src="{{ "/img/phantomdrive/phantomdrive-hero.webp" | relURL }}" alt="PhantomDrive prototype hero image">
+                        <img src="{{ "/img/phantomdrive/phantomdrive-hero.webp" | relURL }}" alt="Phantomdrive prototype hero image">
                         <figcaption>Prototype hero</figcaption>
                     </figure>
                     <button class="pd-carousel__button" type="button" data-carousel-prev aria-label="Previous image">&lt;</button>
@@ -146,15 +146,15 @@
             </div>
             <details open>
                 <summary>Why crowdfunding? Why not Kickstarter?</summary>
-                <p>I would like to know how many units to order for the first batch. This simplifies distribution and helps me understand demand. I have use crowdfunding platforms before, they take a cut which raises the price for you.</p>
+                <p>I want to know how many units to order for the first batch. That simplifies distribution and helps me understand demand. I have used crowdfunding platforms before; they take a cut, which raises the price for you.</p>
             </details>
             <details>
                 <summary>How far along is the project?</summary>
-                <p>The egineering is finished, I just need to know my volumes to place an order.</p>
+                <p>The engineering is finished. I just need to know the order volume before placing the first batch.</p>
             </details>
             <details>
                 <summary>Isn't this just VeraCrypt?</summary>
-                <p>No. A normal encrypted volume exposes random-looking encrypted data. PhantomDrive first presents as a normal USB drive, then reveals the protected section only after the unlock trigger.</p>
+                <p>No. A normal encrypted volume exposes random-looking encrypted data. Phantomdrive first presents as a normal USB drive, then reveals the protected section only after the unlock trigger.</p>
             </details>
             <details>
                 <summary>Is entering a password into a text file insecure?</summary>
@@ -162,18 +162,43 @@
             </details>
             <details>
                 <summary>Why use an SD card?</summary>
-                <p>The current prototype uses SD card storage because eMMC pricing and availability were not attractive for this revision. A future eMMC board spin is still possible.</p>
+                <p>The current prototype uses an SD card for storage because eMMC pricing and availability were not attractive for this revision. A future eMMC board spin is still possible.</p>
             </details>
             <details>
                 <summary>Is it fully open source?</summary>
-                <p>The project goal is full openness across hardware, firmware, and mechanical files.</p>
+                <p>The goal is full openness across hardware, firmware, and mechanical files.</p>
             </details>
         </div>
     </section>
 </main>
 
-<div class="pd-sticky-pledge" aria-label="PhantomDrive pledge shortcut">
-    <span>PhantomDrive</span>
+<footer class="pd-social-footer" aria-label="Rootkit Labs social links">
+    <div class="pd-wrap pd-social-footer__inner">
+        <a href="https://www.youtube.com/@rootkitlabs">
+            <img src="{{ "/img/youtube.png" | relURL }}" alt="" aria-hidden="true">
+            <span>YouTube</span>
+        </a>
+        <a href="https://www.instagram.com/rootkitlabs/">
+            <img src="{{ "/img/instagram.png" | relURL }}" alt="" aria-hidden="true">
+            <span>Instagram</span>
+        </a>
+        <a href="https://discord.gg/EtZT7mjNuM">
+            <img src="{{ "/img/discord.png" | relURL }}" alt="" aria-hidden="true">
+            <span>Discord</span>
+        </a>
+        <a href="https://github.com/o7-machinehum">
+            <img src="{{ "/img/github.png" | relURL }}" alt="" aria-hidden="true">
+            <span>GitHub</span>
+        </a>
+        <a href="mailto:info@rootkitlabs.com">
+            <img src="{{ "/img/email.png" | relURL }}" alt="" aria-hidden="true">
+            <span>Email</span>
+        </a>
+    </div>
+</footer>
+
+<div class="pd-sticky-pledge" aria-label="Phantomdrive pledge shortcut">
+    <span>Phantomdrive</span>
     <a href="{{ $shopURL }}">Back it</a>
 </div>
 <script>
@@ -260,6 +285,30 @@
 
         setSlide(0);
     });
+}());
+
+(function () {
+    var stickyPledge = document.querySelector(".pd-sticky-pledge");
+    var socialFooter = document.querySelector(".pd-social-footer");
+
+    if (!stickyPledge || !socialFooter) {
+        return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+        stickyPledge.classList.add("is-hidden");
+        return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            stickyPledge.classList.toggle("is-hidden", entry.isIntersecting);
+        });
+    }, {
+        threshold: 0.08
+    });
+
+    observer.observe(socialFooter);
 }());
 </script>
 </body>

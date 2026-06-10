@@ -2038,6 +2038,38 @@ input[type="submit"]:hover {
 .pd-section--dark .pd-faq p {
     color: rgba(248, 246, 242, .72);
 }
+.pd-social-footer {
+    background: #08090b;
+    border-top: 1px solid rgba(248, 246, 242, .12);
+    padding: 1.4rem 0 2.2rem;
+}
+.pd-social-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    justify-content: center;
+}
+.pd-social-footer a {
+    align-items: center;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-flex;
+    font-family: var(--font-sans-semibold);
+    gap: .55rem;
+    min-height: 2.7rem;
+    padding: .55rem .8rem;
+}
+.pd-social-footer a:hover,
+.pd-social-footer a:focus {
+    color: var(--pd-cyan);
+}
+.pd-social-footer img {
+    display: block;
+    filter: brightness(0) invert(1);
+    height: 1.15rem;
+    object-fit: contain;
+    width: 1.15rem;
+}
 .pd-sticky-pledge {
     align-items: center;
     background: rgba(8, 9, 11, .9);
@@ -2050,7 +2082,14 @@ input[type="submit"]:hover {
     padding: .55rem;
     position: fixed;
     right: 18px;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
     z-index: 20;
+}
+.pd-sticky-pledge.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    visibility: hidden;
 }
 .pd-sticky-pledge span {
     color: #fff;
