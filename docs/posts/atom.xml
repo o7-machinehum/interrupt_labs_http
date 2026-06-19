@@ -1,117 +1,122 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Rootkit Labs Blog</title>
-    <link>https://rootkitlabs.com/posts/</link>
-    <description>Recent content in Posts on Rootkit Labs Blog</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 04 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://rootkitlabs.com/posts/atom.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Pick Your Payload - What Open-source Security Hardware Should we Build Next?</title>
-      <link>https://rootkitlabs.com/2025/06/04/whats-next/</link>
-      <pubDate>Wed, 04 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2025/06/04/whats-next/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Everything we do is for educational and ethical purposes &lt;em&gt;only&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;I build open source hardware that &lt;em&gt;I&lt;/em&gt; want, but I won&amp;rsquo;t work on hardware nobody else wants. If people aren’t fired up, I can&amp;rsquo;t get excited, so my projects only take off when there’s real interest. I’ve got three ideas, please pick your favourite. I only have so much time, and I want to gauge interest first. They&amp;rsquo;re all cybersecurity/hacking devices, and must additionally meet these requirements:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>5 Strategies to Sink your Hardware Startup</title>
-      <link>https://rootkitlabs.com/2023/07/08/5-Strategies-to-Sink-your-Hardware-Startup/</link>
-      <pubDate>Sat, 08 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2023/07/08/5-Strategies-to-Sink-your-Hardware-Startup/</guid>
-      <description>&lt;p&gt;This isn&amp;rsquo;t a dropshipping success story, a lucrative exit, or a guide. This is a silly story documenting our failed hardware startup. It&amp;rsquo;s embarrassing to fail, so we seldom hear these stories, but I&amp;rsquo;m going to tell you one, here goes.&lt;/p&gt;&#xA;&lt;p&gt;Fresh out of college a decade ago, I landed my first job as an &amp;ldquo;Electromechanical Technologist&amp;rdquo;. Here&amp;rsquo;s a graphic to describe my mindset.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://rootkitlabs.com/img/me_2013.png&#34; alt=&#34;&#34;&gt;&#xA;The software engineer at my company had a side hustle selling point of sale machines to restaurants. One day he confronted me with a venture. The idea was to build and sell restaurant table pagers. It was simple: press the button, and the server shows up. Our device would outshine existing products, connecting seamlessly with phones, tablets, and computers. I was excited about the project and jumped on board immediately. I did all the hardware, and he did all the software. It was built with beautifully stained bamboo and neatly held condiments on the table.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kicad Vault - A Component Management System</title>
-      <link>https://rootkitlabs.com/2023/05/24/kicad-vault/</link>
-      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2023/05/24/kicad-vault/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;This post is not sponsored or affiliated with KiCad or Digikey.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Back when I worked for a hardware startup, rather than making my own, we used Altium. Altium is a PCB design suite that is loved and hated by thousands. It’s not cheap, and if you need a component management system, you could pry open your wallet and shell out more, upgrading to “Altium Vault”. Vault looks at all your schematics, checks the stock, and highlights supply risks and costs. The system works well but costs a ton, so I made my own.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I Built a Self-Destructing USB Drive Part 3</title>
-      <link>https://rootkitlabs.com/2023/02/06/I-Built-a-Self-Destructing-USB-Drive-Part-3/</link>
-      <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2023/02/06/I-Built-a-Self-Destructing-USB-Drive-Part-3/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly plug it in three times in a row, you will be able to read and write data. We built Ovrdrive for journalists working in hostile environments, security researchers, and anyone interested in open hardware.&lt;/p&gt;&#xA;&lt;p align=&#34;center&#34;&gt;&#xA;&lt;a href=&#34;https://shop.interruptlabs.ca/products/ovrdrive-usb&#34;&gt;Device for Sale Now!&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;I ended my last post with the design finished and the boards on order. Once I received the boards I built them up. I used a reflow hotplate for the top, and heat gun for the bottom.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I&#39;m Building a Self-Destructing USB Drive Part 2</title>
-      <link>https://rootkitlabs.com/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/</link>
-      <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly plug it in three times in a row, you will be able to read and write data. We built Ovrdrive for journalists working in hostile environments, security researchers, and anyone interested in open hardware.&lt;/p&gt;&#xA;&lt;p align=&#34;center&#34;&gt;&#xA;&lt;a href=&#34;https://shop.interruptlabs.ca/products/ovrdrive-usb&#34;&gt;Device for Sale Now!&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;This post outlines the design process and challenges. I&amp;rsquo;ll discuss my bench prototyping, the schematic, layout and mechanical sourcing.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I&#39;m Building a Self-Destructing USB Drive</title>
-      <link>https://rootkitlabs.com/2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/</link>
-      <pubDate>Fri, 29 Jul 2022 14:02:45 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/</guid>
-      <description>&lt;p align=&#34;center&#34;&gt;&#xA;&lt;a href=&#34;https://shop.interruptlabs.ca/products/ovrdrive-usb&#34;&gt;Device for Sale Now!&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Because we all know the best way to keep your data safe is by blowing it up, right?&#xA;&lt;img src=&#34;https://cdn-images-1.medium.com/max/1024/1*3NhahmZ5sI8ZNdo98FUSsg.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Well, for most of us, the real answer lies with encryption. But consider this: there are certain countries where it is dangerous to be a journalist. Now pretend you&amp;rsquo;re investigating political corruption in one of these countries; in such cases, it may not be safe for you to be found with an encrypted drive.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Shit Happens when you Fork Naked</title>
-      <link>https://rootkitlabs.com/2022/06/21/Shit-Happens-when-you-Fork-Naked/</link>
-      <pubDate>Tue, 21 Jun 2022 10:38:08 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2022/06/21/Shit-Happens-when-you-Fork-Naked/</guid>
-      <description>&lt;p&gt;If you develop software, a fork isn&amp;rsquo;t just a utensil. It indicates a divergence in a codebase. Code gets forked for several reasons, different opinions, access rights, making a pull request into the upstream repository, etc. There is the correct way to fork software. Then there&amp;rsquo;s what I call a naked fork. A naked fork is summarized below.&lt;/p&gt;&#xA;&lt;pre&gt;git clone [git@github.com](mailto:git@github.com):someone/something.git&#xA;cd something&#xA;rm -rf .git&#xA;git init&#xA;git add *&#xA;git commit . “First commit, forked from something” &#xA;git remote set-url origin [git@github.com](mailto:git@github.com):me/something.git&#xA;git push&lt;/pre&gt;&#xA;&lt;p&gt;If you don&amp;rsquo;t understand what&amp;rsquo;s happening here, I&amp;rsquo;ll explain. You start by cloning someone else codebase. Then nuke all the history by deleting the .git folder, creating another git repository, and then pushing it to your empty repository. You will have one initial commit in the repository, which contains the entire old repository, which could be millions of lines of code.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Flashing the RP2040 with a Jlink and OpenOCD</title>
-      <link>https://rootkitlabs.com/2022/03/08/Flashing-the-RP2040-with-a-Jlink-and-OpenOCD/</link>
-      <pubDate>Tue, 08 Mar 2022 09:42:14 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2022/03/08/Flashing-the-RP2040-with-a-Jlink-and-OpenOCD/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — Raspberry Pi People&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;I picked up a Pico for a couple of bucks to try it out. In a time of extreme scarcity and shortage in silicon, I&amp;rsquo;ve started evaluating different options, and the RP2040 is very available. It hosts a dual Cortex M0+ processor with 264k RAM and all the usual peripherals. However, it lacks flash. The chip requires an external QSPI flash to hold the program instructions.&#xA;&lt;img src=&#34;https://cdn-images-1.medium.com/max/687/1*Uu8Z74Z2he-8lcompmJlXw.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Upcycling laptop memory for single-board computers?</title>
-      <link>https://rootkitlabs.com/2022/01/23/Upcycling-laptop-memory-for-single-board-computers/</link>
-      <pubDate>Sun, 23 Jan 2022 14:59:41 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2022/01/23/Upcycling-laptop-memory-for-single-board-computers/</guid>
-      <description>&lt;p&gt;A few weeks ago, I headed to my local computer shop in search of affordable RAM. &lt;a href=&#34;https://machinehum.medium.com/im-not-putting-a-wifi-router-into-a-phone-charger-7b36e90ee08d&#34;&gt;Due to the chip shortage&lt;/a&gt;, I have had to become creative lately in how I source parts for prototyping. My idea was to buy older DDR3 laptop RAM, remove the chips, and then repurpose them for my current project. I wasn’t sure if it was going to work, but I figured it was better than waiting for a twelve-month lead time.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I put a WiFi router into a phone charger (Final Post)</title>
-      <link>https://rootkitlabs.com/2021/10/25/I-put-a-WiFi-router-into-a-phone-charger-Final-Post/</link>
-      <pubDate>Mon, 25 Oct 2021 17:40:42 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2021/10/25/I-put-a-WiFi-router-into-a-phone-charger-Final-Post/</guid>
-      <description>&lt;h3 id=&#34;up-untilnow&#34;&gt;Up Until Now&lt;/h3&gt;&#xA;&lt;p&gt;The WifiWart is a powerful embedded Linux WiFi security device hiding inside a phone charger. It is akin to the WiFi Pineapple without looking malicious. Over the length of the project, I’ve had plenty of comments telling me to buy a single-board computer (SBC), jam in an existing enclosure, and call it done. If I was trying to build a one-off device for personal use, this is what I would do. But this project isn’t for me; it’s for the community. In the past six months, I’ve designed a completely open source SBC boasting a 1.2Ghz quad-core processor, 1GB of DDR3 RAM, two WiFi radios, a USB port and all the power supplies to convert mains electricity to the required voltages for the processor. In addition to the electronics, firmware and mechanical design open source, the CAD software used in the design is also open source. I did this intentionally, as having an open source design in Altium or Solidworks is pointless because nobody will shell out 10k+ for software to view my design. That being said, &lt;em&gt;I hope you enjoy the final post :).&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Bluetooth WarDriving with the nRF52</title>
-      <link>https://rootkitlabs.com/2021/10/15/Bluetooth-WarDriving-with-the-nRF52/</link>
-      <pubDate>Fri, 15 Oct 2021 10:47:30 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2021/10/15/Bluetooth-WarDriving-with-the-nRF52/</guid>
-      <description>&lt;p&gt;The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 and 2.4Ghz radio to implement various wireless protocols. In this tutorial, I want to walk through setting up a Zephyr RTOS environment and building/flashing some code to do some wardriving.&lt;/p&gt;&#xA;&lt;p&gt;But first, what is wardriving?&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Wardriving&lt;/strong&gt; is the act of searching for Wi-Fi wireless networks, usually from a moving vehicle, using a laptop or smartphone.&amp;gt; — Wikipedia&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I&#39;m not putting a WiFi router into a phone charger (Part 3)</title>
-      <link>https://rootkitlabs.com/2021/09/22/I&#39;m-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/</link>
-      <pubDate>Wed, 22 Sep 2021 12:19:07 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2021/09/22/I&#39;m-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/</guid>
-      <description>&lt;p&gt;There are two classes of problems in the world: stupid and interesting. Building a fusion reactor is an interesting problem, while a thorn in your finger is a stupid problem. Typically you don’t like working on stupid problems. You want them gone. A job dealing with primarily stupid problems may be considered a shitty job. Currently, I’m working on some really stupid problems. Let’s read an email from my friend Mia.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I&#39;m putting a WiFi router into a wall charger (Part 2)</title>
-      <link>https://rootkitlabs.com/2021/07/19/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-2/</link>
-      <pubDate>Mon, 19 Jul 2021 13:37:10 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2021/07/19/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-2/</guid>
-      <description>&lt;p&gt;This post will outline the bringup of Linux on a PCB I developed from scratch. You can read more about the hardware design in the earlier posts linked above. I’ll talk about driver bringup, system characterization, testing, and software development. By the end of this post, we will have a fully booted single-board computer (SBC). The last post was left on a somewhat unexciting note. To recap, I populated the 2.5V regulator with a 3.3V. After powering up the board, I read this rail had an &lt;strong&gt;absolute maximum rating of 2.7V&lt;/strong&gt;. Or so we were told…&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I&#39;m putting a WiFi router into a wall charger (Part 1)</title>
-      <link>https://rootkitlabs.com/2021/06/15/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-1/</link>
-      <pubDate>Tue, 15 Jun 2021 15:35:53 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2021/06/15/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-1/</guid>
-      <description>&lt;p&gt;This project is effectively “building a computer from scratch”; RAM, disk, USB and a processor. Our computer will be running a full-fledged operating system capable of installing programs, managing a network stack, playing games and even browsing the internet. However, we’re not going to be playing any games. This post is going to outline board layout, BOM generation, assembly and PCB bring up.&lt;/p&gt;&#xA;&lt;h3 id=&#34;board-layout&#34;&gt;Board Layout&lt;/h3&gt;&#xA;&lt;p&gt;The schematic is the logical connection of the components, while the layout is the physical connection. So the first task is to set up the design rules in KiCad. I’m planning on using JLCPCB’s four-layer service; their capabilities &lt;a href=&#34;https://jlcpcb.com/capabilities/Capabilities&#34;&gt;can be found here&lt;/a&gt;. Rather than putting the exact capabilities in, I typically round the numbers up; you don’t want to be designing on edge.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>I&#39;m putting a WiFi router into a wall charger (Part 0)</title>
-      <link>https://rootkitlabs.com/2021/04/28/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-0/</link>
-      <pubDate>Wed, 28 Apr 2021 18:41:33 +0000</pubDate>
-      <guid>https://rootkitlabs.com/2021/04/28/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-0/</guid>
-      <description>&lt;p&gt;This is the first part of a blog about putting a wifi router into a phone charger. Join us on &lt;a href=&#34;https://discord.gg/EtZT7mjNuM&#34;&gt;Discord here&lt;/a&gt;. Check out the &lt;a href=&#34;https://github.com/o7-machinehum/wifiwart&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;WiFi Pineapples are well-known tools in the security community. For those unfamiliar, Pineapples are purpose-built routers to be used in network attacks and exploits. With a Pineapple, you can perform man-in-the-middle attacks, network deauthing and password sniffing. Gilfoyle and Elliot used them in popular shows such as Mr. Robot and Silicon Valley. Hak5 had made a splash in the security community when they created the Pineapple, but I think there’s one major flaw: The form factor.&#xA;&lt;img src=&#34;https://cdn-images-1.medium.com/max/1024/1*qCt5mywjpZ9qsblO9COfAg.png&#34; alt=&#34;&#34;&gt;&lt;figcaption&gt;When IT finds your drop&lt;/figcaption&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Posts on Rootkit Labs Blog</title>
+		<link>https://rootkitlabs.com/posts/</link>
+		<description>Recent content in Posts on Rootkit Labs Blog</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 04 Jun 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://rootkitlabs.com/posts/atom.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Pick Your Payload - What Open-source Security Hardware Should we Build Next?</title>
+				<link>https://rootkitlabs.com/2025/06/04/whats-next/</link>
+				<pubDate>Wed, 04 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2025/06/04/whats-next/</guid>
+				<description>&lt;p&gt;&lt;strong&gt;Everything we do is for educational and ethical purposes &lt;em&gt;only&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;I build open source hardware that &lt;em&gt;I&lt;/em&gt; want, but I won&amp;rsquo;t work on hardware nobody else wants. If people aren’t fired up, I can&amp;rsquo;t get excited, so my projects only take off when there’s real interest. I’ve got three ideas, please pick your favourite. I only have so much time, and I want to gauge interest first. They&amp;rsquo;re all cybersecurity/hacking devices, and must additionally meet these requirements:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>5 Strategies to Sink your Hardware Startup</title>
+				<link>https://rootkitlabs.com/2023/07/08/5-Strategies-to-Sink-your-Hardware-Startup/</link>
+				<pubDate>Sat, 08 Jul 2023 00:00:00 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2023/07/08/5-Strategies-to-Sink-your-Hardware-Startup/</guid>
+				<description>&lt;p&gt;This isn&amp;rsquo;t a dropshipping success story, a lucrative exit, or a guide. This is a silly story documenting our failed hardware startup. It&amp;rsquo;s embarrassing to fail, so we seldom hear these stories, but I&amp;rsquo;m going to tell you one, here goes.&lt;/p&gt;&#xA;&lt;p&gt;Fresh out of college a decade ago, I landed my first job as an &amp;ldquo;Electromechanical Technologist&amp;rdquo;. Here&amp;rsquo;s a graphic to describe my mindset.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://rootkitlabs.com/img/me_2013.png&#34; alt=&#34;&#34;&gt;&#xA;The software engineer at my company had a side hustle selling point of sale machines to restaurants. One day he confronted me with a venture. The idea was to build and sell restaurant table pagers. It was simple: press the button, and the server shows up. Our device would outshine existing products, connecting seamlessly with phones, tablets, and computers. I was excited about the project and jumped on board immediately. I did all the hardware, and he did all the software. It was built with beautifully stained bamboo and neatly held condiments on the table.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Kicad Vault - A Component Management System</title>
+				<link>https://rootkitlabs.com/2023/05/24/kicad-vault/</link>
+				<pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2023/05/24/kicad-vault/</guid>
+				<description>&lt;p&gt;&lt;strong&gt;This post is not sponsored or affiliated with KiCad or Digikey.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Back when I worked for a hardware startup, rather than making my own, we used Altium. Altium is a PCB design suite that is loved and hated by thousands. It’s not cheap, and if you need a component management system, you could pry open your wallet and shell out more, upgrading to “Altium Vault”. Vault looks at all your schematics, checks the stock, and highlights supply risks and costs. The system works well but costs a ton, so I made my own.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I Built a Self-Destructing USB Drive Part 3</title>
+				<link>https://rootkitlabs.com/2023/02/06/I-Built-a-Self-Destructing-USB-Drive-Part-3/</link>
+				<pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2023/02/06/I-Built-a-Self-Destructing-USB-Drive-Part-3/</guid>
+				<description>&lt;p&gt;I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly plug it in three times in a row, you will be able to read and write data. We built Ovrdrive for journalists working in hostile environments, security researchers, and anyone interested in open hardware.&lt;/p&gt;&#xA;&lt;p align=&#34;center&#34;&gt;&#xA;&lt;a href=&#34;https://shop.interruptlabs.ca/products/ovrdrive-usb&#34;&gt;Device for Sale Now!&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;I ended my last post with the design finished and the boards on order. Once I received the boards I built them up. I used a reflow hotplate for the top, and heat gun for the bottom.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I&#39;m Building a Self-Destructing USB Drive Part 2</title>
+				<link>https://rootkitlabs.com/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/</link>
+				<pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2022/08/31/I-m-Building-a-Self-Destructing-USB-Drive-Part-2/</guid>
+				<description>&lt;p&gt;I&amp;rsquo;m building an open-source USB drive with a hidden obfuscation If you plug the device in normally, it will appear blank, but if you quickly plug it in three times in a row, you will be able to read and write data. We built Ovrdrive for journalists working in hostile environments, security researchers, and anyone interested in open hardware.&lt;/p&gt;&#xA;&lt;p align=&#34;center&#34;&gt;&#xA;&lt;a href=&#34;https://shop.interruptlabs.ca/products/ovrdrive-usb&#34;&gt;Device for Sale Now!&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;This post outlines the design process and challenges. I&amp;rsquo;ll discuss my bench prototyping, the schematic, layout and mechanical sourcing.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I&#39;m Building a Self-Destructing USB Drive</title>
+				<link>https://rootkitlabs.com/2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/</link>
+				<pubDate>Fri, 29 Jul 2022 14:02:45 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2022/07/29/I-m-Building-a-Self-Destructing-USB-Drive/</guid>
+				<description>&lt;p align=&#34;center&#34;&gt;&#xA;&lt;a href=&#34;https://shop.interruptlabs.ca/products/ovrdrive-usb&#34;&gt;Device for Sale Now!&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Because we all know the best way to keep your data safe is by blowing it up, right?&#xA;&lt;img src=&#34;https://cdn-images-1.medium.com/max/1024/1*3NhahmZ5sI8ZNdo98FUSsg.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Well, for most of us, the real answer lies with encryption. But consider this: there are certain countries where it is dangerous to be a journalist. Now pretend you&amp;rsquo;re investigating political corruption in one of these countries; in such cases, it may not be safe for you to be found with an encrypted drive.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Shit Happens when you Fork Naked</title>
+				<link>https://rootkitlabs.com/2022/06/21/Shit-Happens-when-you-Fork-Naked/</link>
+				<pubDate>Tue, 21 Jun 2022 10:38:08 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2022/06/21/Shit-Happens-when-you-Fork-Naked/</guid>
+				<description>&lt;p&gt;If you develop software, a fork isn&amp;rsquo;t just a utensil. It indicates a divergence in a codebase. Code gets forked for several reasons, different opinions, access rights, making a pull request into the upstream repository, etc. There is the correct way to fork software. Then there&amp;rsquo;s what I call a naked fork. A naked fork is summarized below.&lt;/p&gt;&#xA;&lt;pre&gt;git clone [git@github.com](mailto:git@github.com):someone/something.git&#xA;cd something&#xA;rm -rf .git&#xA;git init&#xA;git add *&#xA;git commit . “First commit, forked from something” &#xA;git remote set-url origin [git@github.com](mailto:git@github.com):me/something.git&#xA;git push&lt;/pre&gt;&#xA;&lt;p&gt;If you don&amp;rsquo;t understand what&amp;rsquo;s happening here, I&amp;rsquo;ll explain. You start by cloning someone else codebase. Then nuke all the history by deleting the .git folder, creating another git repository, and then pushing it to your empty repository. You will have one initial commit in the repository, which contains the entire old repository, which could be millions of lines of code.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Flashing the RP2040 with a Jlink and OpenOCD</title>
+				<link>https://rootkitlabs.com/2022/03/08/Flashing-the-RP2040-with-a-Jlink-and-OpenOCD/</link>
+				<pubDate>Tue, 08 Mar 2022 09:42:14 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2022/03/08/Flashing-the-RP2040-with-a-Jlink-and-OpenOCD/</guid>
+				<description>&lt;blockquote&gt;&#xA;&lt;p&gt;Raspberry Pi Pico is a tiny, fast, and versatile board built using RP2040, a brand new microcontroller chip designed by Raspberry Pi in the UK. — Raspberry Pi People&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;I picked up a Pico for a couple of bucks to try it out. In a time of extreme scarcity and shortage in silicon, I&amp;rsquo;ve started evaluating different options, and the RP2040 is very available. It hosts a dual Cortex M0+ processor with 264k RAM and all the usual peripherals. However, it lacks flash. The chip requires an external QSPI flash to hold the program instructions.&#xA;&lt;img src=&#34;https://cdn-images-1.medium.com/max/687/1*Uu8Z74Z2he-8lcompmJlXw.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Upcycling laptop memory for single-board computers?</title>
+				<link>https://rootkitlabs.com/2022/01/23/Upcycling-laptop-memory-for-single-board-computers/</link>
+				<pubDate>Sun, 23 Jan 2022 14:59:41 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2022/01/23/Upcycling-laptop-memory-for-single-board-computers/</guid>
+				<description>&lt;p&gt;A few weeks ago, I headed to my local computer shop in search of affordable RAM. &lt;a href=&#34;https://machinehum.medium.com/im-not-putting-a-wifi-router-into-a-phone-charger-7b36e90ee08d&#34;&gt;Due to the chip shortage&lt;/a&gt;, I have had to become creative lately in how I source parts for prototyping. My idea was to buy older DDR3 laptop RAM, remove the chips, and then repurpose them for my current project. I wasn’t sure if it was going to work, but I figured it was better than waiting for a twelve-month lead time.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I put a WiFi router into a phone charger (Final Post)</title>
+				<link>https://rootkitlabs.com/2021/10/25/I-put-a-WiFi-router-into-a-phone-charger-Final-Post/</link>
+				<pubDate>Mon, 25 Oct 2021 17:40:42 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2021/10/25/I-put-a-WiFi-router-into-a-phone-charger-Final-Post/</guid>
+				<description>&lt;h3 id=&#34;up-untilnow&#34;&gt;Up Until Now&lt;/h3&gt;&#xA;&lt;p&gt;The WifiWart is a powerful embedded Linux WiFi security device hiding inside a phone charger. It is akin to the WiFi Pineapple without looking malicious. Over the length of the project, I’ve had plenty of comments telling me to buy a single-board computer (SBC), jam in an existing enclosure, and call it done. If I was trying to build a one-off device for personal use, this is what I would do. But this project isn’t for me; it’s for the community. In the past six months, I’ve designed a completely open source SBC boasting a 1.2Ghz quad-core processor, 1GB of DDR3 RAM, two WiFi radios, a USB port and all the power supplies to convert mains electricity to the required voltages for the processor. In addition to the electronics, firmware and mechanical design open source, the CAD software used in the design is also open source. I did this intentionally, as having an open source design in Altium or Solidworks is pointless because nobody will shell out 10k+ for software to view my design. That being said, &lt;em&gt;I hope you enjoy the final post :).&lt;/em&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Bluetooth WarDriving with the nRF52</title>
+				<link>https://rootkitlabs.com/2021/10/15/Bluetooth-WarDriving-with-the-nRF52/</link>
+				<pubDate>Fri, 15 Oct 2021 10:47:30 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2021/10/15/Bluetooth-WarDriving-with-the-nRF52/</guid>
+				<description>&lt;p&gt;The nRF52 is a very popular Bluetooth chip that has taken over most of the wireless embedded space. The system-on-chip (SoC) houses an ARM Cortex M4 and 2.4Ghz radio to implement various wireless protocols. In this tutorial, I want to walk through setting up a Zephyr RTOS environment and building/flashing some code to do some wardriving.&lt;/p&gt;&#xA;&lt;p&gt;But first, what is wardriving?&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Wardriving&lt;/strong&gt; is the act of searching for Wi-Fi wireless networks, usually from a moving vehicle, using a laptop or smartphone.&amp;gt; — Wikipedia&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I&#39;m not putting a WiFi router into a phone charger (Part 3)</title>
+				<link>https://rootkitlabs.com/2021/09/22/I&#39;m-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/</link>
+				<pubDate>Wed, 22 Sep 2021 12:19:07 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2021/09/22/I&#39;m-not-putting-a-WiFi-router-into-a-phone-charger-Part-3/</guid>
+				<description>&lt;p&gt;There are two classes of problems in the world: stupid and interesting. Building a fusion reactor is an interesting problem, while a thorn in your finger is a stupid problem. Typically you don’t like working on stupid problems. You want them gone. A job dealing with primarily stupid problems may be considered a shitty job. Currently, I’m working on some really stupid problems. Let’s read an email from my friend Mia.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I&#39;m putting a WiFi router into a wall charger (Part 2)</title>
+				<link>https://rootkitlabs.com/2021/07/19/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-2/</link>
+				<pubDate>Mon, 19 Jul 2021 13:37:10 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2021/07/19/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-2/</guid>
+				<description>&lt;p&gt;This post will outline the bringup of Linux on a PCB I developed from scratch. You can read more about the hardware design in the earlier posts linked above. I’ll talk about driver bringup, system characterization, testing, and software development. By the end of this post, we will have a fully booted single-board computer (SBC). The last post was left on a somewhat unexciting note. To recap, I populated the 2.5V regulator with a 3.3V. After powering up the board, I read this rail had an &lt;strong&gt;absolute maximum rating of 2.7V&lt;/strong&gt;. Or so we were told…&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I&#39;m putting a WiFi router into a wall charger (Part 1)</title>
+				<link>https://rootkitlabs.com/2021/06/15/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-1/</link>
+				<pubDate>Tue, 15 Jun 2021 15:35:53 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2021/06/15/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-1/</guid>
+				<description>&lt;p&gt;This project is effectively “building a computer from scratch”; RAM, disk, USB and a processor. Our computer will be running a full-fledged operating system capable of installing programs, managing a network stack, playing games and even browsing the internet. However, we’re not going to be playing any games. This post is going to outline board layout, BOM generation, assembly and PCB bring up.&lt;/p&gt;&#xA;&lt;h3 id=&#34;board-layout&#34;&gt;Board Layout&lt;/h3&gt;&#xA;&lt;p&gt;The schematic is the logical connection of the components, while the layout is the physical connection. So the first task is to set up the design rules in KiCad. I’m planning on using JLCPCB’s four-layer service; their capabilities &lt;a href=&#34;https://jlcpcb.com/capabilities/Capabilities&#34;&gt;can be found here&lt;/a&gt;. Rather than putting the exact capabilities in, I typically round the numbers up; you don’t want to be designing on edge.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>I&#39;m putting a WiFi router into a wall charger (Part 0)</title>
+				<link>https://rootkitlabs.com/2021/04/28/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-0/</link>
+				<pubDate>Wed, 28 Apr 2021 18:41:33 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2021/04/28/I&#39;m-putting-a-WiFi-router-into-a-wall-charger-Part-0/</guid>
+				<description>&lt;p&gt;This is the first part of a blog about putting a wifi router into a phone charger. Join us on &lt;a href=&#34;https://discord.gg/EtZT7mjNuM&#34;&gt;Discord here&lt;/a&gt;. Check out the &lt;a href=&#34;https://github.com/o7-machinehum/wifiwart&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;WiFi Pineapples are well-known tools in the security community. For those unfamiliar, Pineapples are purpose-built routers to be used in network attacks and exploits. With a Pineapple, you can perform man-in-the-middle attacks, network deauthing and password sniffing. Gilfoyle and Elliot used them in popular shows such as Mr. Robot and Silicon Valley. Hak5 had made a splash in the security community when they created the Pineapple, but I think there’s one major flaw: The form factor.&#xA;&lt;img src=&#34;https://cdn-images-1.medium.com/max/1024/1*qCt5mywjpZ9qsblO9COfAg.png&#34; alt=&#34;&#34;&gt;&lt;figcaption&gt;When IT finds your drop&lt;/figcaption&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>
