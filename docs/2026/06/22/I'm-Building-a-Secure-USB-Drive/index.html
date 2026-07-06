@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+        
+    
+
+    
+        <meta name="description" content="This article was written by a human, for humans. Link to support this project.
+Many places don&amp;rsquo;t respect privacy laws, in certain situations you …">
+        <meta property="og:description" content="This article was written by a human, for humans. Link to support this project.
+Many places don&amp;rsquo;t respect privacy laws, in certain situations you …">
+    
+
+    
+        <meta name="author" content="Ryan Walker">
+    
+
+    <meta property="og:title" content="I&#39;m Building a Secure USB Drive That Hides Itself">
+    <meta property="og:site_name" content="Rootkit Labs Blog">
+    <meta property="og:type" content="article">
+
+    
+    
+        <meta property="og:image" content="https://rootkitlabs.com/img/phantomdrive/pcb-front.jpg">
+        <meta name="twitter:image" content="https://rootkitlabs.com/img/phantomdrive/pcb-front.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>I&#39;m Building a Secure USB Drive That Hides Itself - Rootkit Labs Blog</title>
+
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPDQ8MSX3T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JPDQ8MSX3T');
+</script>
+
+
+    
+        <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [["\\(", "\\)"]],
+      displayMath: [["\\[", "\\]"], ["$$", "$$"]],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+    },
+    chtml: {
+      scale: 2.0
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    
+
+    
+        <link rel="icon" href="/img/logo.png">
+    
+    <link rel="alternate" href="/atom.xml" title="Rootkit Labs Blog" type="application/rss+xml">
+</head>
+
+<body>
+<section class="main">
+<nav class="site-nav" aria-label="Site navigation">
+    <a class="site-home-link" href="/#about" aria-label="Go to blog section on homepage">
+        <span class="site-home-link__arrow" aria-hidden="true"></span>
+        <span>Blog</span>
+    </a>
+</nav>
+
+
+
+
+<header class="intro-header" style="background-image: url('/img/phantomdrive/pcb-front.jpg')">
+    <div class="blog-container">
+        <div class="blog-row">
+            <div class="blog-content">
+                <div class="post-heading">
+                    <h1>I&#39;m Building a Secure USB Drive That Hides Itself</h1>
+                    
+                    <span class="meta">
+                        
+                        
+                            2026-06-22
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="blog-container">
+        <div class="blog-row">
+            
+
+            <div class="blog-content">
+                
+
+                <p><em>This article was written by a human, for humans.</em> <a href="https://rootkitlabs.com/phantomdrive">Link to support this project</a>.</p>
+<hr>
+<p>Many places don&rsquo;t respect privacy laws, in certain situations you may be forced to unencrypt your media, or worse, assumed to be guilty. A Veracrypt hidden volume is useful in the former situation, but not the latter.</p>
+<p>This is why I made Phantomdrive.</p>
+<p><img src="/img/phantomdrive/phantomdrive-front.webp" alt=""></p>
+<p>Phantomdrive is a completely open source USB drive that appears as an 8 GB drive when first plugged in. There&rsquo;s no way for the OS to detect the remainder of the disk. If the user edits a plaintext file on the disk with the contents <code>password:PUTYOURPASSWORDHERE</code>, it unmounts itself and remounts the second hidden section and AES-256 encrypts/decrypts in place.</p>
+<p>With Phantomdrive, hopefully you&rsquo;ll slip past authoritarian government representatives, corrupt police, and anyone else that doesn&rsquo;t respect basic encryption rights.</p>
+<h1 id="the-design">The Design</h1>
+<p>Everything is completely open source: the firmware, hardware and mechanical engineering. The tools I used to design the device are also open source. Lets get into the design!</p>
+<p>For this project I used an interesting little chip called the <strong>CH569</strong>. It&rsquo;s from the same company who make the  USB to Serial chip (<strong>CH340</strong>) found on virtually every knockoff Arduino.</p>
+<p><img src="/img/ch569.jpg" alt=""></p>
+<p>For this project I&rsquo;m making use of the USB3, SD/eMMC and the AES block. The SM4 encryption block you can see above is apparently <em>standardised for commercial cryptography in China - Wikipedia</em>.</p>
+<p>Due to AI demand the cost of eMMC memory is unusually high, so I chose to go with an SD card for memory. Someone will find your SD card if they tear it apart, but of course everything is encrypted. I used epoxy to glue the case together, meaning an attacker must destroy the device if they wish to get inside. If this doesn&rsquo;t fit your requirements, I suggest you look elsewhere 😊</p>
+<p>Once eMMC prices come down, there will be a version that uses it.</p>
+<p><img src="/img/phantomdrive/schematic.png" alt=""></p>
+<p>The device is simple, just the CH569, USB port, two buck supplies, a button for firmware update, SD card and some support components. There&rsquo;s also UART test points, which help with firmware development.</p>
+<p><img src="/img/phantomdrive/pcb-front.jpg" alt="">
+<img src="/img/phantomdrive/pcb-back.jpg" alt=""></p>
+<h1 id="the-cryptography">The Cryptography</h1>
+<p>I wasn&rsquo;t getting notifications when &ldquo;people&rdquo; opened several AI-generated GitHub issues on my repo. They outlined a mixture of: already patched problems, AI hallucinations, and small issues being blown out of proportion. Reddit dogpiled on this pretty quickly, while I was asleep.</p>
+<p><img src="/img/phantomdrive/reddit.png" alt=""></p>
+<p>This was a big fail on my part, I should have at least noticed people were opening issues. Most of them were non-issues, with the exception of AES-XTS which I&rsquo;ll talk about below.</p>
+<p>As for the security of the device, I&rsquo;ve verified things with functional tests like <a href="https://github.com/o7-machinehum/phantomdrive/blob/master/test/kdf.c">this</a>, where you can be sure the encryption is working and verified against OpenSSL&rsquo;s implementation of AES.</p>
+<h2 id="the-key-derivation-function-kdf">The Key Derivation Function (KDF)</h2>
+<p>A KDF or &ldquo;The Key Derivation Function&rdquo; is a function used to generate a key for use in cryptography. Let&rsquo;s start with the shittiest way to derive an AES key.</p>
+<p>$$
+K = Pw || 0x000
+$$</p>
+<p>We take our password, appending zeros to it until it&rsquo;s 32 bytes (for AES-256) and that&rsquo;s our key. With a shitty password, like &ldquo;password1234&rdquo;, we can brute force this in a matter of minutes. With a good password this turns into hours, and with a really good password maybe years to decades.</p>
+<p>But what if the attacker uses a precomputed table of keys? This means they don&rsquo;t even have to compute anything. To combat this issue we add a salt.</p>
+<p>$$
+K = Pw || salt || 0x000
+$$</p>
+<p>If every device has a unique salt, the attacker needs to compute keys on a per-device basis, so the lookup table problem goes away. Since the salts are different you can&rsquo;t take your SD card out of one device and put it into another. Here&rsquo;s how you get your salt&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>udevadm info --query<span style="color:#f92672">=</span>property --name<span style="color:#f92672">=</span>/dev/sdc | grep ID_SERIAL_SHORT
+</span></span><span style="display:flex;"><span>ID_SERIAL_SHORT<span style="color:#f92672">=</span>Phantomdrive:34FC1FA7145467F7
+</span></span></code></pre></div><p>So 34FC1FA7145467F7 is this device&rsquo;s salt, which you need for data recovery if your device ever breaks. FYI: You can change &ldquo;Phantomdrive&rdquo; and the USB PID/VID to whatever you want by changing the firmware to increase stealth.</p>
+<p>Let&rsquo;s now assume our attacker has a really powerful machine, has gotten your salt and now will compute their own &ldquo;table&rdquo;. To make this a little harder we add 100,000 rounds of SHA-256 to the KDF.</p>
+<p>$$
+K = sha256(sha256(sha256(Pw || salt || 0x000))) &hellip; 100k
+$$</p>
+<p>I chose 100k rounds because the device takes ~3 seconds to unlock, any more and it takes longer. I can&rsquo;t use algorithms like Argon2, because those are memory-hard. If you have a better way to do this, without making the unlock procedure more than 5 seconds I would love to hear it, but we&rsquo;re at the compute limit for this device right now.</p>
+<p>If you need more security you can increase the number of KDF SHA256 rounds, look for another device, or double encrypt this device using a software solution. It&rsquo;s also possible to simply turn off encryption and just use software based encryption.</p>
+<h2 id="aes-modes">AES Modes</h2>
+<p>AES is a block cipher, meaning it can encrypt and decrypt a fixed (16-byte) amount of data. There are various different AES modes to turn it into a stream cipher.</p>
+<h3 id="aes-ecb">AES-ECB</h3>
+<p>AES-ECB or Electronic Codebook is the naive way to make a stream cipher. You simply take every 16-byte block of plaintext in your stream and encrypt it. Boom! We just made a stream cipher. This is insecure for a few reasons.</p>
+<ol>
+<li>The same plaintext blocks will make the same ciphertext blocks, creating a lack of diffusion.</li>
+<li>Attackers can remove data in ciphertext and when decrypted plaintext will be modified in a predictable way.</li>
+</ol>
+<p>So this isn&rsquo;t a good way.</p>
+<h3 id="aes-ctr">AES-CTR</h3>
+<p>AES-CTR or Counter is a way to solve the issues above. It works in a simple way, you AES encrypt your counter, then XOR the output with your cleartext.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">uint64_t</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(i <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">len</span>(ciphertext)) {
+</span></span><span style="display:flex;"><span>	ctr <span style="color:#f92672">=</span> <span style="color:#a6e22e">aes_encrypt</span>(i);
+</span></span><span style="display:flex;"><span>	ciphertext[i] <span style="color:#f92672">=</span> plaintext[i] <span style="color:#f92672">^</span> ctr
+</span></span><span style="display:flex;"><span>	i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It&rsquo;s pseudocode but you get the point.</p>
+<p>There&rsquo;s a security risk involving &ldquo;counter reuse&rdquo; you should be aware of when using this mode.</p>
+<ol>
+<li>Attacker recovers your ciphertext, puts your device back.</li>
+<li>You write a bunch of fresh new data.</li>
+<li>Attacker recovers your ciphertext again.</li>
+<li>If the attacker can then guess one of the ciphertexts, they can recover the other ciphertext.</li>
+</ol>
+<p>With this device I&rsquo;m getting around 9MB/s write and 20MB/s read with AES-CTR and 6MB/s write and 10MB/s read with AES-XTS. For me this isn&rsquo;t a big enough security gain over speed to warrant going to AES-XTS, but you might have a completely different case.</p>
+<h3 id="aes-xts">AES-XTS</h3>
+<p>AES-XTS or Tweaked Codebook Mode is the standard for disk encryption. It works by using two keys: \(K_1\) is your data key, and \(K_2\) generates the tweak key.</p>
+<p>For each disk sector you need to compute a tweak key from the sector number \(S\).</p>
+<p>$$ T_n = AES(K_2,S) $$</p>
+<p>Each 16-byte block gets its own tweak, so you end up with \(T_0\), \(T_1\), \(T_2\) &hellip; \(T_n\). You then encrypt block by block of your plaintext \(P\) to get your final ciphertext \(C\).</p>
+<p>$$ C_n = AES(K_1, (P_n \oplus T_n)) \oplus T_n $$</p>
+<p>This solves the counter reuse issues listed above, but is a little bit slower.</p>
+<h1 id="the-firmware">The Firmware</h1>
+<p>I used two projects; thanks to their maintainers.</p>
+<ul>
+<li>A library for the chip (BSP) <a href="https://github.com/hydrausb3/wch-ch56x-lib">https://github.com/hydrausb3/wch-ch56x-lib</a></li>
+<li>An ISP programming library <a href="https://github.com/hydrausb3/wch-ch56x-isp">https://github.com/hydrausb3/wch-ch56x-isp</a></li>
+</ul>
+<p>There are a few parts of the firmware you might be interested in&hellip;</p>
+<h2 id="password-snooping">Password Snooping</h2>
+<p>The device isn&rsquo;t actually filesystem aware, it just takes USB WRITE10/READ10 commands and translates these into CMDx commands for the SD card. So to do the unlock wizardry we just look at raw data, in the unlock state it looks like this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">phantomdrive_snoop_write</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>buf, <span style="color:#66d9ef">uint32_t</span> len)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;password:&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">size_t</span> prefix_len <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint32_t</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">+</span> prefix_len <span style="color:#f92672">&lt;=</span> len; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (buf[i] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;p&#39;</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">memcmp</span>(buf <span style="color:#f92672">+</span> i, prefix, prefix_len) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">size_t</span> pw_start <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> prefix_len;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">size_t</span> pw_end <span style="color:#f92672">=</span> pw_start;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> (pw_end <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">&amp;&amp;</span> (pw_end <span style="color:#f92672">-</span> pw_start) <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">sizeof</span>(pending_pw) <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>		       buf[pw_end] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&amp;&amp;</span> buf[pw_end] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;\r&#39;</span> <span style="color:#f92672">&amp;&amp;</span> buf[pw_end] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;\0&#39;</span>)
+</span></span><span style="display:flex;"><span>			pw_end<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">size_t</span> pw_len <span style="color:#f92672">=</span> pw_end <span style="color:#f92672">-</span> pw_start;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Copy the password into RAM here
+</span></span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">memcpy</span>(pending_pw, buf <span style="color:#f92672">+</span> pw_start, pw_len);
+</span></span><span style="display:flex;"><span>		pending_pw_len <span style="color:#f92672">=</span> pw_len;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// We then zero out this buffer so the
+</span></span></span><span style="display:flex;"><span>		<span style="color:#75715e">// password is never written to the disk
+</span></span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">memset</span>(buf <span style="color:#f92672">+</span> i, <span style="color:#ae81ff">0</span>, pw_end <span style="color:#f92672">-</span> i);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The device isn&rsquo;t filesystem aware, so when locked it calls this function before every write. It&rsquo;s snooping on all writes, and matching against <code>password:</code>. This means that if you use the insecure portion of the disk for a ton of stuff, you might get an accidental match if your data contains the string <code>password:</code>. Again, if this doesn&rsquo;t fit your requirements you can change it or look for another device.</p>
+<h1 id="the-end">The End</h1>
+<p>Thanks for reading and supporting this project. It&rsquo;s been fun to work on and has gotten lots of interest in the community. This type of interaction is what motivates me to continue working on stuff like this.</p>
+<p>If you&rsquo;re interested in supporting this project, we have a <a href="https://rootkitlabs.com/phantomdrive">preorder page up now!</a></p>
+
+            </div>
+
+            <div class="blog-content">
+                <hr>
+                <h3 id="_authors">Author</h3>
+<div class="author-card">
+    <div class="author-card__photo">
+        <img src="/img/me.png" alt="Ryan Walker">
+    </div>
+
+    <div class="author-card__body">
+        <h4>Ryan Walker</h4>
+        <p>Building open source stuff with open source stuff.</p>
+
+        <div class="author-links">
+            <div class="author-links__column">
+                <a class="author-link" href="https://shop.rootkitlabs.com"><img src="/img/shop.png" alt="">Our Shop</a>
+                <a class="author-link" href="mailto:info@rootkitlabs.com"><img src="/img/email.png" alt="">Email</a>
+                <a class="author-link" href="https://www.youtube.com/@rootkitlabs"><img src="/img/youtube.png" alt="">Youtube</a>
+                <a class="author-link" href="https://github.com/o7-machinehum"><img src="/img/github.png" alt="">GitHub</a>
+            </div>
+            <div class="author-links__column">
+                <a class="author-link" href="https://www.instagram.com/rootkitlabs/"><img src="/img/ig.jpg" alt="">Instagram</a>
+                <a class="author-link" href="https://discord.gg/EtZT7mjNuM"><img src="/img/discord.png" alt="">Discord</a>
+                <a class="author-link" href="https://twitter.com/machinehum"><img src="/img/twitter.png" alt="">Twitter</a>
+                <a class="author-link" href="https://rootkitlabs.com/atom.xml"><img src="/img/rss.png" alt="">RSS Feed</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</article>
+</section>
+</body>
+</html>

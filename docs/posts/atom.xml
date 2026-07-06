@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Wed, 04 Jun 2025 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Mon, 22 Jun 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="https://rootkitlabs.com/posts/atom.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>I&#39;m Building a Secure USB Drive That Hides Itself</title>
+				<link>https://rootkitlabs.com/2026/06/22/I&#39;m-Building-a-Secure-USB-Drive/</link>
+				<pubDate>Mon, 22 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>https://rootkitlabs.com/2026/06/22/I&#39;m-Building-a-Secure-USB-Drive/</guid>
+				<description>&lt;p&gt;&lt;em&gt;This article was written by a human, for humans.&lt;/em&gt; &lt;a href=&#34;https://rootkitlabs.com/phantomdrive&#34;&gt;Link to support this project&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Many places don&amp;rsquo;t respect privacy laws, in certain situations you may be forced to unencrypt your media, or worse, assumed to be guilty. A Veracrypt hidden volume is useful in the former situation, but not the latter.&lt;/p&gt;&#xA;&lt;p&gt;This is why I made Phantomdrive.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://rootkitlabs.com/img/phantomdrive/phantomdrive-front.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Phantomdrive is a completely open source USB drive that appears as an 8 GB drive when first plugged in. There&amp;rsquo;s no way for the OS to detect the remainder of the disk. If the user edits a plaintext file on the disk with the contents &lt;code&gt;password:PUTYOURPASSWORDHERE&lt;/code&gt;, it unmounts itself and remounts the second hidden section and AES-256 encrypts/decrypts in place.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Pick Your Payload - What Open-source Security Hardware Should we Build Next?</title>
 				<link>https://rootkitlabs.com/2025/06/04/whats-next/</link>
