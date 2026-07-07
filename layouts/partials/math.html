@@ -1,4 +1,6 @@
 <script>
+  const mathScale = window.matchMedia("(max-width: 767px)").matches ? 0.675 : 1.35;
+
   window.MathJax = {
     tex: {
       inlineMath: [["\\(", "\\)"]],
@@ -9,7 +11,7 @@
       skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"]
     },
     chtml: {
-      scale: 1.35
+      scale: mathScale
     }
   };
 </script>
