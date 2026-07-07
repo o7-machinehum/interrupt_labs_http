@@ -16,7 +16,7 @@ This is why I made Phantomdrive.
 
 ![](/img/phantomdrive/phantomdrive-front.webp)
 
-Phantomdrive is a completely open source USB drive that appears as an 8 GB drive when first plugged in. There's no way for the OS to detect the remainder of the disk. If the user edits a plaintext file on the disk with the contents `password:PUTYOURPASSWORDHERE`, it unmounts itself and remounts the second hidden section and AES-256 encrypts/decrypts in place.
+Phantomdrive is a [completely open source](https://github.com/o7-machinehum/phantomdrive) USB drive that appears as an 8 GB drive when first plugged in. There's no way for the OS to detect the remainder of the disk. If the user edits a plaintext file on the disk with the contents `password:PUTYOURPASSWORDHERE`, it unmounts itself and remounts the second hidden section and AES-256 encrypts/decrypts in place.
 
 With Phantomdrive, hopefully you'll slip past authoritarian government representatives, corrupt police, and anyone else that doesn't respect basic encryption rights.
 
