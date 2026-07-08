@@ -7,7 +7,7 @@ share_cover: /img/phantomdrive/phantomdrive-front.webp
 tags: []
 ---
 
-*This article was written by a human, for humans.* [Link to support this project](https://rootkitlabs.com/phantomdrive).
+*This article was written by a human, for humans.*
 
 ---
 
