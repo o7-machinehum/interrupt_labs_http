@@ -3,6 +3,7 @@ title: I'm Building a Secure USB Drive That Hides Itself
 date: 2026-06-22
 url: "/2026/06/22/I'm-Building-a-Secure-USB-Drive/"
 cover: /img/phantomdrive/pcb-front.jpg
+share_cover: /img/phantomdrive/phantomdrive-front.webp
 tags: []
 ---
 
