@@ -83,6 +83,8 @@ I chose 100k rounds because the device takes ~3 seconds to unlock, any more and 
 
 If you need more security you can increase the number of KDF SHA256 rounds, look for another device, or double encrypt this device using a software solution. It's also possible to simply turn off encryption and just use software based encryption.
 
+Edit: I'm now using [PBKDF2-HMAC-SHA256](https://github.com/o7-machinehum/phantomdrive/pull/14).
+
 ## AES Modes
 AES is a block cipher, meaning it can encrypt and decrypt a fixed (16-byte) amount of data. There are various different AES modes to turn it into a stream cipher.
 

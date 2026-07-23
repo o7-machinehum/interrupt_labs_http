@@ -156,6 +156,7 @@ K = sha256(sha256(sha256(Pw || salt || 0x000))) &hellip; 100k
 $$</p>
 <p>I chose 100k rounds because the device takes ~3 seconds to unlock, any more and it takes longer. I can&rsquo;t use algorithms like Argon2, because those are memory-hard. If you have a better way to do this, without making the unlock procedure more than 5 seconds I would love to hear it, but we&rsquo;re at the compute limit for this device right now.</p>
 <p>If you need more security you can increase the number of KDF SHA256 rounds, look for another device, or double encrypt this device using a software solution. It&rsquo;s also possible to simply turn off encryption and just use software based encryption.</p>
+<p>Edit: I&rsquo;m now using <a href="https://github.com/o7-machinehum/phantomdrive/pull/14">PBKDF2-HMAC-SHA256</a>.</p>
 <h2 id="aes-modes">AES Modes</h2>
 <p>AES is a block cipher, meaning it can encrypt and decrypt a fixed (16-byte) amount of data. There are various different AES modes to turn it into a stream cipher.</p>
 <h3 id="aes-ecb">AES-ECB</h3>
