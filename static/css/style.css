@@ -1654,7 +1654,7 @@ input[type="submit"]:hover {
     }
 }
 
-/* PhantomDrive campaign rebuild */
+/* PhantomDrive product page */
 .pd-page {
     --pd-bg: #08090b;
     --pd-panel: #11151a;
@@ -1788,11 +1788,11 @@ input[type="submit"]:hover {
     height: 100%;
     width: 100%;
 }
-.pd-pledge {
+.pd-purchase {
     margin: auto 0 0;
     padding-top: 2rem;
 }
-.pd-pledge__inner {
+.pd-purchase__inner {
     align-items: center;
     background: rgba(17, 21, 26, .92);
     border: 1px solid var(--pd-line);
@@ -1802,45 +1802,15 @@ input[type="submit"]:hover {
     grid-template-columns: minmax(0, 1fr) auto;
     padding: 1rem;
 }
-.pd-pledge__label {
-    color: var(--pd-muted);
-    display: block;
-    font-size: .78rem;
-    margin-bottom: .18rem;
-}
-.pd-pledge strong {
+.pd-purchase__copy strong {
     color: var(--pd-text);
     display: block;
     font-family: var(--font-sans-semibold);
     line-height: 1.25;
 }
-.pd-funding {
-    min-width: 0;
-}
-.pd-funding__head,
-.pd-funding__scale {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-}
-.pd-funding__goal,
-.pd-funding__scale {
+.pd-purchase__copy p {
     color: var(--pd-muted);
-    font-size: .82rem;
-}
-.pd-funding__bar {
-    background: rgba(255, 255, 255, .12);
-    border-radius: 999px;
-    height: .8rem;
-    margin: .85rem 0 .45rem;
-    overflow: hidden;
-}
-.pd-funding__bar span {
-    background: linear-gradient(90deg, var(--pd-cyan), var(--pd-pink));
-    border-radius: inherit;
-    display: block;
-    height: 100%;
-    transition: width .25s ease;
+    margin: .25rem 0 0;
 }
 .pd-button {
     background: var(--pd-pink);
@@ -2102,7 +2072,7 @@ input[type="submit"]:hover {
     object-fit: contain;
     width: 1.15rem;
 }
-.pd-sticky-pledge {
+.pd-sticky-buy {
     align-items: center;
     background: rgba(8, 9, 11, .9);
     border: 1px solid rgba(255, 255, 255, .16);
@@ -2117,18 +2087,18 @@ input[type="submit"]:hover {
     transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
     z-index: 20;
 }
-.pd-sticky-pledge.is-hidden {
+.pd-sticky-buy.is-hidden {
     opacity: 0;
     pointer-events: none;
     transform: translateY(10px);
     visibility: hidden;
 }
-.pd-sticky-pledge span {
+.pd-sticky-buy span {
     color: #fff;
     font-family: var(--font-sans-semibold);
     padding-left: .45rem;
 }
-.pd-sticky-pledge a {
+.pd-sticky-buy a {
     background: var(--pd-pink);
     border-radius: 4px;
     color: #fff;
@@ -2137,8 +2107,8 @@ input[type="submit"]:hover {
     justify-content: center;
     padding: .55rem .8rem;
 }
-.pd-sticky-pledge a:hover,
-.pd-sticky-pledge a:focus {
+.pd-sticky-buy a:hover,
+.pd-sticky-buy a:focus {
     background: #b82d65;
     color: #fff;
 }
@@ -2156,7 +2126,7 @@ input[type="submit"]:hover {
         grid-template-columns: minmax(280px, 450px) minmax(0, 1fr);
         min-height: 620px;
     }
-    .pd-pledge__inner {
+    .pd-purchase__inner {
         grid-template-columns: 1fr;
     }
     .pd-button {
@@ -2215,7 +2185,7 @@ input[type="submit"]:hover {
     .pd-video-shell {
         border-radius: 6px;
     }
-    .pd-pledge__inner,
+    .pd-purchase__inner,
     .pd-flow {
         grid-template-columns: 1fr;
     }
@@ -2239,7 +2209,7 @@ input[type="submit"]:hover {
     .pd-carousel__button {
         opacity: 1;
     }
-    .pd-sticky-pledge {
+    .pd-sticky-buy {
         bottom: 10px;
         right: 10px;
     }
