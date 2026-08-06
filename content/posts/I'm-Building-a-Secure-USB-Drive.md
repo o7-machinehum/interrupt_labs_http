@@ -9,6 +9,8 @@ tags: []
 
 *This article was written by a human, for humans.*
 
+**Phantomdrive is now available from the [Rootkit Labs shop](https://shop.rootkitlabs.com/products/phantomdrive).**
+
 ---
 
 Many places don't respect privacy laws, in certain situations you may be forced to unencrypt your media, or worse, assumed to be guilty. A Veracrypt hidden volume is useful in the former situation, but not the latter.
@@ -180,4 +182,4 @@ The device isn't filesystem aware, so when locked it calls this function before 
 # The End
 Thanks for reading and supporting this project. It's been fun to work on and has gotten lots of interest in the community. This type of interaction is what motivates me to continue working on stuff like this.
 
-If you're interested in supporting this project, we have a [preorder page up now!](https://rootkitlabs.com/phantomdrive)
+Phantomdrive is now available from the [Rootkit Labs shop](https://shop.rootkitlabs.com/products/phantomdrive).
