@@ -168,6 +168,10 @@
 .product-videos h3 { margin: 0 0 16px; font-size: 20px; }
 .product-videos .pd-video-shell { box-shadow: none; }
 @media (max-width: 700px) {
+    .product-image,
+    .product-hero__image {
+        object-position: var(--product-hero-position-mobile, var(--product-hero-position, center));
+    }
     .product-videos__grid,
     .product-reading-list { grid-template-columns: 1fr; }
     .product-intro p { font-size: 16px; }

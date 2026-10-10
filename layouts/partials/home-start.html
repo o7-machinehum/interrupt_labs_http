@@ -55,7 +55,8 @@
 
     <!-- home
     ================================================== -->
-    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="/img/products/blackpants.jpg">
+    {{ $homeImage := "img/usb-device.png" | relURL }}
+    <section id="home" class="s-home target-section" style="--home-image: url('{{ $homeImage }}');" data-parallax="scroll" data-image-src="{{ $homeImage }}">
 
         <div class="shadow-overlay"></div>
 

@@ -23,7 +23,11 @@ each product's Markdown file in `content/` to change its content. Use
 
 Each page opens with a full-screen product photo using `cover` and `image_alt`,
 with `title` and a short `tagline` overlaid. `hero_position` optionally adjusts the
-image crop (for example, `"center 25%"`). The featured video appears immediately
+image crop (for example, `"center 25%"`). `hero_mobile_position` overrides the crop
+on screens up to 700px wide, on both the product page and its homepage panel.
+Use a horizontal value above 50% to show more of the photo's right side, or below
+50% for the left side (for example, `"70% center"`). Desktop crops stay unchanged.
+The featured video appears immediately
 below the photo, without a duplicate heading above the player, followed by the
 introduction and deeper sections. The top navigation contains only the Rootkit Labs
 home logo. `shop` supplies the purchase link beneath the product title and the

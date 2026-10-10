@@ -1624,7 +1624,7 @@ input::-moz-focus-inner {
   height: 100vh;
   min-height: 786px;
   background-color: #000000;
-  background-image: url("../img/products/blackpants.jpg");
+  background-image: var(--home-image);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1653,7 +1653,7 @@ input::-moz-focus-inner {
 }
 
 .no-js .s-home {
-  background: #000000;
+  background-color: #000000;
 }
 
 

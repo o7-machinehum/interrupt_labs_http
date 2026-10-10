@@ -6,6 +6,7 @@ layout: "product"
 url: "/flipper-blackhat/"
 cover: "/img/products/blackhat-header.jpg"
 hero_position: "center 25%"
+hero_mobile_position: "70% 25%"
 image_alt: "Flipper Blackhat board and antenna mounted on a Flipper Zero"
 shop: "https://shop.rootkitlabs.com/products/flipper-blackhat"
 specs:

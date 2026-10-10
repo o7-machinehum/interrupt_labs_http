@@ -1,4 +1,4 @@
-<header class="product-header" style="--product-hero-position: {{ .Params.hero_position | default "center" }};">
+<header class="product-header" style="--product-hero-position: {{ .Params.hero_position | default "center" }}; --product-hero-position-mobile: {{ .Params.hero_mobile_position | default .Params.hero_position | default "center" }};">
     <img class="product-hero__image" src="{{ .Params.cover | relURL }}" alt="{{ .Params.image_alt }}" fetchpriority="high">
     <nav class="pd-nav" aria-label="{{ .Title }} navigation">
         <a href="{{ "/" | relURL }}" class="pd-nav__brand" aria-label="Rootkit Labs home">

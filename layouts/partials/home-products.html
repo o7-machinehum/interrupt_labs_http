@@ -1,5 +1,5 @@
 <div id="products">
-    <section id="usb-drives" class="product-panel" aria-labelledby="phantomdrive-title">
+    <section id="usb-drives" class="product-panel" aria-labelledby="phantomdrive-title" style="--product-hero-position-mobile: {{ (site.GetPage "/phantomdrive").Params.hero_mobile_position | default "center" }};">
         <div class="product-panel__inner" data-product-reveal>
             <div class="product-panel__copy">
                 <h2 id="phantomdrive-title">Phantomdrive</h2>
@@ -12,7 +12,7 @@
             <img class="product-image" src="{{ "/img/phantomdrive/phantomdrive-hero.webp" | relURL }}" alt="Phantomdrive USB drive" loading="lazy">
         </div>
     </section>
-    <section class="product-panel" aria-labelledby="ovrdrive-title">
+    <section class="product-panel" aria-labelledby="ovrdrive-title" style="--product-hero-position-mobile: {{ (site.GetPage "/ovrdrive").Params.hero_mobile_position | default "center" }};">
         <div class="product-panel__inner" data-product-reveal>
             <div class="product-panel__copy">
                 <h2 id="ovrdrive-title">Ovrdrive</h2>
@@ -25,7 +25,7 @@
             <img class="product-image" src="{{ "/img/products/ovrdrive.webp" | relURL }}" alt="Ovrdrive USB drive" loading="lazy">
         </div>
     </section>
-    <section id="hacking-tools" class="product-panel" aria-labelledby="blackhat-title">
+    <section id="hacking-tools" class="product-panel" aria-labelledby="blackhat-title" style="--product-hero-position-mobile: {{ (site.GetPage "/flipper-blackhat").Params.hero_mobile_position | default "center" }};">
         <div class="product-panel__inner" data-product-reveal>
             <div class="product-panel__copy">
                 <h2 id="blackhat-title">Flipper Blackhat</h2>
@@ -38,7 +38,7 @@
             <img class="product-image" src="{{ "/img/products/Blackhat_Stubby.webp" | relURL }}" alt="Flipper Blackhat with stubby antenna" loading="lazy">
         </div>
     </section>
-    <section class="product-panel" aria-labelledby="blackpants-title">
+    <section class="product-panel" aria-labelledby="blackpants-title" style="--product-hero-position-mobile: {{ (site.GetPage "/blackpants").Params.hero_mobile_position | default "center" }};">
         <div class="product-panel__inner" data-product-reveal>
             <div class="product-panel__copy">
                 <h2 id="blackpants-title">Blackpants</h2>
