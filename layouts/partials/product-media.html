@@ -1,0 +1,19 @@
+{{ with .Params.media }}
+<section id="media" class="pd-section pd-section--light product-resources" aria-labelledby="media-title">
+    <div class="pd-wrap">
+        <div class="pd-section-head">
+            <h2 id="media-title">In the media</h2>
+        </div>
+        <ul class="product-reading-list">
+            {{ range . }}
+            <li>
+                <a href="{{ .url }}">
+                    <span class="product-reading-list__source">{{ .publisher }}</span>
+                    <span class="product-reading-list__title">{{ .title }} <span aria-hidden="true">&nearr;</span></span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</section>
+{{ end }}

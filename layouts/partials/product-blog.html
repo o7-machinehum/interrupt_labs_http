@@ -1,0 +1,24 @@
+{{ with .Params.related_posts }}
+<section id="blog" class="pd-section pd-section--light product-resources" aria-labelledby="blog-title">
+    <div class="pd-wrap">
+        <div class="pd-section-head">
+            <h2 id="blog-title">From the blog</h2>
+        </div>
+        <ul class="product-reading-list">
+            {{ range . }}
+            {{ with site.GetPage . }}
+            {{ if not .Draft }}
+            <li>
+                <a href="{{ .RelPermalink }}">
+                    <time class="product-reading-list__source" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                    <span class="product-reading-list__title">{{ .Title }} <span aria-hidden="true">&rarr;</span></span>
+                </a>
+            </li>
+            {{ end }}
+            {{ end }}
+            {{ end }}
+        </ul>
+        <a class="product-text-link" href="{{ "/archives/" | relURL }}">All blog posts &rarr;</a>
+    </div>
+</section>
+{{ end }}

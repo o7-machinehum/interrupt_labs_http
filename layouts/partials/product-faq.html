@@ -1,0 +1,16 @@
+{{ with .Params.faq }}
+<section id="faq" class="pd-section pd-section--dark" aria-labelledby="faq-title">
+    <div class="pd-wrap pd-faq">
+        <div class="pd-section-head">
+            <p class="pd-eyebrow">FAQ</p>
+            <h2 id="faq-title">Questions and Answers</h2>
+        </div>
+        {{ range $index, $item := . }}
+        <details{{ if eq $index 0 }} open{{ end }}>
+            <summary>{{ .question }}</summary>
+            {{ $.RenderString (dict "display" "block") .answer }}
+        </details>
+        {{ end }}
+    </div>
+</section>
+{{ end }}

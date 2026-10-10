@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+{{ partial "head.html" . }}
+<body class="pd-page product-page">
+{{ partial "product-header.html" . }}
+<main>
+    {{ partial "product-featured-video.html" . }}
+    {{ if not .Params.hide_intro }}{{ partial "product-intro.html" . }}{{ end }}
+    {{ partial "product-story.html" . }}
+    {{ partial "product-steps.html" . }}
+    {{ partial "product-specs.html" . }}
+    {{ partial "product-feature.html" . }}
+    {{ partial "product-media.html" . }}
+    {{ partial "product-videos.html" . }}
+    {{ partial "product-blog.html" . }}
+    {{ partial "product-faq.html" . }}
+</main>
+{{ partial "product-footer.html" . }}
+<script src="{{ "js/product.js" | relURL }}" defer></script>
+{{ if .Params.feature }}
+<script src="{{ "js/product-reveal.js" | relURL }}" defer></script>
+{{ end }}
+</body>
+</html>

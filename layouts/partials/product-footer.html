@@ -1,0 +1,31 @@
+<footer class="pd-social-footer" aria-label="Rootkit Labs social links">
+    <div class="pd-wrap pd-social-footer__inner">
+        <a href="https://www.youtube.com/@rootkitlabs">
+            <img src="{{ "/img/youtube.png" | relURL }}" alt="" aria-hidden="true">
+            <span>YouTube</span>
+        </a>
+        <a href="https://www.instagram.com/rootkitlabs/">
+            <img src="{{ "/img/instagram.png" | relURL }}" alt="" aria-hidden="true">
+            <span>Instagram</span>
+        </a>
+        <a href="https://discord.gg/EtZT7mjNuM">
+            <img src="{{ "/img/discord.png" | relURL }}" alt="" aria-hidden="true">
+            <span>Discord</span>
+        </a>
+        <a href="https://github.com/o7-machinehum">
+            <img src="{{ "/img/github.png" | relURL }}" alt="" aria-hidden="true">
+            <span>GitHub</span>
+        </a>
+        <a href="mailto:info@rootkitlabs.com">
+            <img src="{{ "/img/email.png" | relURL }}" alt="" aria-hidden="true">
+            <span>Email</span>
+        </a>
+    </div>
+</footer>
+
+{{ with .Params.shop }}
+<div class="pd-sticky-buy" aria-label="Buy {{ $.Title }}">
+    <span>{{ $.Title }}</span>
+    <a href="{{ . }}">Buy now</a>
+</div>
+{{ end }}

@@ -1,0 +1,4 @@
+<section id="details" class="pd-wrap product-intro" aria-labelledby="details-title">
+    <h2 id="details-title">About {{ .Title }}</h2>
+    {{ with .Content }}{{ . }}{{ else }}<p>{{ $.Description }}</p>{{ end }}
+</section>

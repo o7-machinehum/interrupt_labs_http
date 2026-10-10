@@ -44,7 +44,7 @@
  *
  * ------------------------------------------------------------------- */
 html {
-    font-family: "metropolis-regular", sans-serif;
+    font-family: var(--font-sans);
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -85,7 +85,7 @@ hr {
 }
 
 pre {
-    font-family: monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 1em;
 }
 
@@ -118,7 +118,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 1em;
 }
 
@@ -174,7 +174,7 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: "metropolis-regular", sans-serif;
+    font-family: var(--font-sans);
     font-size: 100%;
     line-height: 1.15;
     margin: 0;

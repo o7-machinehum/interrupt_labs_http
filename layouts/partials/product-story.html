@@ -1,0 +1,10 @@
+{{ with .Params.story }}
+<section id="story" class="pd-section pd-section--light pd-story-section" aria-labelledby="story-title" style="--product-story-image: url('{{ .image | relURL }}');">
+    <div class="pd-wrap pd-story">
+        <div class="pd-story__copy">
+            <h2 id="story-title">{{ .title }}</h2>
+            {{ $.RenderString (dict "display" "block") .text }}
+        </div>
+    </div>
+</section>
+{{ end }}

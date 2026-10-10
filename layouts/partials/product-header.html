@@ -1,0 +1,15 @@
+<header class="product-header" style="--product-hero-position: {{ .Params.hero_position | default "center" }};">
+    <img class="product-hero__image" src="{{ .Params.cover | relURL }}" alt="{{ .Params.image_alt }}" fetchpriority="high">
+    <nav class="pd-nav" aria-label="{{ .Title }} navigation">
+        <a href="{{ "/" | relURL }}" class="pd-nav__brand" aria-label="Rootkit Labs home">
+            <img src="{{ "/img/interrupt_white.svg" | relURL }}" alt="Rootkit Labs">
+        </a>
+    </nav>
+    <div class="pd-wrap product-hero__copy">
+        <h1 id="product-title">{{ .Title }}</h1>
+        <p>{{ .Params.tagline | default .Description }}</p>
+        <div class="product-actions">
+            {{ with .Params.shop }}<a class="pd-button" href="{{ . }}">View in shop</a>{{ end }}
+        </div>
+    </div>
+</header>

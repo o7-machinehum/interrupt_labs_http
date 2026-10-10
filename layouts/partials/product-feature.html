@@ -1,0 +1,18 @@
+{{ with .Params.feature }}
+<section id="{{ .id }}" class="product-panel" aria-labelledby="{{ .id }}-title">
+    <div class="product-panel__inner" data-product-reveal>
+        <div class="product-panel__copy">
+            <h2 id="{{ .id }}-title">{{ .title }}</h2>
+            {{ $.RenderString (dict "display" "block") .text }}
+            {{ with .links }}
+            <div class="product-actions">
+                {{ range $index, $link := . }}
+                <a class="{{ if eq $index 0 }}product-button{{ else }}product-link{{ end }}" href="{{ .url }}">{{ .label }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+        <img class="product-image" src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy">
+    </div>
+</section>
+{{ end }}

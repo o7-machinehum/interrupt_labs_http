@@ -1,0 +1,35 @@
+{{ if or .Params.specs .Params.gallery }}
+<section id="specs" class="pd-section pd-section--light" aria-labelledby="specs-title">
+    <div class="pd-wrap pd-details">
+        <div>
+            <h2 id="specs-title">Product Details</h2>
+        </div>
+        {{ with .Params.specs }}
+        <div class="pd-specs-stack">
+            <ul class="pd-tech-list">
+                {{ range . }}
+                <li><strong>{{ .label }}:</strong><span>{{ $.RenderString .text }}</span></li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    </div>
+    {{ with .Params.gallery }}
+    <div class="pd-wrap pd-carousel-wrap">
+        <div class="pd-carousel" data-pd-carousel aria-label="{{ $.Title }} hardware images">
+            <div class="pd-carousel__viewport">
+                {{ range $index, $image := . }}
+                <figure class="pd-carousel__slide{{ if eq $index 0 }} is-active{{ end }}">
+                    <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy">
+                    <figcaption>{{ .caption }}</figcaption>
+                </figure>
+                {{ end }}
+                <button class="pd-carousel__button" type="button" data-carousel-prev aria-label="Previous image">&lt;</button>
+                <button class="pd-carousel__button" type="button" data-carousel-next aria-label="Next image">&gt;</button>
+            </div>
+            <div class="pd-carousel__dots" aria-label="Carousel position"></div>
+        </div>
+    </div>
+    {{ end }}
+</section>
+{{ end }}

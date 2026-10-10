@@ -1,0 +1,7 @@
+{{ with .Params.featured_video }}
+<section id="product-video" class="pd-section product-featured-video" aria-label="{{ $.Title }} product video">
+    <div class="pd-wrap">
+        {{ partial "product-video-embed.html" . }}
+    </div>
+</section>
+{{ end }}

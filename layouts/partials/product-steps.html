@@ -1,0 +1,18 @@
+{{ with .Params.steps }}
+<section id="how-it-works" class="pd-section pd-section--dark" aria-labelledby="steps-title">
+    <div class="pd-wrap">
+        <div class="pd-section-head">
+            <h2 id="steps-title">{{ .title }}</h2>
+        </div>
+        <ol class="pd-flow">
+            {{ range $index, $step := .items }}
+            <li>
+                <span>{{ printf "%02d" (add $index 1) }}</span>
+                <h3>{{ .title }}</h3>
+                {{ $.RenderString (dict "display" "block") .text }}
+            </li>
+            {{ end }}
+        </ol>
+    </div>
+</section>
+{{ end }}

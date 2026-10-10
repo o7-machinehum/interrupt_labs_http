@@ -1,0 +1,17 @@
+{{ with .Params.videos }}
+<section id="videos" class="pd-section pd-section--light product-videos" aria-labelledby="videos-title">
+    <div class="pd-wrap">
+        <div class="pd-section-head">
+            <h2 id="videos-title">Videos</h2>
+        </div>
+        <div class="product-videos__grid">
+            {{ range . }}
+            <div>
+                <h3>{{ .title }}</h3>
+                {{ partial "product-video-embed.html" . }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

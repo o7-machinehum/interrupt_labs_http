@@ -1,19 +1,9 @@
-@font-face {
-  font-family: "domine-regular";
-  src: url("../fonts/domine/domine-regular-webfont.woff2") format("woff2"),
-       url("../fonts/domine/domine-regular-webfont.woff") format("woff");
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "domine-bold";
-  src: url("../fonts/domine/domine-bold-webfont.woff2") format("woff2"),
-       url("../fonts/domine/domine-bold-webfont.woff") format("woff");
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
+:root {
+  --font-sans: "metropolis-regular", "Helvetica Neue", Arial, sans-serif;
+  --font-sans-bold: "metropolis-bold", "Helvetica Neue", Arial, sans-serif;
+  --font-sans-semibold: "metropolis-semibold", "Helvetica Neue", Arial, sans-serif;
+  --font-sans-italic: "metropolis-italic", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 
 @font-face {
@@ -29,15 +19,6 @@
   font-family: "metropolis-italic";
   src: url("../fonts/metropolis/metropolis-regularitalic-webfont.woff2") format("woff2"),
        url("../fonts/metropolis/metropolis-regularitalic-webfont.woff") format("woff");
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "metropolis-light";
-  src: url("../fonts/metropolis/metropolis-light-webfont.woff2") format("woff2"),
-       url("../fonts/metropolis/metropolis-light-webfont.woff") format("woff");
   font-style: normal;
   font-weight: normal;
   font-display: swap;

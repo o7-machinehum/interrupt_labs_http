@@ -1,8 +1,4 @@
 :root {
-    --font-sans: "metropolis-regular", "Helvetica Neue", Arial, sans-serif;
-    --font-sans-bold: "metropolis-bold", "Helvetica Neue", Arial, sans-serif;
-    --font-sans-semibold: "metropolis-semibold", "Helvetica Neue", Arial, sans-serif;
-    --font-mono: Monaco, Menlo, Consolas, "Courier New", monospace;
     --text: #2f3437;
     --muted: #687076;
     --accent: #0085a1;
@@ -1656,7 +1652,7 @@ input[type="submit"]:hover {
     }
 }
 
-/* PhantomDrive product page */
+/* Shared product page components */
 .pd-page {
     --pd-bg: #08090b;
     --pd-panel: #11151a;
@@ -1704,15 +1700,6 @@ input[type="submit"]:hover {
     max-width: 1320px;
     width: calc(100% - 56px);
 }
-.pd-top {
-    background:
-        linear-gradient(rgba(8, 9, 11, .82), rgba(8, 9, 11, .96)),
-        url("/img/phantomdrive/phantomdrive-hero.webp") center / cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 1.15rem 0 2rem;
-}
 .pd-nav {
     align-items: center;
     display: flex;
@@ -1721,8 +1708,7 @@ input[type="submit"]:hover {
     max-width: 1320px;
     width: calc(100% - 56px);
 }
-.pd-nav__brand,
-.pd-nav__links a {
+.pd-nav__brand {
     color: rgba(248, 246, 242, .9);
     font-family: var(--font-sans-semibold);
 }
@@ -1735,32 +1721,6 @@ input[type="submit"]:hover {
     height: auto;
     width: 136px;
 }
-.pd-nav__links {
-    align-items: center;
-    display: flex;
-    gap: 1rem;
-}
-.pd-nav__links a {
-    font-size: .88rem;
-}
-.pd-nav__links a:hover,
-.pd-nav__links a:focus {
-    color: var(--pd-cyan);
-}
-.pd-nav__links .pd-nav__shop {
-    background: var(--pd-cyan);
-    border-radius: 4px;
-    color: #031110;
-    padding: .48rem .78rem;
-}
-.pd-title {
-    padding: 2rem 0 1.15rem;
-}
-.pd-title img {
-    display: block;
-    margin: 0 0 1rem;
-    width: 100%;
-}
 .pd-eyebrow {
     color: var(--pd-cyan);
     font-family: var(--font-sans-semibold);
@@ -1768,12 +1728,6 @@ input[type="submit"]:hover {
     letter-spacing: 0;
     margin: 0 0 .65rem;
     text-transform: uppercase;
-}
-.pd-title__summary {
-    color: rgba(248, 246, 242, .78);
-    font-size: 1.18rem;
-    margin: 1rem 0 0;
-    max-width: 760px;
 }
 .pd-video-shell {
     aspect-ratio: 16 / 9;
@@ -1789,30 +1743,6 @@ input[type="submit"]:hover {
     display: block;
     height: 100%;
     width: 100%;
-}
-.pd-purchase {
-    margin: auto 0 0;
-    padding-top: 2rem;
-}
-.pd-purchase__inner {
-    align-items: center;
-    background: rgba(17, 21, 26, .92);
-    border: 1px solid var(--pd-line);
-    border-radius: 8px;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: minmax(0, 1fr) auto;
-    padding: 1rem;
-}
-.pd-purchase__copy strong {
-    color: var(--pd-text);
-    display: block;
-    font-family: var(--font-sans-semibold);
-    line-height: 1.25;
-}
-.pd-purchase__copy p {
-    color: var(--pd-muted);
-    margin: .25rem 0 0;
 }
 .pd-button {
     background: var(--pd-pink);
@@ -1842,7 +1772,7 @@ input[type="submit"]:hover {
 .pd-story-section {
     background:
         linear-gradient(90deg, rgba(244, 240, 232, .96) 0%, rgba(244, 240, 232, .84) 42%, rgba(244, 240, 232, .2) 100%),
-        url("/img/phantomdrive/phantomdrive-hero.webp") center center / cover no-repeat,
+        var(--product-story-image, none) center center / cover no-repeat,
         var(--pd-soft);
     overflow: hidden;
 }
@@ -1879,6 +1809,8 @@ input[type="submit"]:hover {
     padding: 0;
 }
 .pd-flow li {
+    min-width: 0;
+    overflow-wrap: anywhere;
     background: rgba(255, 255, 255, .045);
     border: 1px solid rgba(255, 255, 255, .1);
     border-radius: 8px;
@@ -2045,7 +1977,7 @@ input[type="submit"]:hover {
 .pd-social-footer {
     background: #08090b;
     border-top: 1px solid rgba(248, 246, 242, .12);
-    padding: 1.4rem 0 2.2rem;
+    padding: 1.4rem 0 96px;
 }
 .pd-social-footer__inner {
     display: flex;
@@ -2086,14 +2018,7 @@ input[type="submit"]:hover {
     padding: .55rem;
     position: fixed;
     right: 18px;
-    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
     z-index: 20;
-}
-.pd-sticky-buy.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(10px);
-    visibility: hidden;
 }
 .pd-sticky-buy span {
     color: #fff;
@@ -2118,7 +2043,7 @@ input[type="submit"]:hover {
     .pd-story-section {
         background:
             linear-gradient(90deg, rgba(244, 240, 232, .97) 0%, rgba(244, 240, 232, .88) 48%, rgba(244, 240, 232, .28) 100%),
-            url("/img/phantomdrive/phantomdrive-hero.webp") center center / cover no-repeat,
+            var(--product-story-image, none) center center / cover no-repeat,
             var(--pd-soft);
     }
     .pd-details {
@@ -2127,9 +2052,6 @@ input[type="submit"]:hover {
     .pd-story {
         grid-template-columns: minmax(280px, 450px) minmax(0, 1fr);
         min-height: 620px;
-    }
-    .pd-purchase__inner {
-        grid-template-columns: 1fr;
     }
     .pd-button {
         grid-column: auto;
@@ -2147,7 +2069,7 @@ input[type="submit"]:hover {
     .pd-story-section {
         background:
             linear-gradient(180deg, rgba(244, 240, 232, .98) 0%, rgba(244, 240, 232, .9) 48%, rgba(244, 240, 232, .32) 100%),
-            url("/img/phantomdrive/phantomdrive-hero.webp") center center / cover no-repeat,
+            var(--product-story-image, none) center center / cover no-repeat,
             var(--pd-soft);
     }
     .pd-story {
@@ -2161,10 +2083,6 @@ input[type="submit"]:hover {
     .pd-nav {
         width: calc(100% - 32px);
     }
-    .pd-top {
-        min-height: 0;
-        padding-top: .9rem;
-    }
     .pd-nav {
         align-items: flex-start;
         flex-direction: column;
@@ -2173,21 +2091,9 @@ input[type="submit"]:hover {
     .pd-nav__brand img {
         width: 118px;
     }
-    .pd-nav__links {
-        flex-wrap: wrap;
-        gap: .7rem .9rem;
-    }
-    .pd-title {
-        padding: 1.85rem 0 1rem;
-    }
-    .pd-title__summary {
-        font-size: 1rem;
-        max-width: 31rem;
-    }
     .pd-video-shell {
         border-radius: 6px;
     }
-    .pd-purchase__inner,
     .pd-flow {
         grid-template-columns: 1fr;
     }
@@ -2217,16 +2123,7 @@ input[type="submit"]:hover {
     }
 }
 @media (hover: none), (pointer: coarse), (any-hover: none), (any-pointer: coarse) {
-    .pd-top {
-        padding-top: .35rem;
-    }
-    .pd-title {
-        padding-top: .7rem;
-    }
     .pd-nav__brand {
-        display: none;
-    }
-    .pd-nav__links {
         display: none;
     }
     .pd-carousel__button {
