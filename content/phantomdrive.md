@@ -6,7 +6,7 @@ layout: "product"
 hide_intro: true
 url: "/phantomdrive/"
 cover: "/img/phantomdrive/phantomdrive-hero.webp"
-hero_mobile_position: "80% center"
+hero_mobile_position: "20% center"
 share_cover: "/img/phantomdrive/phantomdrive-hero.webp"
 shop: https://shop.rootkitlabs.com/products/phantomdrive
 image_alt: Phantomdrive USB flash drive

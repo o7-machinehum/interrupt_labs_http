@@ -5,7 +5,7 @@ description: "The self-destructing USB drive project: open hardware, a secret pl
 layout: "product"
 url: "/ovrdrive/"
 cover: "/img/products/ovrdrive.webp"
-hero_mobile_position: "20% center"
+hero_mobile_position: "80% center"
 image_alt: "Ovrdrive USB flash drive in its black enclosure"
 shop: "https://shop.rootkitlabs.com/products/ovrdrive-usb"
 specs:
