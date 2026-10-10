@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+{{ partial "head.html" . }}
+<body class="pd-page video-product-page blackhat-page">
+{{ partial "product-video-header.html" . }}
+<main>
+    <section id="details" class="pd-section pd-section--light" aria-labelledby="blackhat-title">
+        <div class="pd-wrap pd-details">
+            <div>
+                <h2 id="blackhat-title">Product Details</h2>
+            </div>
+            <div class="pd-specs-stack">
+                <ul class="pd-tech-list">
+                    <li><strong>Processor:</strong><span>Quad-core Allwinner A33, 1.8GHz.</span></li>
+                    <li><strong>Memory:</strong><span>512MB RAM.</span></li>
+                    <li><strong>Wireless:</strong><span>Onboard 2.4GHz WiFi (RTL8723DS).</span></li>
+                    <li><strong>Ports:</strong><span>Two USB-A ports and one USB-C port connected to FTDI.</span></li>
+                    <li><strong>Included:</strong><span>5GHz USB WiFi dongle (RTL8821CU) and a stubby antenna for the onboard radio.</span></li>
+                    <li><strong>Not included:</strong><span>Flipper Zero and SD card.</span></li>
+                    <li><strong>GitHub:</strong><span><a href="https://github.com/o7-machinehum/flipper-blackhat-a33">Hardware</a>, <a href="https://github.com/o7-machinehum/flipper-blackhat-os">Linux OS</a>, and <a href="https://github.com/o7-machinehum/flipper-blackhat-app">Flipper app</a>.</span></li>
+                    <li><strong>Setup:</strong><span><a href="https://github.com/o7-machinehum/flipper-blackhat/wiki">Documentation and getting started.</a></span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="edgar" class="product-panel" aria-labelledby="edgar-title">
+        <div class="product-panel__inner" data-product-reveal>
+            <div class="product-panel__copy">
+                <h2 id="edgar-title">Add Edgar. Add a screen.</h2>
+                <p>Edgar Carrasco's open-source Case 2.0 brings Blackhat and a 3.4-inch, 480 &times; 480 MIPI display together. The screen connects to Blackhat by ribbon cable and sits in the case's dedicated screen holder.</p>
+                <p>The case and screen are sold separately. Bring your own Flipper Zero and SD card.</p>
+                <div class="product-actions">
+                    <a class="product-button" href="https://shop.rootkitlabs.com/products/flipper-blackhat-tron-case">Shop Edgar case</a>
+                    <a class="product-link" href="https://shop.rootkitlabs.com/products/3-4-480x480-square-tft-lcd-display-mipi">Shop screen</a>
+                    <a class="product-link" href="https://github.com/o7-machinehum/flipper-blackhat/wiki/Edgar-Case-2.0">Assembly guide</a>
+                </div>
+            </div>
+            <img class="product-image" src="{{ "/img/products/edgar2.webp" | relURL }}" alt="Edgar Case 2.0 with its screen module" loading="lazy">
+        </div>
+    </section>
+    <section class="pd-section pd-section--light" aria-label="Flipper Blackhat videos and coverage">
+        <div class="pd-wrap">
+            <div class="blackhat-videos">
+                <div>
+                    <h3>Talking Sasquach</h3>
+                    <div class="pd-video-shell">
+                        <iframe src="https://www.youtube-nocookie.com/embed/1OsOF7jWWm0?rel=0" title="Flipper BlackHat is a Linux Computer For Your Flipper Zero — Talking Sasquach" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div>
+                    <h3>The Flipper Blackhat at WHY2025</h3>
+                    <div class="pd-video-shell">
+                        <iframe src="https://media.ccc.de/v/why2025-107-the-flipper-blackhat/oembed" title="The Flipper Blackhat — WHY2025 talk" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <p class="blackhat-press"><a href="https://www.hackster.io/news/ryan-walker-s-flipper-blackhat-is-a-powerful-quad-core-linux-based-wi-fi-add-on-for-the-flipper-zero-5001894e5181">Read about Flipper Blackhat on Hackster.io &rarr;</a></p>
+        </div>
+    </section>
+</main>
+<script src="{{ "js/product-reveal.js" | relURL }}" defer></script>
+</body>
+</html>

@@ -236,64 +236,6 @@
     };
 
 
-   /* Product rail
-    * ------------------------------------------------------ */
-    var clProductRail = function() {
-
-        $('.home-products').each(function() {
-            var $rail = $(this),
-                $track = $rail.find('.home-products__track'),
-                $prev = $rail.find('.home-products__arrow--prev'),
-                $next = $rail.find('.home-products__arrow--next'),
-                track = $track[0],
-                ticking = false;
-
-            if (!track) return;
-
-            var updateArrows = function() {
-                var maxScroll = track.scrollWidth - track.clientWidth,
-                    hasOverflow = maxScroll > 1,
-                    edgeOffset = 4;
-
-                $prev.prop('disabled', !hasOverflow || track.scrollLeft <= edgeOffset);
-                $next.prop('disabled', !hasOverflow || track.scrollLeft >= maxScroll - edgeOffset);
-            };
-
-            var requestUpdate = function() {
-                if (ticking) return;
-
-                ticking = true;
-                window.requestAnimationFrame(function() {
-                    ticking = false;
-                    updateArrows();
-                });
-            };
-
-            var scrollProducts = function(direction) {
-                var $firstProduct = $track.find('.home-product').first(),
-                    distance = $firstProduct.length ? $firstProduct.outerWidth(true) : $track.width() * 0.8;
-
-                track.scrollBy({
-                    left: direction * distance,
-                    behavior: 'smooth'
-                });
-            };
-
-            $prev.on('click', function() {
-                scrollProducts(-1);
-            });
-
-            $next.on('click', function() {
-                scrollProducts(1);
-            });
-
-            $track.on('scroll', requestUpdate);
-            $WIN.on('resize', requestUpdate);
-            updateArrows();
-        });
-    };
-
-
    /* Smooth Scrolling
     * ------------------------------------------------------ */
     var clSmoothScroll = function() {
@@ -420,7 +362,6 @@
         clStatCount();
         clMasonryFolio();
         clSlickSlider();
-        clProductRail();
         clSmoothScroll();
         clPlaceholder();
         clAlertBoxes();

@@ -38,6 +38,9 @@
 
     <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    {{ if in (slice "flipper-blackhat" "blackpants") .Layout }}
+    <link rel="stylesheet" href="{{ "css/products.css" | relURL }}">
+    {{ end }}
     {{ partial "google-analytics.html" . }}
     {{ if or .Params.math (in .Content "$$") (in .Content `\(`) (in .Content `\[`) }}
         {{ partial "math.html" . }}

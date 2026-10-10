@@ -2,7 +2,6 @@
     --font-sans: "metropolis-regular", "Helvetica Neue", Arial, sans-serif;
     --font-sans-bold: "metropolis-bold", "Helvetica Neue", Arial, sans-serif;
     --font-sans-semibold: "metropolis-semibold", "Helvetica Neue", Arial, sans-serif;
-    --font-serif: "domine-regular", Georgia, serif;
     --font-mono: Monaco, Menlo, Consolas, "Courier New", monospace;
     --text: #2f3437;
     --muted: #687076;
@@ -23,7 +22,10 @@ html {
     -o-background-size: cover;
 }
 .intro-header .post-heading .meta, .serif, body {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
+}
+button, input, select, textarea {
+    font-family: inherit;
 }
 .btn, .intro-header .page-heading .subheading, .intro-header .post-heading .subheading, .intro-header .site-heading .subheading, .navbar-custom, .pager li>a, .pager li>span, .sans-serif, h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans-bold);
@@ -534,7 +536,7 @@ article .video-container embed, article .video-container iframe, article .video-
 article blockquote {
     border-left: 4px solid var(--rule);
     font-style: italic;
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: 1.1em;
     padding: 0 0 0 1.25rem;
     text-align: left;

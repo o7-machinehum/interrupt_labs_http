@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+{{ partial "head.html" . }}
+<body class="pd-page video-product-page">
+{{ partial "product-video-header.html" . }}
+<main>
+    <section id="details" class="product-panel" aria-labelledby="blackpants-details">
+        <div class="product-panel__inner" data-product-reveal>
+            <div class="product-panel__copy">
+                <h2 id="blackpants-details">Give Blackhat a keyboard.</h2>
+                <p>Blackpants replaces the Flipper Zero as the carrier for your Blackhat. It adds a backlit QWERTY keyboard, two extra USB-A ports, and a 480 &times; 480 LCD—the same screen used in Edgar Case 2.0.</p>
+                <p>Blackpants comes assembled. Flipper Blackhat is required and sold separately. Follow the installation guide when connecting the boards.</p>
+                <div class="product-actions">
+                    <a class="product-button" href="{{ .Params.shop }}">View in shop</a>
+                    <a class="product-link" href="https://github.com/o7-machinehum/flipper-blackhat/wiki/Blackpants">Installation guide</a>
+                </div>
+            </div>
+            <img class="product-image" src="{{ "/img/products/blackpants.jpg" | relURL }}" alt="Blackpants with keyboard and display" loading="lazy">
+        </div>
+    </section>
+</main>
+<script src="{{ "js/product-reveal.js" | relURL }}" defer></script>
+</body>
+</html>

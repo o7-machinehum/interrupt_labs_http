@@ -1,5 +1,17 @@
 {{ partial "home-start.html" . }}
-{{ range (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+{{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+{{ range first 5 $posts }}
     {{ partial "article-index.html" . }}
+{{ end }}
+{{ if gt (len $posts) 5 }}
+<details class="blog-disclosure">
+    <summary>Read more <span aria-hidden="true">&darr;</span></summary>
+    <div class="blog-disclosure__posts">
+        {{ range after 5 $posts }}
+            {{ partial "article-index.html" . }}
+        {{ end }}
+    </div>
+</details>
+<script src="{{ "js/blog-expand.js" | relURL }}" defer></script>
 {{ end }}
 {{ partial "home-end.html" . }}
