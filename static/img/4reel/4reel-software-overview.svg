@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="1560" viewBox="0 0 1120 1560" role="img" aria-labelledby="title description">
+  <title id="title">4reel runtime software architecture</title>
+  <desc id="description">One C application, 4reel-web, captures both cameras, pairs frames by timestamp, computes stereo depth, and adjusts exposure and gain. The proprietary librve.a is statically linked inside this process and submits SAD work through /dev/rve. CPU stereo matching is the fallback when RVE fails. In kernel space, V4L2 registers video devices and dispatches application requests. The Rockchip capture driver registers /dev/video* through V4L2. The OV9281 driver registers V4L2 sensor subdevices exposed through /dev/v4l-subdev*. The application uses V4L2 streaming ioctls for capture, and V4L2 controls for sensor exposure and gain. Media Controller describes the sensor, D-PHY, CSI-2 and capture entities. Drivers start and stop the pipeline through V4L2 subdevice operations. Driver arrows represent software calls or hardware control; physical pixels travel from each OV9281 over two MIPI CSI-2 data lanes through D-PHY and CSI-2 hardware, then CIF capture and DMA. The OV9281 driver uses the Linux I2C core and Rockchip I2C controller driver to configure both cameras. V identifies BSP driver implementations used in this image, not the absence of upstream hardware support. This image uses Rockchip's ov9281.c with a local rotation patch; mainline supports OV9281 through ov9282.c. All arrows are solid and connection paths do not cross.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      text { font-family: "DejaVu Sans", sans-serif; font-size: 18px; fill: #0f172a; text-anchor: middle; }
+      .heading { font-weight: bold; }
+      .badge { font-weight: bold; fill: #475569; text-anchor: end; }
+      .connection { fill: none; stroke: #64748b; stroke-width: 1.6; marker-end: url(#arrow); }
+      .sensor { fill: #e0f2ee; stroke: #0d9488; stroke-width: 1.3; }
+      .external { fill: #fff3df; stroke: #d99a37; stroke-width: 1.3; }
+      .process { fill: #dbeafe; stroke: #2563eb; stroke-width: 1.3; }
+      .library { fill: #eff6ff; stroke: #60a5fa; stroke-width: 1.3; }
+      .driver { fill: #ede9fe; stroke: #a78bfa; stroke-width: 1.3; }
+      .framework { fill: #f1edfc; stroke: #a78bfa; stroke-width: 1.3; }
+    </style>
+  </defs>
+
+  <rect width="1120" height="1560" fill="white"/>
+  <rect x="18" y="18" width="1082" height="1224" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.3"/>
+  <text class="heading" x="559" y="52" style="font-size: 22px">RV1103</text>
+  <text class="detail heading" x="36" y="82" style="text-anchor: start">User space</text>
+  <path d="M 18 270 H 1100 M 18 904 H 1100" stroke="#94a3b8" stroke-width="1.3"/>
+  <text class="detail heading" x="36" y="302" style="text-anchor: start">Kernel space</text>
+  <text class="detail heading" x="36" y="936" style="text-anchor: start">SoC hardware</text>
+
+  <g transform="translate(33 0)">
+  <g aria-label="Application interfaces to kernel frameworks">
+    <path id="app-capture" class="connection" d="M 142 224 V 360" marker-start="url(#arrow)"/>
+    <path id="app-sensor" class="connection" d="M 654 224 V 360" marker-start="url(#arrow)"/>
+    <path id="library-rve" class="connection" d="M 910 212 V 360" marker-start="url(#arrow)"/>
+    <text class="device-node" x="154" y="328" style="text-anchor: start">/dev/video*</text>
+    <text class="device-node" x="666" y="328" style="text-anchor: start">/dev/v4l-subdev*</text>
+    <text class="device-node" x="922" y="328" style="text-anchor: start">/dev/rve</text>
+  </g>
+
+  <g aria-label="Shared camera framework and hardware-specific drivers">
+    <path id="v4l2-capture" class="connection" d="M 142 440 V 536" marker-start="url(#arrow)"/>
+    <path id="v4l2-receiver" class="connection" d="M 404 440 V 536" marker-start="url(#arrow)"/>
+    <path id="v4l2-sensor" class="connection" d="M 654 440 V 536" marker-start="url(#arrow)"/>
+    <path id="capture-hardware" class="connection" d="M 142 608 V 1024" marker-start="url(#arrow)"/>
+    <path id="receiver-hardware" class="connection" d="M 404 608 V 1176 H 240"/>
+    <path id="sensor-i2c-core" class="connection" d="M 654 608 V 680" marker-start="url(#arrow)"/>
+    <path id="i2c-core-controller" class="connection" d="M 654 744 V 816" marker-start="url(#arrow)"/>
+    <path id="i2c-controller-hardware" class="connection" d="M 654 880 V 1024" marker-start="url(#arrow)"/>
+    <path id="rve-driver-hardware" class="connection" d="M 910 440 V 1024" marker-start="url(#arrow)"/>
+  </g>
+
+  <g aria-label="Physical image and sensor control paths">
+    <path id="csi-cif-pixels" class="connection" d="M 142 1144 V 1088"/>
+    <path id="camera-left-csi-pixels" class="connection" d="M 398 1420 V 1340 H 110 V 1208"/>
+    <path id="camera-right-csi-pixels" class="connection" d="M 654 1420 V 1290 H 174 V 1208"/>
+    <path id="camera-i2c" class="connection" d="M 654 1088 V 1116 H 900 V 1532 H 398 V 1484" marker-start="url(#arrow)"/>
+    <path id="camera-right-i2c" class="connection" d="M 654 1532 V 1484"/>
+    <circle cx="654" cy="1532" r="3" fill="#64748b"/>
+    <text class="detail" x="420" y="1274">MIPI CSI-2</text>
+    <text class="detail" x="200" y="1364">2 data lanes per camera</text>
+    <text class="detail" x="912" y="1458" style="text-anchor: start">I²C</text>
+  </g>
+
+  <g aria-label="One C application process; librve.a is statically linked inside it">
+    <rect id="application" class="process" x="44" y="104" width="964" height="120" rx="12"/>
+    <text x="526" y="134">Capture + stereo depth</text>
+    <text class="detail" x="526" y="156" style="fill: #475569">4reel-web · C application</text>
+    <rect class="library" x="832" y="168" width="156" height="44" rx="8"/>
+    <text x="910" y="196">librve.a</text>
+  </g>
+
+  <g id="v4l2" aria-label="Shared kernel framework registers camera devices, exposes their interfaces and manages camera topology">
+    <title>Shared kernel framework registers camera devices, exposes their interfaces and manages camera topology</title>
+    <rect class="framework" x="44" y="360" width="708" height="80" rx="12"/>
+    <text class="heading" x="398" y="406">V4L2 core + Media Controller</text>
+  </g>
+
+  <g id="capture" aria-label="Rockchip capture driver">
+    <rect class="driver" x="32" y="536" width="220" height="72" rx="12"/>
+    <text class="badge" x="242" y="552" aria-label="BSP implementation used in this image; upstream hardware support may also exist"><title>BSP implementation used in this image; upstream hardware support may also exist</title>V</text>
+    <text x="142" y="578">Rockchip capture driver</text>
+  </g>
+
+  <g id="receiver" aria-label="Rockchip CSI-2 / D-PHY drivers">
+    <rect class="driver" x="306" y="536" width="196" height="72" rx="12"/>
+    <text class="badge" x="492" y="552" aria-label="BSP implementation used in this image; upstream hardware support may also exist"><title>BSP implementation used in this image; upstream hardware support may also exist</title>V</text>
+    <text x="404" y="567">Rockchip</text>
+    <text x="404" y="589">CSI-2 / D-PHY drivers</text>
+  </g>
+
+  <g id="sensor" aria-label="Rockchip BSP ov9281.c plus the board rotation patch; mainline supports OV9281 through ov9282.c">
+    <title>Rockchip BSP ov9281.c plus the board rotation patch; mainline supports OV9281 through ov9282.c</title>
+    <rect class="driver" x="556" y="536" width="196" height="72" rx="12"/>
+    <text class="badge" x="742" y="552" aria-label="BSP implementation used in this image; upstream hardware support may also exist"><title>BSP implementation used in this image; upstream hardware support may also exist</title>V</text>
+    <text x="654" y="578">OV9281 driver</text>
+  </g>
+
+  <g id="i2c-core" aria-label="Linux I²C core">
+    <rect class="framework" x="556" y="680" width="196" height="64" rx="12"/>
+    <text x="654" y="718">Linux I²C core</text>
+  </g>
+
+  <g id="i2c-driver" aria-label="Rockchip I²C driver">
+    <rect class="driver" x="556" y="816" width="196" height="64" rx="12"/>
+    <text class="badge" x="742" y="832" aria-label="BSP implementation used in this image; upstream hardware support may also exist"><title>BSP implementation used in this image; upstream hardware support may also exist</title>V</text>
+    <text x="654" y="854">Rockchip I²C driver</text>
+  </g>
+
+  <g id="rve-driver" aria-label="RVE / SAD driver">
+    <rect class="driver" x="812" y="360" width="196" height="80" rx="12"/>
+    <text class="badge" x="998" y="376" aria-label="BSP implementation used in this image; upstream hardware support may also exist"><title>BSP implementation used in this image; upstream hardware support may also exist</title>V</text>
+    <text x="910" y="406">RVE / SAD driver</text>
+  </g>
+
+  <g id="cif" aria-label="CIF capture + DMA">
+    <rect class="sensor" x="44" y="1024" width="196" height="64" rx="12"/>
+    <text x="142" y="1062">CIF capture + DMA</text>
+  </g>
+
+  <g id="csi" aria-label="D-PHY + CSI-2">
+    <rect class="sensor" x="44" y="1144" width="196" height="64" rx="12"/>
+    <text x="142" y="1182">D-PHY + CSI-2</text>
+  </g>
+
+  <g id="i2c-hardware" aria-label="I2C controller for both cameras">
+    <title>I2C controller for both cameras</title>
+    <rect class="sensor" x="556" y="1024" width="196" height="64" rx="12"/>
+    <text x="654" y="1062">I²C controller</text>
+  </g>
+
+  <g id="rve-hardware" aria-label="RVE / SAD accelerator">
+    <rect class="sensor" x="812" y="1024" width="196" height="64" rx="12"/>
+    <text x="910" y="1062">RVE / SAD accelerator</text>
+  </g>
+
+  <g id="camera-left" transform="translate(-13 0)" aria-label="First OV9281 camera, external to the SoC">
+    <rect class="external" x="313" y="1420" width="196" height="64" rx="12"/>
+    <text x="411" y="1458">OV9281</text>
+  </g>
+
+  <g id="camera-right" transform="translate(-13 0)" aria-label="Second OV9281 camera, external to the SoC">
+    <rect class="external" x="569" y="1420" width="196" height="64" rx="12"/>
+    <text x="667" y="1458">OV9281</text>
+  </g>
+  </g>
+
+</svg>

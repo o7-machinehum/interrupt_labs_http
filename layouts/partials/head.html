@@ -37,7 +37,7 @@
     <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
 
     <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}?v={{ readFile "static/css/style.css" | sha256 }}">
     {{ if eq .Layout "product" }}
     <link rel="stylesheet" href="{{ "css/products.css" | relURL }}">
     {{ end }}

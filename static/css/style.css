@@ -529,6 +529,13 @@ article .video-container embed, article .video-container iframe, article .video-
     height: 100%;
     margin-top: 0;
 }
+article .video-container--portrait {
+    width: min(100%, 360px);
+    aspect-ratio: 9 / 16;
+    height: auto;
+    padding: 0;
+    margin: 1.5rem auto;
+}
 article blockquote {
     border-left: 4px solid var(--rule);
     font-style: italic;

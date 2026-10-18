@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="568" viewBox="0 0 1080 568" role="img" aria-labelledby="title description">
+  <title id="title">Stereo camera fields of view and image disparity</title>
+  <desc id="description">Top view of two parallel cameras with overlapping fields of view. Both cameras see a distant purple circle and a nearby orange square. The lines of sight illustrate the larger difference in viewing angle for the nearby object. The baseline dimension marks the horizontal distance between the camera optical centers.</desc>
+  <defs>
+    <style>
+      .ray { fill: none; stroke-width: 2.5; stroke-linecap: round; }
+    </style>
+    <marker id="baseline-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1080" height="568" fill="white"/>
+
+  <g aria-label="Overlapping fields of view of two parallel cameras">
+    <path d="M 450 430 L 150 50 H 750 Z" fill="#dbeafe" fill-opacity="0.65" stroke="#60a5fa" stroke-width="1.5"/>
+    <path d="M 630 430 L 330 50 H 930 Z" fill="#ccfbf1" fill-opacity="0.5" stroke="#2dd4bf" stroke-width="1.5"/>
+  </g>
+
+  <g aria-label="Lines of sight from each camera to the same near and far objects">
+    <path class="ray" d="M 450 430 L 540 80 L 630 430" stroke="#8b5cf6"/>
+    <path class="ray" d="M 450 430 L 540 280 L 630 430" stroke="#d97706"/>
+    <circle cx="540" cy="80" r="11" fill="#8b5cf6" stroke="white" stroke-width="2"/>
+    <rect x="529" y="269" width="22" height="22" rx="4" fill="#f59e0b" stroke="white" stroke-width="2"/>
+  </g>
+
+  <g aria-label="Left camera, facing straight ahead">
+    <rect x="406" y="442" width="88" height="48" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <rect x="436" y="426" width="28" height="16" rx="3" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <circle cx="450" cy="430" r="3" fill="#2563eb"/>
+  </g>
+  <g aria-label="Right camera, parallel to the left camera">
+    <rect x="586" y="442" width="88" height="48" rx="9" fill="#e0f2ee" stroke="#0d9488" stroke-width="2"/>
+    <rect x="616" y="426" width="28" height="16" rx="3" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+    <circle cx="630" cy="430" r="3" fill="#0d9488"/>
+  </g>
+
+  <g aria-label="Baseline between the two camera optical centers">
+    <path d="M 450 498 V 546 M 630 498 V 546" fill="none" stroke="#64748b" stroke-width="1.3"/>
+    <path d="M 450 538 H 630" fill="none" stroke="#64748b" stroke-width="1.6" marker-start="url(#baseline-arrow)" marker-end="url(#baseline-arrow)"/>
+    <text x="540" y="526" font-family="DejaVu Sans, sans-serif" font-size="20" fill="#475569" text-anchor="middle">baseline</text>
+  </g>
+</svg>
