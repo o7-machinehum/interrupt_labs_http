@@ -4,6 +4,13 @@
     --accent: #0085a1;
     --rule: #e7eaee;
 }
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../fonts/jetbrains-mono/JetBrainsMono-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
 html {
     box-sizing: border-box;
 }
@@ -575,6 +582,11 @@ article kbd,
 article samp {
     font-family: var(--font-mono);
 }
+article pre,
+article pre code {
+    font-family: "JetBrains Mono", var(--font-mono);
+    font-variant-ligatures: none;
+}
 article :not(pre) > code {
     background: #f5f7f9;
     border: 1px solid var(--rule);
@@ -586,12 +598,12 @@ article :not(pre) > code {
     word-break: break-word;
 }
 article pre {
-    background: #111820;
-    border: 1px solid #263341;
+    background: #f6f8fa;
+    border: 1px solid var(--rule);
     border-radius: 6px;
-    color: #e6edf3;
-    font-size: 15px;
-    line-height: 1.55;
+    color: #24292f;
+    font-size: 16px;
+    line-height: 1.6;
     margin: 1.4rem 0;
     overflow-x: auto;
     padding: 1rem 1.15rem;
