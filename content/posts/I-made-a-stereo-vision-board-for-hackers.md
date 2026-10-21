@@ -1,6 +1,7 @@
 ---
 title: I Built a Stereo Vision Board for Hardware Hackers
 date: 2026-10-06 14:02:45
+share_cover: "/img/4reel/4reel-front.jpg"
 ---
 
 *This article was written entirely by a human, for humans.*
