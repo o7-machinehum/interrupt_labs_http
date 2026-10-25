@@ -1735,8 +1735,8 @@ input::-moz-focus-inner {
   text-align: left;
   background-color: rgba(0, 0, 0, 0.2);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease;
   position: relative;
 }
 .home-sidelinks li:last-child {
@@ -1750,7 +1750,8 @@ input::-moz-focus-inner {
   background-color: #cc147f;
   border-radius: 50%;
   position: absolute;
-  top: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
   left: 2rem;
 }
 .home-sidelinks a {
@@ -1767,9 +1768,9 @@ input::-moz-focus-inner {
   text-transform: none;
   letter-spacing: 0;
 }
-.home-sidelinks li:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.home-sidelinks li:hover,
+.home-sidelinks li:focus-within {
+  background-color: rgba(204, 20, 127, 0.28);
 }
 
 
